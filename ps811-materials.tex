@@ -1,0 +1,534 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Introduction to Statistical Computing in Political Sciennce},
+  pdfauthor={Marcy Shieh},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{longtable,booktabs}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+
+\title{Introduction to Statistical Computing in Political Sciennce}
+\author{Marcy Shieh}
+\date{2020-12-10}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{welcome}{%
+\chapter{Welcome}\label{welcome}}
+
+If you have any questions about the materials, please contact me at \href{mailto:mshieh2@wisc.edu}{\nolinkurl{mshieh2@wisc.edu}}.
+
+\hypertarget{intro}{%
+\chapter{Introduction}\label{intro}}
+
+This is a one-credit, pass/fail course for first-year PhD students at the Department of Political Science at the University of Wisconsin-Madison. Students will learn how to organize their projects using Git, connect to Github, become R-literate, use R to conduct statistical analyses and create graphics, write their documents in an R Markdown file, create a replicable R Project, and use other computings tools that may help them on their academic journey. Due to COVID-19, the course will be taught virtually during the Fall 2020 semester and recordings of the lectures will be available on Canvas to enrolled students.
+
+The first hour of the course covers everything that students need to know to complete all assignments in the class. The second hour walks through the weekly assignments and provides additional support. To balance out the effects of the virtual environment, I will try to make the class as connected as possible. In addition to regular office hours, we will have a Slack for class questions and discussion. The hope is that each student will be able to get their questions answered as soon ass possible.
+
+You may access the \href{https://github.com/marcyshieh/ps811/blob/master/syllabus/ps811_fall2020_syllabus.pdf}{latest draft of the syllabus here}.
+
+\hypertarget{setting-up}{%
+\chapter{Setting Up}\label{setting-up}}
+
+In this lecture, you will learn how to knit a document in R Markdown and use basic Git functions.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \href{ps811-lecture-1-setup\#install-R}{Install R.}
+\item
+  \href{ps811-lecture-1-setup\#install-Rstudio}{Install R Studio.}
+\item
+  \href{ps811-lecture-1-setup\#install-latex}{Install LaTeX.}
+\item
+  \href{ps811-lecture-1-setup\#knit-RMarkdown}{Knit a document in R Markdown in PDF and HTML.}
+\item
+  \href{ps811-lecture-1-setup\#create-Github}{Create a Github account.}
+\item
+  \href{ps811-lecture-1-setup\#setup-Git}{Set up Git.}
+\item
+  \href{ps811-lecture-1-setup\#RStudio-Github}{Connect RStudio to your Github account.}
+\item
+  \href{ps811-lecture-1-setup\#work-git}{Work with Git on RStudio.}
+\end{enumerate}
+
+\hypertarget{install-R}{%
+\section{Installing R}\label{install-R}}
+
+R is a statistical programming language that is widely used in the discipline. Go to the \href{https://www.r-project.org/}{R official website} to learn more about the software.
+
+These instructions will help you download R on to your operating system.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Go to list of \href{https://cran.r-project.org/mirrors.html}{CRAN mirrors}. A ``mirror'' is essentially a distribution site for the software.
+\item
+  Select your preferred CRAN mirror. I recommend that you select the mirror closest to your current location. For example, if you are in Madison, WI, you should consider picking the mirror located at University of Michigan, though any of the midwestern universities will do.
+\item
+  Select the download for your operating system.
+\end{enumerate}
+
+\hypertarget{install-Rstudio}{%
+\section{Installing RStudio}\label{install-Rstudio}}
+
+RStudio is an integrated environment for R. If R is the engine, RStudio is the car. You can use the engine without the car, but you cannot drive the the car without the engine. In other words, you will not be able to use RStudio if you have not yet downloaded R. Always download R first. Go to the \href{https://rstudio.com/}{RStudio official website} to learn more about the software.
+
+These instructions will help you download RStudio on to your operating system.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Go to the \href{https://rstudio.com/products/rstudio/download/}{Download RStudio} page.
+\item
+  Click on the ``Download'' button" for RStudio Desktop Open Source Licnse Free.
+\item
+  Click on the ``Download RStudio for {[}your OS{]}'' button. The website should be detect which version of RStudio that you need to download.
+\end{enumerate}
+
+\hypertarget{install-latex}{%
+\section{Installing LaTeX}\label{install-latex}}
+
+LaTeX is a software system for document prepartion. While we will not focus on LaTeX functionalities in this class, you will need to download it to compile R Markdown documents. Go to the \href{https://www.latex-project.org/}{LaTeX official website} to learn more about the software.
+
+If, for any reason, you would like to learn LaTeX, I would recommend opening an \href{https://www.overleaf.com}{Overleaf} account and leveraging their \href{https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes}{step-by-step tutorial}. While this course will primarily focus on teaching you how to write and generate your documents in R Markdown, you may encounter collaborators who use LaTeX. The good news is that R Markdown is pretty similar to LaTeX, so the skills are definitely transferrable.
+
+These instructions will help you download LaTeX on to your operating system.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Scroll to the third section of the \href{https://www.latex-project.org/get/}{Get} page where you see download options for Linux, MacOS, Windows, and Online.
+\item
+  Select your operating system.
+
+  \begin{itemize}
+  \item
+    For MacOS users, you should download \href{http://www.tug.org/mactex/}{MacTeX}. You may access \href{http://www.tug.org/mactex/mactex-download.html}{step-by-step instructions here}.
+  \item
+    For Windows users, the website suggests that you download MikTeX, proTeXt, or TeX Live. There is a \href{https://tex.stackexchange.com/questions/239199/latex-distributions-what-are-their-main-differences}{StackExchange post} discussing these options and then some. It appears like most people recommend \href{http://tug.org/texlive/}{TeX Live}.
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{knit-RMarkdown}{%
+\section{Knitting R Markdown Files}\label{knit-RMarkdown}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Open RStudio.
+\item
+  Click on File \textgreater{} New File.
+\item
+  Select R Markdown.
+
+  \begin{figure}
+  \centering
+  \includegraphics{https://marcyshieh.github.io/ps811/lecture1-img/new_r_markdown.png}
+  \caption{new rmarkdown}
+  \end{figure}
+
+  \emph{When you set up a new R Markdown file.}
+\item
+  Make sure the sidebar is set to ``Document.''
+\item
+  Enter in the title of the document in the ``Title'' field and your name in the ``Author'' field.
+\item
+  Select HTML as the ``Default Output Format'' option for now. We will discuss how to output your file in PDF as well later in the lesson.
+\item
+  An R Markdown document (with the extension .Rmd) will appear. It will be called Untitled1.Rmd. R Markdown has a default template in place every time you create a new R Markdown document.
+
+  \begin{figure}
+  \centering
+  \includegraphics{https://marcyshieh.github.io/ps811/lecture1-img/knit.png}
+  \caption{the knit button}
+  \end{figure}
+
+  \emph{The Knit button.}
+\item
+  As you have selected HTML as the \emph{default} output format, when you click the \textbf{Knit} button (it is the icon with a little ball of yarn and needle), it will automatically output the document as a HTML. Prior to outputing the HTML file, however, it will ask you to rename the file to something other than Untitled1.Rmd, which you should certainly do.
+
+  \begin{figure}
+  \centering
+  \includegraphics{https://marcyshieh.github.io/ps811/lecture1-img/viewer.png}
+  \caption{viewer tab}
+  \end{figure}
+
+  \emph{HTML file in the viewer tab.}
+\item
+  The HTML file will appear on the ``Viewer'' tab. To open the actual document, click on the button with the arrow pointing to the top right corner.
+\item
+  To output the same document as a PDF, click on the small down arrow next to the \textbf{Knit} button. Select ``Knit to PDF.''
+\end{enumerate}
+
+As you can see, you have the option to ``Knit to Word'' but the political science community has recently turned on Word. As such, you are discouraged from knitting to Word, unless otherwise noted.
+
+\hypertarget{create-Github}{%
+\section{Creating a Github Account}\label{create-Github}}
+
+Github is a website that hosts software development and version control via Git. While you are welcome to use Github alternatives to host your open-source projects in the future, this class will use Github.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Create an account on \href{https://github.com/}{Github}.
+\item
+  With the \href{https://education.github.com/pack}{GitHub Student Developer Pack}, students get \href{https://education.github.com/discount_requests/student_application}{Github Pro} and many other computing tools for free. You will need to use your university email address to apply, but the application process only took me a few minutes. Review the full list of \href{https://docs.github.com/en/github/getting-started-with-github/githubs-products\#github-pro}{Github Pro features here}.
+\end{enumerate}
+
+\hypertarget{setup-Git}{%
+\section{Setting Up Git}\label{setup-Git}}
+
+Git is a version-control system for tracking changes. Initially, software developers were the main users of Git. But lately, people of all stripes have adopted Git into their workflow. Git is especially useful for collaborative work because you will be able to identify information about edits to a file, including what changed, who made the change, and when the perrson made the change. Git is useful for solo work as well because it beats saving your document as a new document whenever you make a change. Visit \href{https://git-scm.com/}{the official Git website} to learn more about Git.
+
+The official Git website has a helpful guide on \href{https://git-scm.com/book/en/v2/Getting-Started-Installing-Git}{installing Git} for your operating system. I don't think I can improve on their existing guidance other than the fact that I do \emph{not} recommend that you download from the source.
+
+\hypertarget{RStudio-Github}{%
+\section{Connecting RStudio to Git and Github}\label{RStudio-Github}}
+
+Much of this section is indebted to \href{https://happygitwithr.com/rstudio-git-github.html}{Happy Git and GitHub for the useR} page on integrating RStudio with Git and Github.
+
+Since I spend the better part of my life in RStudio, I want it to be able to connect to everything, including Git and Github. You are welcome to use \href{https://www.sourcetreeapp.com/}{SourceTree} and other Git clients, but I prefer to consolidate all my work into my trusty RStudio environment due to convenience/laziness. As such, my lectures will simply assume that you use Github and RStudio and not their alternatives. Of course, you are welcome to expore the alternatives in your free time. In fact, I highly recommend that you do so because I want you to end up with a workflow that works for you. The good news is, once you start familiarizing yourself with these basic building blocks, other tools will be easier to pick up.
+
+\hypertarget{say-hello-to-git-on-rstudio}{%
+\subsection{Say hello to git on RStudio}\label{say-hello-to-git-on-rstudio}}
+
+\begin{figure}
+\centering
+\includegraphics{https://marcyshieh.github.io/ps811/lecture1-img/terminal.png}
+\caption{terminal tab}
+\end{figure}
+
+\emph{Terminal tab in RStudio.}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Click on the Terminal tab in RStudio.
+\item
+  Enter the following commands into the Terminal (i.e., also known as ``the shell'') and click ``Enter.'' You may copy and paste all three lines at once then click ``Enter,'' or type each line one by one, clicking ``Enter'' each time you need to start a new line.
+\end{enumerate}
+
+\begin{verbatim}
+git config --global user.name 'Your Name'
+git config --global user.email 'yourgithub@email.com'
+git config --global --list
+\end{verbatim}
+
+You have ``introduced'' yourself to Git. Hopefully this is the beginning of a beautiful friendship.
+
+\hypertarget{create-a-repository}{%
+\subsection{Create a repository}\label{create-a-repository}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\item
+  Go to the main \href{https://github.com}{Github} site and make sure you are logged in. On the main page, click on the green ``New'' button on the right sidebar to create a new repository on Github.
+\item
+  On the ``Create a new repository'' page, enter the following:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Repository name: \texttt{ps811-exercises}
+  \item
+    Description (optional): You can enter some description here about your folder, such as ``assignments for ps811''
+  \item
+    Select ``Public'' for now, though you do have the option for ``Private'' for future repositories.
+  \item
+    Check ``Add a README file.''
+  \end{itemize}
+\item
+  Click on the ``Create repository'' button.
+\end{enumerate}
+
+Your repository has been created.
+
+\hypertarget{connect-github-to-rstudio-the-fun-part}{%
+\subsection{Connect Github to RStudio (the fun part)}\label{connect-github-to-rstudio-the-fun-part}}
+
+The process technically \emph{clones} the Github repository to your computer, but so much of the magic happens in RStudio that it \emph{feels} that I am connecting Github to RStudio.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\item
+  Go to RStudio. Go to File \textgreater{} New Project.
+\item
+  Select ``Version Control.''
+\item
+  Select ``Git.''
+\item
+  Go to Github. Find the Git repository that you created in Step 5.
+\item
+  Click on the ``Code'' button (in green). Copy and paste the URL under ``Clone with HTTPS.'' The URL will end in .git, e.g., \texttt{https://github.com/marcyshieh/ps811.git}.
+
+  \begin{figure}
+  \centering
+  \includegraphics{https://marcyshieh.github.io/ps811/lecture1-img/new_project.png}
+  \caption{git pane}
+  \end{figure}
+
+  \emph{New project pop-up form.}
+\item
+  Go back to RStudio and fill out the following:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Repository URL: The .git URL you copied in Step 10.
+  \item
+    Project directory name: This will default to whatever you named your Github repository. You can change it, or you can keep it the same for consistency (or, so you won't be confused).
+  \item
+    Create project as a subdirectory of: Find the directory on \emph{your computer} that you want this copy of your Github repository to live in.
+  \end{itemize}
+\item
+  Check the ``Open in New Session'' box so you can have your projects (and misc non-project files) in different RStudio windows, but this is not necessary.
+\item
+  Click ``Create Project.''
+\end{enumerate}
+
+\hypertarget{work-git}{%
+\section{Working with Git on RStudio}\label{work-git}}
+
+You should see all the files from your Github repository in the RStudio file browser pane. This means that everything has been \emph{cloned} from your Github repository to your computer or, in other words, downloaded.
+
+\hypertarget{how-does-this-all-work}{%
+\subsection{How does this all work?}\label{how-does-this-all-work}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\item
+  In the file browser pane, open \texttt{README.md}.
+\item
+  Type in whatever you want in the file. A joke, the name of your celebrity crush, your favorite \emph{Riverdale} character. Whatever you want, as long as it's not rude and/or incendiary.
+\item
+  Save the file.
+
+  \begin{figure}
+  \centering
+  \includegraphics{https://marcyshieh.github.io/ps811/lecture1-img/git_pane.png}
+  \caption{the git pane}
+  \end{figure}
+
+  \emph{The Git pane.}
+\item
+  Click on the Git tab on the upper right pane.
+\end{enumerate}
+
+The Git tab only shows up once you create an RStudio Project.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\item
+  You will see that the \texttt{README.md} filepath you just edited show up under the Git tab. The Status will be a ``M,'' which stands for ``Modified.''
+\item
+  Check the ``Staged'' box.
+\item
+  Click Commit.
+\item
+  The ``RStudio: Review Changes'' window will appear as a pop-up. Essentially, this allows you to validate whether or not you want to \emph{push} the changes you made on your computer to your Github repository.
+\item
+  Type a coherent commit message into the ``Commit message'' box.
+\item
+  Click ``Push.''
+\item
+  A ``Git Commit'' pop-up will appear, with a message that kind of looks like this:
+\end{enumerate}
+
+\begin{verbatim}
+>> git commit -F blahblahblah.txt
+[master beded87] edit edit
+1 file changed, 49 insertions(+), 2 deletions(-)
+\end{verbatim}
+
+\hypertarget{review-changes-deep-dive}{%
+\subsubsection{Review changes deep-dive}\label{review-changes-deep-dive}}
+
+\begin{figure}
+\centering
+\includegraphics{https://marcyshieh.github.io/ps811/lecture1-img/commit_message.png}
+\caption{3 panes}
+\end{figure}
+
+\emph{The 3 panes of RStudio: Review Changes.}
+
+There are 3 panes, which I will introduce in clockwork order:
+
+\textbf{Pane 1} The files you changed.
+
+\textbf{Pane 2} Commit messsage textbox. Here, you write some notes on what you changed. I am personally \emph{horrible} at writing commit messages because I get impatient and lazy---I honestly just want to write, ``I changed some stuff''---but that really negates the whole purpose, doesn't it? So let's make it our goal to get better at writing commit messages.
+
+\textbf{Pane 3} The large pane on the bottom that show the changes you made. New additions are in gray, deletions are in red, and replacements are in green. You have the options of ``stage chunk'' or ``discard chunk'' for each gray, red, and green highlight.
+
+\begin{itemize}
+\tightlist
+\item
+  Stage chunk: You will be confirming the change and pushing the change out to the Github repository.
+\item
+  Discard chunk: You will NOT be confirming the change annd you will NOT be pushing the change out to the Github repository.
+\item
+  You may also ``Stage All'' or ``Discard All.''
+\end{itemize}
+
+\hypertarget{check-if-things-happened-as-expected}{%
+\subsection{Check if things happened as expected}\label{check-if-things-happened-as-expected}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{12}
+\item
+  Return to your browser, go to \href{https://github.com}{Github}, and find your repository. If you never left your repository, click ``Refresh'' on your browser.
+\item
+  Click on the README.md file---though, to be honest, your Github repository defaults to the README file when you land on the repository. But click on it anyway.
+\item
+  On this page, you can see who contributes to the file (it should be you for now) and when it was last udpated.
+
+  \begin{figure}
+  \centering
+  \includegraphics{https://marcyshieh.github.io/ps811/lecture1-img/history.png}
+  \caption{history}
+  \end{figure}
+
+  \emph{Github repository history}
+\end{enumerate}
+
+The ``History'' button allows you to see who last updated the file, when, and which client they used to update the file. For each ``commit,'' there are three icons (from left to right): a clipboard, an ID number, angle brackets.
+
+\begin{itemize}
+\tightlist
+\item
+  Clipboard: This copies the \href{https://en.wikipedia.org/wiki/SHA-1}{SHA-1} and puts it on your clipboard. I wouldn't worry too much about it.
+\item
+  ID number: This takes you to the gray, red, and green highlights that indicated the changes at the time of the commit.
+\item
+  Angle brackets: This takes you to the repository at the time of the commit. A time machine, basically.
+\end{itemize}
+
+\hypertarget{viewing-history-in-rstudio}{%
+\subsubsection{Viewing history in RStudio}\label{viewing-history-in-rstudio}}
+
+You may also view the history in RStudio.
+
+\begin{figure}
+\centering
+\includegraphics{https://marcyshieh.github.io/ps811/lecture1-img/git-history-rstudio.png}
+\caption{history-rstudio}
+\end{figure}
+
+\emph{How to access History in RStudio.}
+
+\begin{figure}
+\centering
+\includegraphics{https://marcyshieh.github.io/ps811/lecture1-img/git-history-rstudio-window.png}
+\caption{history-window}
+\end{figure}
+
+\emph{Window featuring Git History in RStudio.}
+
+\hypertarget{deleting-the-repository}{%
+\subsubsection{Deleting the Repository}\label{deleting-the-repository}}
+
+If, for any reason, you would like to delete your repository, you should follow the steps below.
+
+\textbf{Local} Find the directory on your computer and delete it like you would delete any normal folder.
+
+\textbf{Github} Go to the browser, go to Github, find your repository, and click ``Settings'' on the top repository-specific menu. Scroll all the way to the bottom and click on the ``Delete this repository'' button, then follow the instructions.
+
+\hypertarget{methods}{%
+\chapter{Methods}\label{methods}}
+
+We describe our methods in this chapter.
+
+\hypertarget{applications}{%
+\chapter{Applications}\label{applications}}
+
+Some \emph{significant} applications are demonstrated in this chapter.
+
+\hypertarget{example-one}{%
+\section{Example one}\label{example-one}}
+
+\hypertarget{example-two}{%
+\section{Example two}\label{example-two}}
+
+\hypertarget{final-words}{%
+\chapter{Final Words}\label{final-words}}
+
+We have finished a nice book.
+
+  \bibliography{book.bib,packages.bib}
+
+\end{document}

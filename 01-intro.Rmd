@@ -1,21 +1,7 @@
 # Introduction {#intro}
 
-You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods).
+This is a one-credit, pass/fail course for first-year PhD students at the Department of Political Science at the University of Wisconsin-Madison. Students will learn how to organize their projects using Git, connect to Github, become R-literate, use R to conduct statistical analyses and create graphics, write their documents in an R Markdown file, create a replicable R Project, and use other computings tools that may help them on their academic journey. Due to COVID-19, the course will be taught virtually during the Fall 2020 semester and recordings of the lectures will be available on Canvas to enrolled students.
 
-Figures and tables with captions will be placed in `figure` and `table` environments, respectively.
+The first hour of the course covers everything that students need to know to complete all assignments in the class. The second hour walks through the weekly assignments and provides additional support. To balance out the effects of the virtual environment, I will try to make the class as connected as possible. In addition to regular office hours, we will have a Slack for class questions and discussion. The hope is that each student will be able to get their questions answered as soon ass possible.
 
-```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center'}
-par(mar = c(4, 4, .1, .1))
-plot(pressure, type = 'b', pch = 19)
-```
-
-Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab).
-
-```{r nice-tab, tidy=FALSE}
-knitr::kable(
-  head(iris, 20), caption = 'Here is a nice table!',
-  booktabs = TRUE
-)
-```
-
-You can write citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].
+You may access the [latest draft of the syllabus here](https://github.com/marcyshieh/ps811/blob/master/syllabus/ps811_fall2020_syllabus.pdf).

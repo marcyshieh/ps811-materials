@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 10 Connecting RStudio to Git and Github | A Minimal Book Example</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 10 Connecting RStudio to Git and Github | A Minimal Book Example" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 10 Connecting RStudio to Git and Github | A Minimal Book Example" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Yihui Xie" />
+
+
+<meta name="date" content="2020-12-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="setup-Git.html"/>
+<link rel="next" href="work-git.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="3" data-path="lesson-01-setting-up.html"><a href="lesson-01-setting-up.html"><i class="fa fa-check"></i><b>3</b> Lesson 01: Setting Up</a></li>
+<li class="chapter" data-level="4" data-path="install-R.html"><a href="install-R.html"><i class="fa fa-check"></i><b>4</b> Installing R</a></li>
+<li class="chapter" data-level="5" data-path="install-Rstudio.html"><a href="install-Rstudio.html"><i class="fa fa-check"></i><b>5</b> Installing RStudio</a></li>
+<li class="chapter" data-level="6" data-path="install-latex.html"><a href="install-latex.html"><i class="fa fa-check"></i><b>6</b> Installing LaTeX</a></li>
+<li class="chapter" data-level="7" data-path="knit-RMarkdown.html"><a href="knit-RMarkdown.html"><i class="fa fa-check"></i><b>7</b> Knitting R Markdown Files</a></li>
+<li class="chapter" data-level="8" data-path="create-Github.html"><a href="create-Github.html"><i class="fa fa-check"></i><b>8</b> Creating a Github Account</a></li>
+<li class="chapter" data-level="9" data-path="setup-Git.html"><a href="setup-Git.html"><i class="fa fa-check"></i><b>9</b> Setting Up Git</a></li>
+<li class="chapter" data-level="10" data-path="RStudio-Github.html"><a href="RStudio-Github.html"><i class="fa fa-check"></i><b>10</b> Connecting RStudio to Git and Github</a><ul>
+<li class="chapter" data-level="10.1" data-path="RStudio-Github.html"><a href="RStudio-Github.html#say-hello-to-git-on-rstudio"><i class="fa fa-check"></i><b>10.1</b> Say hello to git on RStudio</a></li>
+<li class="chapter" data-level="10.2" data-path="RStudio-Github.html"><a href="RStudio-Github.html#create-a-repository"><i class="fa fa-check"></i><b>10.2</b> Create a repository</a></li>
+<li class="chapter" data-level="10.3" data-path="RStudio-Github.html"><a href="RStudio-Github.html#connect-github-to-rstudio-the-fun-part"><i class="fa fa-check"></i><b>10.3</b> Connect Github to RStudio (the fun part)</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="work-git.html"><a href="work-git.html"><i class="fa fa-check"></i><b>11</b> Working with Git on RStudio</a><ul>
+<li class="chapter" data-level="11.1" data-path="work-git.html"><a href="work-git.html#how-does-this-all-work"><i class="fa fa-check"></i><b>11.1</b> How does this all work?</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="work-git.html"><a href="work-git.html#review-changes-deep-dive"><i class="fa fa-check"></i><b>11.1.1</b> Review changes deep-dive</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="work-git.html"><a href="work-git.html#check-if-things-happened-as-expected"><i class="fa fa-check"></i><b>11.2</b> Check if things happened as expected</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="work-git.html"><a href="work-git.html#viewing-history-in-rstudio"><i class="fa fa-check"></i><b>11.2.1</b> Viewing history in RStudio</a></li>
+<li class="chapter" data-level="11.2.2" data-path="work-git.html"><a href="work-git.html#deleting-the-repository"><i class="fa fa-check"></i><b>11.2.2</b> Deleting the Repository</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>12</b> Methods</a></li>
+<li class="chapter" data-level="13" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>13</b> Applications</a><ul>
+<li class="chapter" data-level="13.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>13.1</b> Example one</a></li>
+<li class="chapter" data-level="13.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>13.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>14</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Minimal Book Example</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="RStudio-Github" class="section level1">
+<h1><span class="header-section-number">Chapter 10</span> Connecting RStudio to Git and Github</h1>
+<p>Much of this section is indebted to <a href="https://happygitwithr.com/rstudio-git-github.html">Happy Git and GitHub for the useR</a> page on integrating RStudio with Git and Github.</p>
+<p>Since I spend the better part of my life in RStudio, I want it to be able to connect to everything, including Git and Github. You are welcome to use <a href="https://www.sourcetreeapp.com/">SourceTree</a> and other Git clients, but I prefer to consolidate all my work into my trusty RStudio environment due to convenience/laziness. As such, my lectures will simply assume that you use Github and RStudio and not their alternatives. Of course, you are welcome to expore the alternatives in your free time. In fact, I highly recommend that you do so because I want you to end up with a workflow that works for you. The good news is, once you start familiarizing yourself with these basic building blocks, other tools will be easier to pick up.</p>
+<div id="say-hello-to-git-on-rstudio" class="section level2">
+<h2><span class="header-section-number">10.1</span> Say hello to git on RStudio</h2>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture1-img/terminal.png" alt="" />
+<p class="caption">terminal tab</p>
+</div>
+<p><em>Terminal tab in RStudio.</em></p>
+<ol style="list-style-type: decimal">
+<li><p>Click on the Terminal tab in RStudio.</p></li>
+<li><p>Enter the following commands into the Terminal (i.e., also known as “the shell”) and click “Enter.” You may copy and paste all three lines at once then click “Enter,” or type each line one by one, clicking “Enter” each time you need to start a new line.</p></li>
+</ol>
+<pre><code>git config --global user.name &#39;Your Name&#39;
+git config --global user.email &#39;yourgithub@email.com&#39;
+git config --global --list</code></pre>
+<p>You have “introduced” yourself to Git. Hopefully this is the beginning of a beautiful friendship.</p>
+</div>
+<div id="create-a-repository" class="section level2">
+<h2><span class="header-section-number">10.2</span> Create a repository</h2>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Go to the main <a href="https://github.com">Github</a> site and make sure you are logged in. On the main page, click on the green “New” button on the right sidebar to create a new repository on Github.</p></li>
+<li><p>On the “Create a new repository” page, enter the following:</p>
+<ul>
+<li>Repository name: <code>ps811-exercises</code></li>
+<li>Description (optional): You can enter some description here about your folder, such as “assignments for ps811”</li>
+<li>Select “Public” for now, though you do have the option for “Private” for future repositories.</li>
+<li>Check “Add a README file.”</li>
+</ul></li>
+<li><p>Click on the “Create repository” button.</p></li>
+</ol>
+<p>Your repository has been created.</p>
+</div>
+<div id="connect-github-to-rstudio-the-fun-part" class="section level2">
+<h2><span class="header-section-number">10.3</span> Connect Github to RStudio (the fun part)</h2>
+<p>The process technically <em>clones</em> the Github repository to your computer, but so much of the magic happens in RStudio that it <em>feels</em> that I am connecting Github to RStudio.</p>
+<ol start="6" style="list-style-type: decimal">
+<li><p>Go to RStudio. Go to File &gt; New Project.</p></li>
+<li><p>Select “Version Control.”</p></li>
+<li><p>Select “Git.”</p></li>
+<li><p>Go to Github. Find the Git repository that you created in Step 5.</p></li>
+<li><p>Click on the “Code” button (in green). Copy and paste the URL under “Clone with HTTPS.” The URL will end in .git, e.g., <code>https://github.com/marcyshieh/ps811.git</code>.</p>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture1-img/new_project.png" alt="" />
+<p class="caption">git pane</p>
+</div>
+<p><em>New project pop-up form.</em></p></li>
+<li><p>Go back to RStudio and fill out the following:</p>
+<ul>
+<li>Repository URL: The .git URL you copied in Step 10.</li>
+<li>Project directory name: This will default to whatever you named your Github repository. You can change it, or you can keep it the same for consistency (or, so you won’t be confused).</li>
+<li>Create project as a subdirectory of: Find the directory on <em>your computer</em> that you want this copy of your Github repository to live in.</li>
+</ul></li>
+<li><p>Check the “Open in New Session” box so you can have your projects (and misc non-project files) in different RStudio windows, but this is not necessary.</p></li>
+<li><p>Click “Create Project.”</p></li>
+</ol>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="setup-Git.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="work-git.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ps811-materials.pdf", "ps811-materials.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
