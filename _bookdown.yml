@@ -1,0 +1,5 @@
+book_filename: "ps811-materials"
+delete_merged_file: true
+language:
+  ui:
+    chapter_name: "Chapter "
