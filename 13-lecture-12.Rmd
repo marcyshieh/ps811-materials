@@ -1,0 +1,355 @@
+# GitHub Pages
+
+In this lecture, you will learn how to create a website in GitHub if you ever feel the need to show off.
+
+As you advance in your career as an academic, you may want to create a professional web presence. Of course, you are welcome to create a website using Wordpress, which is probably the easiest and least time-consuming way to have a web presence. But I see more GitHub Pages from political scientists popping up everyday and I fear that it may become some sort of signal in the discipline, like LaTeX and Beamer before it.
+
+So, here you will learn how to host a website on GitHub Pages.
+
+# What's so great about GitHub Pages?
+
+- Create content the same way you create R Markdown documents (you don't have to learn anything new...kinda)
+- Track your changes
+- Create project pages
+- You can signal that you know how to use GitHub Pages!
+
+# Who uses GitHub Pages?
+
+Tons of famous & important people (mostly quantitative methodologists) in the discipline, including...
+
+- [Alexander Coppock](https://alexandercoppock.com/)
+- [Jorge Cimentada](https://cimentadaj.github.io/)
+- [Anton Shirikov](https://www.shirikov.com/)
+
+# Steps to get your GitHub Pages up & running
+
+Here is how you become one of the elites. The best tutorials I've found thus far are:
+
+- [the official Hugo Quick Start tutorial](https://gohugo.io/getting-started/quick-start/)
+- the post by [Ivy Markwell from Inside the Embassy](https://inside.getambassador.com/creating-and-deploying-your-first-hugo-site-to-github-pages-1e1f496cf88d)
+- [Hugo and GitHub Pages Tutorial by Alex Leslie](https://azleslie.com/projects/hugo-tutorial/)
+
+## Prerequisites
+
+1. You should have Git 2.8 [installed on your machine](https://git-scm.com/downloads).
+2. You should have a [Github](https://github.com) account.
+
+## Step 1: Install Hugo
+
+Serious academics seem to prefer Hugo because they can then use the [Academic](https://themes.gohugo.io/academic/) theme. 
+
+### Mac Users
+
+You should definitely [install homebrew](https://brew.sh/). It's a quick and easy tool that helps you install packages that do not exist on your Mac.
+
+After you install homebrew, you can install Hugo via the Terminal:
+
+```
+brew install hugo
+```
+
+You might want to verify that you have the latest version of hugo:
+
+```
+hugo version
+```
+
+### Windows users
+
+You should definitely [install Chocolatey](https://chocolatey.org/). It's a quick and easy tool that helps you install packages that do not exist on your PC.
+
+After you install Chocolatey, you can install Hugo via the Command Line:
+
+```
+choco install hugo -confirm
+```
+
+You might want to verify that you have the latest version of hugo:
+
+```
+hugo version
+```
+
+## Step 2: Create site
+
+You want to create a new Hugo site on your computer.
+
+```
+hugo new site hugo_site
+```
+
+## Step 3: Add theme
+
+You want to pull a [Hugo theme](https://themes.gohugo.io/) from the web and load it to the Hugo site on your computer.
+
+For the purpose of this demo, we will use the [Ananke theme](https://themes.gohugo.io/gohugo-theme-ananke/). You are free to pick whatever Hugo theme you want to use. Prior to this lesson, you have hopefully chosen the theme you would like to use.
+
+Enter the following into the terminal:
+
+```
+cd hugo_site
+git init
+git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke
+```
+
+Then you want to make sure the `config` file points to the `ananke` theme, so you enter some additional commands into the terminal:
+
+```
+echo 'theme = "ananke"' >> config.toml
+```
+
+One thing I've noticed about changing themes for your Hugo website is that it can be pretty annoying. In essence, you need to copy the theme files whenever you download a new theme and change the `config` file to make sure it points to the new theme. But you might run into some issues with your existing site and need to revise a few files, etc. Anyway, we can obsess over this problem once it becomes a problem.
+
+## Step 4: Add content
+
+You want to add a page to your website. Enter the following command into the terminal:
+
+```
+hugo new posts/my-first-post.md
+```
+
+Here, you are telling Hugo to create a new post titled `my-first-post.md` to your Hugo site.
+
+Find the `my-first-post.md` file in your `posts` folder and add the following header to the file:
+
+```
+---
+title: "My First Post"
+date: 2019-03-26T08:47:11+01:00
+draft: true
+---
+```
+
+As long as you put `draft: true`, the page will remained unpublished...until you set it to `false`, making it no longer a draft and giving Hugo permission to publish it.
+
+## Step 5: Fire up the Hugo server
+
+You want to start hosting your site on your computer. So you need to enter the following command into your terminal:
+
+```
+hugo server -D
+```
+
+Now you will be able to preview your site at [http://localhost:1313/](http://localhost:1313/). You can continue making edits to existing posts and adding new posts, and you will be able to see the edits after you refresh your preview site.
+
+To stop previewing the site, go to the terminal and enter CTRL+C. If you do this, the site will still be in the browser, but you will no longer be able to refresh and preview updates to the site.
+
+## Step 6: Configure your site
+
+You have your site hosted on your computer, but what's the point if no one else can see it but you? You need to start thinking about hosting your site on the web. Find your `config.toml` or `config.yml` file and edit the following:
+
+```
+baseURL = "https://[your-username].github.io"
+languageCode = "en-us"
+title = "[Your name]"
+theme = "[Your theme]"
+```
+Save the file.
+
+## Step 7: Build pages
+
+This might be a weird thing to have to wrap your head around, but there are two components of a GitHub Pages website:
+
+- the one you edit
+- the one people see
+
+You edit the `.md` files, but you want people to see the `.html` files. In order for people to see the public-facing files, you need to build them. To do so, you enter the following command into the terminal:
+
+```
+hugo -D
+```
+
+Then you will see a `public` folder of some sort in your folder.
+
+## Step 8: Create repositories on GitHub
+
+Create the following two repositories on your GitHub:
+
+1. website: contains the files you edit
+2. [your-username].github.io: contains the public-facing site
+
+## Step 9: Pull git repository on to your computer
+
+You want to pull the git repository that you will fill with the files you want to edit on to your computer.
+
+```
+git clone https://github.com/[your-username]/website.git > && cd website
+```
+
+Then you want to copy all the files from your `hugo_site` folder and paste it into the `website` folder. 
+
+You want to make surer everything works, so you need to type the following command into the terminal:
+
+```
+hugo server
+```
+
+Again, you can go to [http://localhost:1313](http://localhost:1313) to preview your site and use CTRL+C to exit the preview.
+
+## Step 10: Change public-facing location
+
+To change where you want to host your public-facingn files, you need to remove the `public` folder in your `website` repository. You can do this by using the following command:
+
+```
+rm -rf public
+```
+
+## Step 11: Create public-facing location
+
+You will need to create a submodule, which allows you to include or embed repositories as a subfolder within another repository. To do this, you need to run the following command in the terminal:
+
+```
+git submodule add -b master https://github.com/[your-username]/[your-username].github.io.git public
+```
+
+In essence, the public site has now been "projected" on to your `[your-username].github.io` website.
+
+## Step 12: Execute changes
+
+You want to create a file named `deploy.sh` and put it in your `website` folder. Inside the `deploy.sh` file, insert the following.
+
+```
+#!/bin/sh
+
+# If a command fails then the deploy stops
+set -e
+
+printf "\033[0;32mDeploying updates to GitHub...\033[0m\n"
+
+# Build the project.
+hugo
+
+# Go To Public folder
+cd public
+
+# Add changes to git.
+git add .
+
+# Commit changes.
+msg="rebuilding site $(date)"
+if [ -n "$*" ]; then
+	msg="$*"
+fi
+git commit -m "$msg"
+
+# Push source and build repos.
+git push origin master
+```
+
+In the terminal, type in the following command, which makes it executable. In other words, it gives your computer permission to run the code inside the `.sh` file.
+
+```
+chmod +x deploy.sh
+```
+
+Then you run the following code to deploy your changes in the `website` folder onto your `[your-username].github.io` website:
+
+```
+./deploy.sh "insert your commit message here"
+```
+
+## Step 13: Check out your site
+
+After your first commit, it may take up to 10 minutes for your new website to show up on `[your-username].github.io`. I've noticed that it takes a few minutes for changes to show up even after the first commit, so something to keep in mind.
+
+# Bookdown...could be useful
+
+Many people use Bookdown. In fact, many tutorials I've linked to for my lessons use Bookdown. Bookdown is great for writing lessons and replication materials. You can also publish RMarkdown documents right on to the web! [Some would even suggest](https://www.eddjberry.com/post/writing-your-thesis-with-bookdown/) writing your papers/theses in Bookdown.
+
+Here are some examples of Bookdown pages:
+
+- [Bookdown official documentation](https://bookdown.org/yihui/bookdown/)
+- [Happy Git and GitHub for the useR](https://happygitwithr.com/)
+- [R Markdown Features: A Compact Reference](https://yongfu.name/Rmd_ref/)
+
+You may one day want to create tutorials or step-by-step replication materials for collaborators and/or people interested in your work. Bookdown is a great place to do it. To do this, you need to create a GitHub Project Pages.
+
+I am convinced that [Julie Lowndes' Bookdown tutorial](https://jules32.github.io/bookdown-tutorial/setup.html) is the best Bookdown tutorial out there. And I say this as someone who has scoured the web for Bookdown tutorials like a maniac.
+
+But I still had to make a few edits to her tutorial to "dumb it down" for myself. If it's dumb enough for me, it's hopefully dumb enough for all of us (lol).
+
+So here are some *simple instructions* for publishing your Bookdown site to GitHub Pages.
+
+1. Open R Studio.
+
+2. Go to File > New Project.
+
+![new-project](https://marcyshieh.github.io/ps811/lecture11-img/new-project.png)
+
+3. Click on New Directory.
+
+![project-type](https://marcyshieh.github.io/ps811/lecture11-img/project-type.png)
+
+4. Select Book Project using bookdown.
+
+![new-project-wizard](https://marcyshieh.github.io/ps811/lecture11-img/new-project-wizard.png)
+
+5. Name the directory "book," check "Open in New Session," then click "Create Project."
+
+6. Click on the "Build" pane.
+
+![build-book](https://marcyshieh.github.io/ps811/lecture11-img/build-book.png)
+
+7. Click on the "Build Book" button.
+
+8. Go to GitHub. Create a repository named "book." Do not initiate a README file.
+
+9. Enter the following code into the Terminal pane in R Studio. This code shows up on the GitHub site if you don't initiate a README file. It is helpful because you can just copy + paste to create the repository via the command line.
+
+```
+echo "# book" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/[your-username]/book.git
+git push -u origin main
+```
+
+7. Refresh GitHub. You should see an empty repository with the README.md file.
+
+8. Go back to R Studio.
+
+9. Click on the Git pane. You will see a bunch of files.
+
+10. Close RStudio.
+
+11. Reopen the `book.Rproj` file from your `book` directory.
+
+![git-pane](https://marcyshieh.github.io/ps811/lecture11-img/git-pane.png)
+
+12. Go to the Git pane.
+
+13. Click on the "Commit" button, write a message in the textbox, and push.
+
+14. Then create a hidden `.nojekyll` file because you will not be using Jekyll. If you don't do this step, you will not be able to access `index.html`. Type the following into the terminal:
+
+```
+touch .nojekyll
+git add .nojekyll
+```
+
+15. Commit, add commit message, then push.
+
+16. Go back to your repository on GitHub. You should see a bunch of files.
+
+17. Go to Settings.
+
+![git-pages](https://marcyshieh.github.io/ps811/lecture11-img/git-pages.png)
+
+18. Go to GitHub Pages. Under Source, select "main." Change "root" to "/docs." Then click the "Save" button.
+
+![files-pane](https://marcyshieh.github.io/ps811/lecture11-img/files-pane.png)
+
+19. Now go back to RStudio. Go to the Files pane. Rename the "_book" folder to "docs."
+
+20. Commit the change, add a commit message, and push.
+
+21. Now go to `https://[your-username].github.io/book`. Everything should be there.
+
+22. You can go back to RStudio and edit the .Rmd files like you would any other R Markdown file. And, every time you make an edit, just:
+
+    + Go to the Build pane > click Build Book
+    + Go to the Git pane > stage files, commit, add commit message, and push.
+    
+The cool thing about Bookdown is that you will be able to load everything on to a website, which could be helpful for collaboration and teaching.
