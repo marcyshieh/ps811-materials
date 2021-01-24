@@ -1,4 +1,4 @@
-# Fucntions
+# Functions
 
 In this lecture, you will learn how to use R functions, such as loops, apply, lists, scoped verbs, nesting, and mapping.
 
@@ -6,7 +6,7 @@ These R functions are often a neglected part of contemporary R education, but th
 
 Much of the material here is inspired by [Rebecca Barter's purrr tutorial](http://www.rebeccabarter.com/blog/2019-08-19_purrr/), [Mike DeCrescenzo's Functional Programming in R lesson](https://github.com/mikedecr/PS811-computing/blob/master/code/07_functional-programming.R), and the [R for Data Science section on iteration](https://r4ds.had.co.nz/iteration.html).
 
-# Loops {#loops}
+## Loops {#loops}
 
 Say you want to repeat the same thing multiple times for `n` observations. Most specialized R packages do this for you without you having to design the loop, but we are just going over loops so you can get an idea of how they work. Loops can be kind of slow, and usually a loop in R is way faster in Python and other programming languages.
 
@@ -26,7 +26,7 @@ You should end up with an output that shows 10 vectors with one number in each v
 * `for (i in 1:10)` vector 1:10 is contained in the element `i`
 * `print(i)` you want to do an operation that uses `i`, in this case, you are just printing everything in `i`
 
-## Using loops in a dataset
+### Using loops in a dataset
 
 Say you want to use loops with your dataset.
 
@@ -47,7 +47,7 @@ for (row in 1:nrow(iris)) {
   
 # you will find that for every row, there are 5 columns, which checks out
 ```
-## Vectorizing the process
+### Vectorizing the process
 
 You can speed up this process by *vectorizing* it.
 
@@ -63,7 +63,7 @@ columns <- apply(X = iris, MARGIN = 2, FUN = length)
 
 You can learn more about the `apply` function (and many others) by typing in `?apply`.
 
-# Applying lapply()
+## Applying lapply()
 
 You can just turn a data frame into a list.
 
@@ -87,7 +87,7 @@ list(colors = c("red", "green", "blue"),
      drink = c("coffee", "tea", "juice"))
 ```     
 
-# Indexing your list
+## Indexing your list
 
 ```
 str(iris_list)
@@ -123,7 +123,7 @@ iris %>%
   ) 
 ```
 
-# Scoped verbs {#scoped-verbs}
+## Scoped verbs {#scoped-verbs}
 
 There are functions you can use with the dplyr and purrr packages, which you should install and load.
 
@@ -133,7 +133,7 @@ You want to familiarize yourself with these "scoped verbs", or "apply functions.
 * `at`: apply functions to specific variables (i.e., apply this function `at` this variable)
 * `all`: apply functions to every variable (i.e., apply this function at `all` variables)
 
-## Using if()
+### Using if()
 
 If the column contains numeric values, replace each cell with the length of the data frame.
 
@@ -152,7 +152,7 @@ You can select variables that have numeric values. You can replace `is.numeric` 
 select_if(iris, is.numeric)
 ```
 
-## Using at()
+### Using at()
 
 The following command allows you to:
 
@@ -169,7 +169,7 @@ iris %>%
   select(starts_with("Sepal"))
 ```
 
-## Defining your own functions
+### Defining your own functions
 
 You can create your own functions! Below, I create a function where I divide a number by 2, or split it in half.
 
@@ -182,7 +182,7 @@ make_half(88)
 ```
 Output should be 44.
 
-### Anonymous Function
+#### Anonymous Function
 
 You can also create a function using `sapply` and not name it. This is called an *anonymous function*. You just use it once and move on.
 
@@ -190,7 +190,7 @@ You can also create a function using `sapply` and not name it. This is called an
 sapply(88, function(x) x / 2)
 ```
 
-### Simple lambda function
+#### Simple lambda function
 
 You can create a "lambda function," which also goes by the names of a "quosure-style" function or a "purrr-style" function. It is similar to an anonymous function.
 
@@ -205,7 +205,7 @@ In this case, you are:
 * selecting from the `iris` dataset if the variable is numeric
 * variable(s) will only selected if the number of `is.numeric` variables is larger than 0
 
-### More complex lambda function
+#### More complex lambda function
 
 ```
 iris %>%
@@ -216,7 +216,7 @@ iris %>%
 ```
 Here, you are replacing `function(z)` with `~` and call `z` with `.`.
 
-## Applying more than one function
+### Applying more than one function
 
 ```
 summarize_all(
@@ -231,7 +231,7 @@ Here, you are looking at the `iris` dataset and applying the following two funct
 * the number of distinct numbers per variable `n_distinct(.)` in the dataset and denoting the output as `uniques`
 * the data class (i.e., type) for each variable in the dataset and denoting that output as `obj_type`
 
-# Nesting data frames {#nesting}
+## Nesting data frames {#nesting}
 
 You need to install the `purrr` package and load it. `purrr` is party of the Tidyverse universe, so the following commands will be written in Tidyverse. This also means you can't use `purrr` without loading `tidyverse` first.
 

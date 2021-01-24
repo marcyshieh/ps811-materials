@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Setting Up | Introduction to Statistical Computing in Political Science</title>
+  <title>8 Data Manipulation | Introduction to Statistical Computing in Political Science</title>
   <meta name="description" content="This bookdown book contains materials for PS811." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Setting Up | Introduction to Statistical Computing in Political Science" />
+  <meta property="og:title" content="8 Data Manipulation | Introduction to Statistical Computing in Political Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Setting Up | Introduction to Statistical Computing in Political Science" />
+  <meta name="twitter:title" content="8 Data Manipulation | Introduction to Statistical Computing in Political Science" />
   
   <meta name="twitter:description" content="This bookdown book contains materials for PS811." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="workflow.html"/>
+<link rel="prev" href="base-r-vs-tidyverse.html"/>
+<link rel="next" href="graphics.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -243,233 +243,425 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="setting-up" class="section level1">
-<h1><span class="header-section-number">2</span> Setting Up</h1>
-<p>In this lecture, you will learn how to knit a document in R Markdown and use basic Git functions.</p>
-<div id="install-R" class="section level2">
-<h2><span class="header-section-number">2.1</span> Installing R</h2>
-<p>R is a statistical programming language that is widely used in the discipline. Go to the <a href="https://www.r-project.org/">R official website</a> to learn more about the software.</p>
-<p>These instructions will help you download R on to your operating system.</p>
-<ol style="list-style-type: decimal">
-<li><p>Go to list of <a href="https://cran.r-project.org/mirrors.html">CRAN mirrors</a>. A “mirror” is essentially a distribution site for the software.</p></li>
-<li><p>Select your preferred CRAN mirror. I recommend that you select the mirror closest to your current location. For example, if you are in Madison, WI, you should consider picking the mirror located at University of Michigan, though any of the midwestern universities will do.</p></li>
-<li><p>Select the download for your operating system.</p></li>
-</ol>
+<div id="data-manipulation" class="section level1">
+<h1><span class="header-section-number">8</span> Data Manipulation</h1>
+<p>In this lecture, you will learn how to manipulate data. This is probably the most important and unexpectedly time-consuming thing you will do as a social scientist.</p>
+<p>Much of this lesson is indebted to my favorite data manipulation page on the internet: <a href="https://mikedecr.github.io/courses/811/811-03-data/">Mike DeCrescenzo’s data manipulation tutorial</a> from his 2018 PS811 course. It is the R tutorial I keep returning to again and again.</p>
+<div id="install-packages" class="section level2">
+<h2><span class="header-section-number">8.1</span> Install packages</h2>
+<pre><code># packages
+library(&quot;here&quot;)
+library(&quot;haven&quot;)
+library(&quot;magrittr&quot;)
+library(&quot;tidyverse&quot;)
+library(&quot;tidyr&quot;)
+library(&quot;dplyr&quot;)</code></pre>
 </div>
-<div id="install-Rstudio" class="section level2">
-<h2><span class="header-section-number">2.2</span> Installing RStudio</h2>
-<p>RStudio is an integrated environment for R. If R is the engine, RStudio is the car. You can use the engine without the car, but you cannot drive the the car without the engine. In other words, you will not be able to use RStudio if you have not yet downloaded R. Always download R first. Go to the <a href="https://rstudio.com/">RStudio official website</a> to learn more about the software.</p>
-<p>These instructions will help you download RStudio on to your operating system.</p>
-<ol style="list-style-type: decimal">
-<li><p>Go to the <a href="https://rstudio.com/products/rstudio/download/">Download RStudio</a> page.</p></li>
-<li><p>Click on the “Download” button" for RStudio Desktop Open Source Licnse Free.</p></li>
-<li><p>Click on the “Download RStudio for [your OS]” button. The website should be detect which version of RStudio that you need to download.</p></li>
-</ol>
-</div>
-<div id="install-latex" class="section level2">
-<h2><span class="header-section-number">2.3</span> Installing LaTeX</h2>
-<p>LaTeX is a software system for document prepartion. While we will not focus on LaTeX functionalities in this class, you will need to download it to compile R Markdown documents. Go to the <a href="https://www.latex-project.org/">LaTeX official website</a> to learn more about the software.</p>
-<p>If, for any reason, you would like to learn LaTeX, I would recommend opening an <a href="https://www.overleaf.com">Overleaf</a> account and leveraging their <a href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes">step-by-step tutorial</a>. While this course will primarily focus on teaching you how to write and generate your documents in R Markdown, you may encounter collaborators who use LaTeX. The good news is that R Markdown is pretty similar to LaTeX, so the skills are definitely transferrable.</p>
-<p>These instructions will help you download LaTeX on to your operating system.</p>
-<ol style="list-style-type: decimal">
-<li><p>Scroll to the third section of the <a href="https://www.latex-project.org/get/">Get</a> page where you see download options for Linux, MacOS, Windows, and Online.</p></li>
-<li><p>Select your operating system.</p>
-<ul>
-<li><p>For MacOS users, you should download <a href="http://www.tug.org/mactex/">MacTeX</a>. You may access <a href="http://www.tug.org/mactex/mactex-download.html">step-by-step instructions here</a>.</p></li>
-<li><p>For Windows users, the website suggests that you download MikTeX, proTeXt, or TeX Live. There is a <a href="https://tex.stackexchange.com/questions/239199/latex-distributions-what-are-their-main-differences">StackExchange post</a> discussing these options and then some. It appears like most people recommend <a href="http://tug.org/texlive/">TeX Live</a>.</p></li>
-</ul></li>
-</ol>
-</div>
-<div id="knit-RMarkdown" class="section level2">
-<h2><span class="header-section-number">2.4</span> Knitting R Markdown Files</h2>
-<ol style="list-style-type: decimal">
-<li><p>Open RStudio.</p></li>
-<li><p>Click on File &gt; New File.</p></li>
-<li><p>Select R Markdown.</p>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/new_r_markdown.png" alt="" />
-<p class="caption">new rmarkdown</p>
-</div>
-<p><em>When you set up a new R Markdown file.</em></p></li>
-<li><p>Make sure the sidebar is set to “Document.”</p></li>
-<li><p>Enter in the title of the document in the “Title” field and your name in the “Author” field.</p></li>
-<li><p>Select HTML as the “Default Output Format” option for now. We will discuss how to output your file in PDF as well later in the lesson.</p></li>
-<li><p>An R Markdown document (with the extension .Rmd) will appear. It will be called Untitled1.Rmd. R Markdown has a default template in place every time you create a new R Markdown document.</p>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/knit.png" alt="" />
-<p class="caption">the knit button</p>
-</div>
-<p><em>The Knit button.</em></p></li>
-<li><p>As you have selected HTML as the <em>default</em> output format, when you click the <strong>Knit</strong> button (it is the icon with a little ball of yarn and needle), it will automatically output the document as a HTML. Prior to outputing the HTML file, however, it will ask you to rename the file to something other than Untitled1.Rmd, which you should certainly do.</p>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/viewer.png" alt="" />
-<p class="caption">viewer tab</p>
-</div>
-<p><em>HTML file in the viewer tab.</em></p></li>
-<li><p>The HTML file will appear on the “Viewer” tab. To open the actual document, click on the button with the arrow pointing to the top right corner.</p></li>
-<li><p>To output the same document as a PDF, click on the small down arrow next to the <strong>Knit</strong> button. Select “Knit to PDF.”</p></li>
-</ol>
-<p>As you can see, you have the option to “Knit to Word” but the political science community has recently turned on Word. As such, you are discouraged from knitting to Word, unless otherwise noted.</p>
-</div>
-<div id="create-Github" class="section level2">
-<h2><span class="header-section-number">2.5</span> Creating a Github Account</h2>
-<p>Github is a website that hosts software development and version control via Git. While you are welcome to use Github alternatives to host your open-source projects in the future, this class will use Github.</p>
-<ol style="list-style-type: decimal">
-<li><p>Create an account on <a href="https://github.com/">Github</a>.</p></li>
-<li><p>With the <a href="https://education.github.com/pack">GitHub Student Developer Pack</a>, students get <a href="https://education.github.com/discount_requests/student_application">Github Pro</a> and many other computing tools for free. You will need to use your university email address to apply, but the application process only took me a few minutes. Review the full list of <a href="https://docs.github.com/en/github/getting-started-with-github/githubs-products#github-pro">Github Pro features here</a>.</p></li>
-</ol>
-</div>
-<div id="setup-Git" class="section level2">
-<h2><span class="header-section-number">2.6</span> Setting Up Git</h2>
-<p>Git is a version-control system for tracking changes. Initially, software developers were the main users of Git. But lately, people of all stripes have adopted Git into their workflow. Git is especially useful for collaborative work because you will be able to identify information about edits to a file, including what changed, who made the change, and when the perrson made the change. Git is useful for solo work as well because it beats saving your document as a new document whenever you make a change. Visit <a href="https://git-scm.com/">the official Git website</a> to learn more about Git.</p>
-<p>The official Git website has a helpful guide on <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">installing Git</a> for your operating system. I don’t think I can improve on their existing guidance other than the fact that I do <em>not</em> recommend that you download from the source.</p>
-</div>
-<div id="RStudio-Github" class="section level2">
-<h2><span class="header-section-number">2.7</span> Connecting RStudio to Git and Github</h2>
-<p>Much of this section is indebted to <a href="https://happygitwithr.com/rstudio-git-github.html">Happy Git and GitHub for the useR</a> page on integrating RStudio with Git and Github.</p>
-<p>Since I spend the better part of my life in RStudio, I want it to be able to connect to everything, including Git and Github. You are welcome to use <a href="https://www.sourcetreeapp.com/">SourceTree</a> and other Git clients, but I prefer to consolidate all my work into my trusty RStudio environment due to convenience/laziness. As such, my lectures will simply assume that you use Github and RStudio and not their alternatives. Of course, you are welcome to expore the alternatives in your free time. In fact, I highly recommend that you do so because I want you to end up with a workflow that works for you. The good news is, once you start familiarizing yourself with these basic building blocks, other tools will be easier to pick up.</p>
-<div id="say-hello-to-git-on-rstudio" class="section level3">
-<h3><span class="header-section-number">2.7.1</span> Say hello to git on RStudio</h3>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/terminal.png" alt="" />
-<p class="caption">terminal tab</p>
-</div>
-<p><em>Terminal tab in RStudio.</em></p>
-<ol style="list-style-type: decimal">
-<li><p>Click on the Terminal tab in RStudio.</p></li>
-<li><p>Enter the following commands into the Terminal (i.e., also known as “the shell”) and click “Enter.” You may copy and paste all three lines at once then click “Enter,” or type each line one by one, clicking “Enter” each time you need to start a new line.</p></li>
-</ol>
-<pre><code>git config --global user.name &#39;Your Name&#39;
-git config --global user.email &#39;yourgithub@email.com&#39;
-git config --global --list</code></pre>
-<p>You have “introduced” yourself to Git. Hopefully this is the beginning of a beautiful friendship.</p>
-</div>
-<div id="create-a-repository" class="section level3">
-<h3><span class="header-section-number">2.7.2</span> Create a repository</h3>
-<ol start="3" style="list-style-type: decimal">
-<li><p>Go to the main <a href="https://github.com">Github</a> site and make sure you are logged in. On the main page, click on the green “New” button on the right sidebar to create a new repository on Github.</p></li>
-<li><p>On the “Create a new repository” page, enter the following:</p>
-<ul>
-<li>Repository name: <code>ps811-exercises</code></li>
-<li>Description (optional): You can enter some description here about your folder, such as “assignments for ps811”</li>
-<li>Select “Public” for now, though you do have the option for “Private” for future repositories.</li>
-<li>Check “Add a README file.”</li>
-</ul></li>
-<li><p>Click on the “Create repository” button.</p></li>
-</ol>
-<p>Your repository has been created.</p>
-</div>
-<div id="connect-github-to-rstudio-the-fun-part" class="section level3">
-<h3><span class="header-section-number">2.7.3</span> Connect Github to RStudio (the fun part)</h3>
-<p>The process technically <em>clones</em> the Github repository to your computer, but so much of the magic happens in RStudio that it <em>feels</em> that I am connecting Github to RStudio.</p>
-<ol start="6" style="list-style-type: decimal">
-<li><p>Go to RStudio. Go to File &gt; New Project.</p></li>
-<li><p>Select “Version Control.”</p></li>
-<li><p>Select “Git.”</p></li>
-<li><p>Go to Github. Find the Git repository that you created in Step 5.</p></li>
-<li><p>Click on the “Code” button (in green). Copy and paste the URL under “Clone with HTTPS.” The URL will end in .git, e.g., <code>https://github.com/marcyshieh/ps811.git</code>.</p>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/new_project.png" alt="" />
-<p class="caption">git pane</p>
-</div>
-<p><em>New project pop-up form.</em></p></li>
-<li><p>Go back to RStudio and fill out the following:</p>
-<ul>
-<li>Repository URL: The .git URL you copied in Step 10.</li>
-<li>Project directory name: This will default to whatever you named your Github repository. You can change it, or you can keep it the same for consistency (or, so you won’t be confused).</li>
-<li>Create project as a subdirectory of: Find the directory on <em>your computer</em> that you want this copy of your Github repository to live in.</li>
-</ul></li>
-<li><p>Check the “Open in New Session” box so you can have your projects (and misc non-project files) in different RStudio windows, but this is not necessary.</p></li>
-<li><p>Click “Create Project.”</p></li>
-</ol>
-</div>
-</div>
-<div id="work-git" class="section level2">
-<h2><span class="header-section-number">2.8</span> Working with Git on RStudio</h2>
-<p>You should see all the files from your Github repository in the RStudio file browser pane. This means that everything has been <em>cloned</em> from your Github repository to your computer or, in other words, downloaded.</p>
-<div id="how-does-this-all-work" class="section level3">
-<h3><span class="header-section-number">2.8.1</span> How does this all work?</h3>
-<ol start="2" style="list-style-type: decimal">
-<li><p>In the file browser pane, open <code>README.md</code>.</p></li>
-<li><p>Type in whatever you want in the file. A joke, the name of your celebrity crush, your favorite <em>Riverdale</em> character. Whatever you want, as long as it’s not rude and/or incendiary.</p></li>
-<li><p>Save the file.</p>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/git_pane.png" alt="" />
-<p class="caption">the git pane</p>
-</div>
-<p><em>The Git pane.</em></p></li>
-<li><p>Click on the Git tab on the upper right pane.</p></li>
-</ol>
-<p>The Git tab only shows up once you create an RStudio Project.</p>
-<ol start="6" style="list-style-type: decimal">
-<li><p>You will see that the <code>README.md</code> filepath you just edited show up under the Git tab. The Status will be a “M,” which stands for “Modified.”</p></li>
-<li><p>Check the “Staged” box.</p></li>
-<li><p>Click Commit.</p></li>
-<li><p>The “RStudio: Review Changes” window will appear as a pop-up. Essentially, this allows you to validate whether or not you want to <em>push</em> the changes you made on your computer to your Github repository.</p></li>
-<li><p>Type a coherent commit message into the “Commit message” box.</p></li>
-<li><p>Click “Push.”</p></li>
-<li><p>A “Git Commit” pop-up will appear, with a message that kind of looks like this:</p></li>
-</ol>
-<pre><code>&gt;&gt; git commit -F blahblahblah.txt
-[master beded87] edit edit
-1 file changed, 49 insertions(+), 2 deletions(-)</code></pre>
-<div id="review-changes-deep-dive" class="section level4">
-<h4><span class="header-section-number">2.8.1.1</span> Review changes deep-dive</h4>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/commit_message.png" alt="" />
-<p class="caption">3 panes</p>
-</div>
-<p><em>The 3 panes of RStudio: Review Changes.</em></p>
-<p>There are 3 panes, which I will introduce in clockwork order:</p>
-<p><strong>Pane 1</strong> The files you changed.</p>
-<p><strong>Pane 2</strong> Commit messsage textbox. Here, you write some notes on what you changed. I am personally <em>horrible</em> at writing commit messages because I get impatient and lazy—I honestly just want to write, “I changed some stuff”—but that really negates the whole purpose, doesn’t it? So let’s make it our goal to get better at writing commit messages.</p>
-<p><strong>Pane 3</strong> The large pane on the bottom that show the changes you made. New additions are in gray, deletions are in red, and replacements are in green. You have the options of “stage chunk” or “discard chunk” for each gray, red, and green highlight.</p>
-<ul>
-<li>Stage chunk: You will be confirming the change and pushing the change out to the Github repository.</li>
-<li>Discard chunk: You will NOT be confirming the change annd you will NOT be pushing the change out to the Github repository.</li>
-<li>You may also “Stage All” or “Discard All.”</li>
-</ul>
-</div>
-</div>
-<div id="check-if-things-happened-as-expected" class="section level3">
-<h3><span class="header-section-number">2.8.2</span> Check if things happened as expected</h3>
-<ol start="13" style="list-style-type: decimal">
-<li><p>Return to your browser, go to <a href="https://github.com">Github</a>, and find your repository. If you never left your repository, click “Refresh” on your browser.</p></li>
-<li><p>Click on the README.md file—though, to be honest, your Github repository defaults to the README file when you land on the repository. But click on it anyway.</p></li>
-<li><p>On this page, you can see who contributes to the file (it should be you for now) and when it was last udpated.</p>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/history.png" alt="" />
-<p class="caption">history</p>
-</div>
-<p><em>Github repository history</em></p></li>
-</ol>
-<p>The “History” button allows you to see who last updated the file, when, and which client they used to update the file. For each “commit,” there are three icons (from left to right): a clipboard, an ID number, angle brackets.</p>
-<ul>
-<li>Clipboard: This copies the <a href="https://en.wikipedia.org/wiki/SHA-1">SHA-1</a> and puts it on your clipboard. I wouldn’t worry too much about it.</li>
-<li>ID number: This takes you to the gray, red, and green highlights that indicated the changes at the time of the commit.</li>
-<li>Angle brackets: This takes you to the repository at the time of the commit. A time machine, basically.</li>
-</ul>
-<div id="viewing-history-in-rstudio" class="section level4">
-<h4><span class="header-section-number">2.8.2.1</span> Viewing history in RStudio</h4>
-<p>You may also view the history in RStudio.</p>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/git-history-rstudio.png" alt="" />
-<p class="caption">history-rstudio</p>
-</div>
-<p><em>How to access History in RStudio.</em></p>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/git-history-rstudio-window.png" alt="" />
-<p class="caption">history-window</p>
-</div>
-<p><em>Window featuring Git History in RStudio.</em></p>
-</div>
-<div id="deleting-the-repository" class="section level4">
-<h4><span class="header-section-number">2.8.2.2</span> Deleting the Repository</h4>
-<p>If, for any reason, you would like to delete your repository, you should follow the steps below.</p>
-<p><strong>Local</strong> Find the directory on your computer and delete it like you would delete any normal folder.</p>
-<p><strong>Github</strong> Go to the browser, go to Github, find your repository, and click “Settings” on the top repository-specific menu. Scroll all the way to the bottom and click on the “Delete this repository” button, then follow the instructions.</p>
+<div id="read-data" class="section level2">
+<h2><span class="header-section-number">8.2</span> Read data</h2>
+<p>Here, I am going to introduce you to the <code>here</code> package. To read more about <code>here</code>, I recommend that you check out this <a href="https://github.com/jennybc/here_here">helpful love letter to the <code>here</code> package</a>.</p>
+<pre><code># setup folders and directories
+here(&quot;_ps811&quot;, &quot;data&quot;)
+here(&quot;_ps811&quot;, &quot;code&quot;)
 
+# read stata data in R
+scotus &lt;- read_dta(here(&quot;_ps811&quot;, &quot;data&quot;, &quot;SCDB_2020_01_justiceCentered_Citation.dta&quot;))</code></pre>
+<p>There are various ways you can check out your data in R.</p>
+<pre><code># how does my data LOOK??
+scotus
+# that was a lot
+head(scotus)
+# that&#39;s a little better
+
+# bottom six?
+tail(scotus)
+
+# i want to see more than six, like eight?
+head(scotus, n = 8)
+tail(scotus, n = 8)
+
+# you can use the View() command
+# this can be slow if it&#39;s a large dataset
+View(scotus)
+
+# if the file is, for some reason, NOT a dataframe, you can always force it become a dataframe:
+
+as.data.frame(scotus)
+
+# this doesn&#39;t do anything because it is already a dataframe
+
+# if you are ever struggling with a function, go ahead and do ?function_name
+# the help guide should load in the help pane
+
+?as.data.frame</code></pre>
 </div>
+<div id="understand-data-frames" class="section level2">
+<h2><span class="header-section-number">8.3</span> Understand data frames</h2>
+<p>You might get tired from referencing both the dataset and the variable every time you want to refer to a variable. I know, typing is exhausting! You might be tempted to use the <code>attach(dataset)</code> function. Don’t use it. It’s not worth the headaches down the road. You will likely use multiple datasets with the same variable names and it is always less confusing for yourself and future reviewers/collaborators if you refer to both the dataset and the variable.</p>
+<pre><code># number of rows
+nrow(scotus)
+
+# number of columns
+ncol(scotus)
+
+# literally my favorite function: names()
+# super helpful for other data manipulation tasks
+names(scotus)
+
+# you cannot simply reference the variable
+justice
+# Error: object &#39;justice&#39; not found
+
+# you have to refer to the dataset THEN variable
+scotus$justice</code></pre>
+<p>I recommend that you download or reference the codebook whenever possible. Sometimes variables are simply a string of numbers and letters (e.g., the ANES dataset has weird codes for their variables that can only be identified by looking them up in the codebook). Thankfully, the SCOTUS database is better than that, but you might still want to clarify a few things so it is easier for you (and your collaborators!) to work with. In any case, the variables are case sensitive so you might want to change the cases.</p>
+<p>You can access the <a href="http://scdb.wustl.edu/documentation.php">online codebook for the SCOTUS database</a>. Many codebooks for other datasets may be in PDF or Word format.</p>
+<div id="data-frame-exercise" class="section level3">
+<h3><span class="header-section-number">8.3.1</span> Data frame exercise</h3>
+<p>Creating your own data frame from scratch may help you understand data frames a bit better.</p>
+<pre><code># take everything from the streaming service column
+streaming &lt;- c(&quot;Netflix&quot;, &quot;Hulu&quot;, &quot;Amazon Prime&quot;) 
+
+# take everything from the approve column
+approve &lt;- c(50, 30, 15) 
+
+# take everything from the disapprove column
+disapprove &lt;- c(50, 70, 85) 
+
+# create variables from existing variables
+difference &lt;- approve-disapprove
+
+# create your dataframe
+streaming &lt;- data_frame(streaming, approve, disapprove, difference) 
+streaming
+
+# this is a tibble
+streaming_df &lt;- as.data.frame(streaming_dataframe)</code></pre>
+</div>
+</div>
+<div id="use-tidyverse-for-data-manipulation" class="section level2">
+<h2><span class="header-section-number">8.4</span> Use tidyverse for data manipulation</h2>
+<p>You can use base R to manipulate data if you want. You should learn and know base R because many replication materials use base R. But, I gotta tell you, <a href="https://www.tidyverse.org/">tidyverse</a> is the grand suite for manipulating data. Think of it as the Adobe for data manipulation. So, for your own data manipulation endeavors, I’m going to advocate that you use the tidyverse suite of packages.</p>
+<p>With <code>tidyverse</code>, you can do the following:</p>
+<ul>
+<li><code>rename()</code>: rename variables</li>
+<li><code>mutate()</code>: create new variables</li>
+<li><code>select()</code>: look at specific variable</li>
+<li><code>filter()</code>: filter based on conditions</li>
+<li><code>summarize()</code>: look at summary statistics</li>
+<li><code>group_by()</code>: group by variables</li>
+<li><code>arrange()</code>: sort variables by ascending/descending</li>
+<li>merge data using <code>join</code> functions
+<ul>
+<li>more advanced than the base R <code>merge()</code> options</li>
+</ul></li>
+</ul>
+<p>With <code>tidyr</code>, you can do the following:</p>
+<ul>
+<li><code>gather()</code>: collate column names and turn them into values of a single variable (opposite of <code>spread()</code>)</li>
+<li><code>spread()</code>: untangles a variable with multiple repeating values and turns them into their own columns (opposite of <code>gather()</code>)</li>
+</ul>
+<div id="rename-data-variables" class="section level3">
+<h3><span class="header-section-number">8.4.1</span> Rename data variables</h3>
+<pre><code># rename(dataset, 
+#        new_name = old_name,
+#        new_name2 = old_name2)
+
+scotus &lt;- rename(scotus, 
+               case.id = caseId,
+               docket.id = docketId, 
+               case.issues.id = caseIssuesId, 
+               vote.id = voteId)</code></pre>
+<div id="remember-piping" class="section level4">
+<h4><span class="header-section-number">8.4.1.1</span> Remember piping?</h4>
+<p>Remember <a href="https://marcyshieh.github.io/ps811/ps811-lecture-6-r-vs-tidy">Lesson 6</a> where we talked about piping? You can also do this using the piping technique.</p>
+<pre><code>scotus &lt;- scotus %&gt;%
+              rename(case.id = caseId,
+               docket.id = docketId, 
+               case.issues.id = caseIssuesId, 
+               vote.id = voteId)</code></pre>
+<p>This can make some of the code run faster. You will be asked to pipe on your homework assignment.</p>
+<p>The problem with the <code>rename()</code> function is that it overwrites everything. This means you will no longer have the old variable name around anymore because you have changed it to a new variable name.</p>
+<p>But what if you don’t want to overwrite anything?</p>
+</div>
+</div>
+<div id="create-new-data-variables" class="section level3">
+<h3><span class="header-section-number">8.4.2</span> Create new data variables</h3>
+<p>Instead of overwriting variables, you may simply want to keep your old variables and create new ones.</p>
+<pre><code># let&#39;s look at decision directions
+table(scotus$decisionDirection)</code></pre>
+<p>You will get the following result:</p>
+<pre><code>    1     2     3 
+38531 40574  1390 </code></pre>
+<p>We know from the code book that:
+1. conservative
+2. liberal
+3. unspecifiable</p>
+<p>Say you want to create a dummy variable named “liberal” that has all liberal cases coded “1” and all non-liberal cases coded “0”. And, you want to create a dummy variable named “conservative that has all conservative cases coded”1" and all non-conservative cases coded “0”.</p>
+<p>In pseudocode-logical speak (I made this up but stay with me), you’re thinking along the lines of the following code:</p>
+<pre><code># new_variable &lt;- ifelse(condition, if_true, if_false)
+# liberal &lt;- ifelse(decisionDirection == 2, 1, 0)</code></pre>
+<p>That’s not exactly it but the logic is certainly there. Let me turn it into real code for you:</p>
+<pre><code>scotus &lt;- 
+  mutate(scotus, 
+         liberal = ifelse(decisionDirection == 2,
+                          1,
+                          0), 
+         conservative = ifelse(decisionDirection == 1,
+                               1,
+                               0))</code></pre>
+<p>Say you want to do create a variable that identifies the decision dates by decade. Here’s your chance to work with date values, which many of you will have to deal with somewhere along the way.</p>
+<pre><code># take a look at the variable
+summary(scotus$year)
+
+# turn the dateDecision variable into a date variable with the date structure you see in the summary() results
+# extract the year and put it in a variable called year
+scotus$year &lt;- as.numeric(format(as.Date(scotus$dateDecision, &quot;%Y-%m-%d&quot;), &#39;%Y&#39;))
+summary(scotus$year)
+
+# using the year variable, create the decade variable
+scotus &lt;- mutate(scotus,
+                 decade = ifelse(
+                   year %in% 1940:1949, 1940, NA),
+                 decade = ifelse(
+                   year %in% 1950:1959, 1950, decade),
+                 decade = ifelse(
+                   year %in% 1960:1969, 1960, decade),
+                 decade = ifelse(
+                   year %in% 1970:1979, 1970, decade),
+                 decade = ifelse(
+                   year %in% 1980:1989, 1980, decade),
+                 decade = ifelse(
+                   year %in% 1990:1999, 1990, decade),
+                 decade = ifelse(
+                   year %in% 2000:2009, 2000, decade),
+                 decade = ifelse(
+                   year %in% 2010:2019, 2010, decade),
+                 decade = ifelse(
+                   year %in% 2020:2029, 2020, decade))
+
+# check out the number of votes per decade
+table(scotus$decade)</code></pre>
+<p>You may also want to create new variables. Here is an example of creating a new variable that shows the number of years since a particular vote was cast by a justice.</p>
+<pre><code>scotus &lt;- mutate(scotus,
+                 time_trends = 2020 - year)</code></pre>
+</div>
+<div id="logical-operators" class="section level3">
+<h3><span class="header-section-number">8.4.3</span> Logical operators</h3>
+<p>You can access a complete list of logical operators on the <a href="https://www.datamentor.io/r-programming/operator/">Data Mentor page</a>, but I’ve highlighted a few that you will likely encounter.</p>
+<ul>
+<li><code>&lt;</code>: less than</li>
+<li><code>&lt;=</code>: less than or equal to</li>
+<li><code>&gt;</code>: greater than</li>
+<li><code>&gt;=</code>: greater than or equal to</li>
+<li><code>==</code>: exactly equal to</li>
+<li><code>!=</code>: not equal to</li>
+<li><code>!x</code>: Not x</li>
+<li><code>x | y</code>: x OR y</li>
+<li><code>x &amp; y</code>: x AND y</li>
+<li><code>x %in% c(y, z)</code>: x is equal to y or z</li>
+<li><code>isTRUE(x)</code>: test if x is TRUE</li>
+<li><code>isFALSE(x)</code>: test if x is false</li>
+<li><code>is.na(x)</code>: test if x is NA</li>
+<li><code>!is.na(x)</code>: test if x is NOT NA</li>
+</ul>
+</div>
+<div id="same-function-multiple-conditions" class="section level3">
+<h3><span class="header-section-number">8.4.4</span> Same function, multiple conditions</h3>
+<p>What if we want to check multiple conditions within the same function? You use the <code>case_when()</code> function.</p>
+<pre><code>scotus &lt;- mutate(scotus,
+               decisionDirection = case_when(
+                 decisionDirection == 1 ~ conservative,
+                 decisionDirection == 2 ~ liberal,
+                 decisionDirection == 3 ~ unspecified))</code></pre>
+</div>
+<div id="select-columns" class="section level3">
+<h3><span class="header-section-number">8.4.5</span> Select columns</h3>
+<p>Say your question is whether the decade a case was decided influences whether it is liberal or not, so you might only care about two variables.</p>
+<p>You use the <code>select()</code> function. The structure of the <code>select()</code> function is <code>select(dataset, var1, var2)</code>.</p>
+<p><code>var1</code>, <code>var2</code>, etc. are the variables you want to select from the <code>dataset</code>. Think of it as grabbing these variables and deleting all the rest.</p>
+<pre><code>select(scotus, decade, liberal)</code></pre>
+<p>You can also turn it into an object so you can use it later.</p>
+<pre><code>scotus_select &lt;- select(scotus, decade, liberal)</code></pre>
+<p>Say you only want to select <code>caseId</code> and all background variables (consecutively ordered).</p>
+<pre><code>select(scotus, caseId, caseName:lcDispositionDirection)</code></pre>
+<p>Say you only want to select <code>caseid</code> and any variable that contains “case” in the name.</p>
+<pre><code>select(scotus, caseId, contains(&quot;case&quot;))</code></pre>
+<p>Say you want to drop the <code>docketId</code> and keep all other variables.</p>
+<pre><code>select(scotus, -docketId)
+
+# more specifically, you can do:
+select(scotus, -docketId, matches(&quot;.&quot;))
+# matches(&quot;.&quot;) keeps all remaining variables
+# though not having also keeps all remaining variables</code></pre>
+</div>
+</div>
+<div id="filter-data" class="section level2">
+<h2><span class="header-section-number">8.5</span> Filter data</h2>
+<p>You know how you can filter data in Excel? You can do this in R as well. Why would you want to know how to do it in R when you already know how to do it in Excel? Well, if you have a dataset that has hundreds of thousands of observations, it will take forever to load and filter in Excel. It will be way faster if you do it in R.</p>
+<p>Say you only want to filter to decisions from before 1990.</p>
+<pre><code>filter(scotus, year &lt; 1990)</code></pre>
+<p>Say you only want to filter to decisions from 1990.</p>
+<pre><code>filter(scotus, year == 1990)</code></pre>
+<p>Say you want to filter to decisions from Ruth Bader Ginsburg in 2000</p>
+<pre><code>filter(scotus, year == 2000, justiceName == &quot;RBGinsburg&quot;)</code></pre>
+<div id="summarize-data" class="section level3">
+<h3><span class="header-section-number">8.5.1</span> Summarize data</h3>
+<p>Think of this as a more advanced <code>summary()</code> command where you can specify what you want to summarize.</p>
+<pre><code># look at the mean of liberal cases (1 being liberal, 0 being non-liberal)
+scotus %&gt;%
+  summarise(mean = mean(liberal, na.rm = TRUE), n = n())
+  
+# group by decade, then look at the mean of liberal cases
+scotus %&gt;%
+  group_by(decade) %&gt;%
+  summarise(mean = mean(liberal, na.rm = TRUE), n = n())
+
+# group by decade and look at the quantiles of liberal cases
+scotus %&gt;%
+  group_by(decade) %&gt;%
+  summarise(qs = quantile(liberal, na.rm = TRUE, c(0.25, 0.75)), prob = c(0.25, 0.75))</code></pre>
+</div>
+<div id="sort-data" class="section level3">
+<h3><span class="header-section-number">8.5.2</span> Sort data</h3>
+<p>Remember this object we created earlier in the <code>select()</code> section?</p>
+<pre><code>scotus_select &lt;- select(scotus, decade, liberal)</code></pre>
+<p>Sort decade by ascending order.</p>
+<pre><code>arrange(scotus_select, decade, liberal)</code></pre>
+<p>Sort decade by descending order.</p>
+<pre><code>arrange(scotus_select, desc(decade), liberal)</code></pre>
+<div id="identify-what-to-sort" class="section level4">
+<h4><span class="header-section-number">8.5.2.1</span> Identify what to sort</h4>
+<p>Here’s a mini exercise to help you understand sorting.</p>
+<pre><code># there&#39;s an order to this
+# arrange(dataset, var1, var2)
+# this means you sort by var1, then by var2
+# for example
+
+sort_ex_df &lt;- data_frame(x = c(1, 2, 3, 3, 5, 6), 
+                y = c(&quot;A&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot;, &quot;B&quot;, &quot;F&quot;))
+
+arrange(sort_ex_df, x, y)
+arrange(sort_ex_df, y, x)</code></pre>
+</div>
+</div>
+<div id="merge-datasets" class="section level3">
+<h3><span class="header-section-number">8.5.3</span> Merge datasets</h3>
+<p>You might have two datasets that you would like to merge.</p>
+<p>For some reason, you might obtain grades for a few students from their English and math classes and be asked to create a report card for each student.</p>
+<pre><code>english &lt;- data_frame(studentID = c(990055, 889765, 189245, 346789,                                         534098, 132938, 789012), 
+                     grade = c(90, 85, 60, 75, 67, 93, 82))
+
+math &lt;- data_frame(studentID = c(990055, 889765, 189245, 346789, 534098,                                  345890), 
+                   grade = c(80, 90, 50, 85, 95, 66))
+                   </code></pre>
+<p>You can do this really quickly in base R without much thought.</p>
+<pre><code>merge(english, math, by=&quot;studentID&quot;)
+# english grade is &quot;grade.x&quot; and math grade is &quot;grade.y&quot;</code></pre>
+<p>The basic <code>merge()</code> function only merge variables that exist in BOTH datasets. If you want to keep all variables in x or y, you can do it in <code>merge()</code> (and it’s only a Google search away!) but it’s WAY easier to remember the functions in the <code>dplyr</code> package.</p>
+<pre><code># imitate merge()
+inner_join(english, math, by = &quot;studentID&quot;)
+
+# join all, keep all variables, even if NA
+full_join(english, math, by=&quot;studentID&quot;)
+
+# keep all students in x
+left_join(english, math, by = &quot;studentID&quot;)
+
+# keep all students in y
+right_join(english, math, by = &quot;studentID&quot;)
+
+# figure out what doesn&#39;t match
+# shows studentID that is in english but not in math
+anti_join(english, math, by = &quot;studentID&quot;)
+
+# shows studentID that is in math but not in english
+anti_join(math, english, by = &quot;studentID&quot;)</code></pre>
+</div>
+<div id="view-tables" class="section level3">
+<h3><span class="header-section-number">8.5.4</span> View tables</h3>
+<p>If you want to just take a look at a variable, the <code>table()</code> function is extremely helpful.</p>
+<pre><code># sometimes you just want to see a table of what&#39;s going on with a variable
+table(scotus$decade)
+table(scotus$liberal)</code></pre>
+<p>You can also turn the tables into a proportional table and control the number of decimal points that appear.</p>
+<pre><code># turn it into a proportional table
+prop.table(table(scotus$decisionDirection))
+
+# round to 2 decimal points
+round(prop.table(table(scotus$decisionDirection)), 2)</code></pre>
+<p>You can also create a crosstab with two variables.</p>
+<pre><code># basic crosstab
+table(scotus$decade, scotus$decisionDirection)
+
+# and a prop crosstab
+prop.table(table(scotus$decade, scotus$decisionDirection))
+
+# and with rounding!
+round(prop.table(table(scotus$decade, scotus$decisionDirection)), 2)</code></pre>
+<p>Turn the basic table into an object.</p>
+<pre><code>scotus_cross_example &lt;- table(scotus$decade, scotus$decisionDirection)</code></pre>
+<p>I am going to demonstrate the <code>margin</code> command.</p>
+<p>Say I want to know (liberal decision in 1940s)/(all liberal decisions in every decade). I will want to look at <code>margin = 1</code>, which will add up the number of liberal decisions in the dataset (rows).</p>
+<pre><code>scotus_cross_prop_example_row &lt;- prop.table(scotus_cross_example, margin = 1)</code></pre>
+<p>Say I want to know (liberal decision in 1940s)/(all decisions in the 1940s). I will want to look at <code>margin = 2</code>, which will add up the number decisions per type (columns).</p>
+<pre><code>scotus_cross_prop_example_col &lt;- prop.table(tab, margin = 2)</code></pre>
+<p>Say you want to count the number of cases per decade per decision type and you want it in a dataframe.</p>
+<pre><code>count(scotus, decade, decisionDirection)</code></pre>
+<p>You can turn this data frame into an object!</p>
+<pre><code>scotus_count &lt;- count(scotus, decade, decisionDirection)</code></pre>
+</div>
+<div id="group-variables" class="section level3">
+<h3><span class="header-section-number">8.5.5</span> Group variables</h3>
+<p>You may want to create descriptive counts per group.</p>
+<pre><code># you want to see the proportion of type_of_decision per decade
+# so you sum up ALL the decisions per decade
+# divide the number of decision types per decade by the number of ALL decisions in decade
+# then round them to 3 decimal places
+mutate(group_by(scotus_count, decade), 
+       n_in_decade = sum(n, na.rm = TRUE),
+       p = n / n_in_decade,
+       p = round(p, 3))</code></pre>
+</div>
+<div id="reshape-data" class="section level3">
+<h3><span class="header-section-number">8.5.6</span> Reshape data</h3>
+<p>I can demonstrate this better if we create a new dataset.</p>
+<pre><code>scotus_df_example &lt;- select(scotus, term, issueArea, decisionDirection)</code></pre>
+<p>Currently, our decade variable is what you would call a wide dataset because it is horizontally wide.</p>
+<pre><code>head(scotus_df_example)
+scotus_df_example &lt;- as.data.frame(scotus_df_example)</code></pre>
+<p>Let’s use what we’ve learned to wrangle this dataset a bit. We want to select the <code>term</code>, <code>liberal</code>, and <code>conservative</code> variables. We want to filter the terms from 2017 to 2018. Term is different from year because term covers an entire SCOTUS term from October to June (i.e., so when the case was heard), while the year of decision (the <code>year</code> variable that we created earlier) is whenever SCOTUS filed the decision.</p>
+<pre><code># select our variables
+scotus_df_example &lt;- select(scotus, term, liberal, conservative)
+
+# filter to terms 2017, 2018, 2019
+scotus_df_example &lt;- filter(scotus_df_example, term %in% c(2017, 2018, 2019))
+
+# group by term
+# create a variable for mean(liberal) and mean(conservative)
+scotus_df_example &lt;- summarize(group_by(scotus_df_example, term), 
+               liberal = mean(liberal, na.rm = TRUE),
+               conservative = mean(conservative, na.rm = TRUE))
+
+scotus_df_example</code></pre>
+<p>Say we want to make it into a long dataset. We would use the <code>gather()</code> function.</p>
+<p>The <code>key</code> variable allows us to create the variable that we want the values in our individual columns to collate as. This is what we mean…</p>
+<pre><code># gather()
+scotus_df_example_gather &lt;- gather(scotus_df_example, key = ideology, value = average, liberal, conservative)</code></pre>
+<p>The result should look like this. As you can see, the <code>liberal</code> and <code>conservative</code> variables are now values in the <code>ideology</code> variable with their mean scores in the <code>average</code> column.</p>
+<pre><code>&gt; scotus_df_example_gather
+# A tibble: 6 x 3
+   term ideology     average
+  &lt;dbl&gt; &lt;chr&gt;          &lt;dbl&gt;
+1  2017 liberal        0.44 
+2  2018 liberal        0.493
+3  2019 liberal        0.5  
+4  2017 conservative   0.467
+5  2018 conservative   0.466
+6  2019 conservative   0.433</code></pre>
+<p>We can then turn it back into a wide dataset. We would use the <code>spread()</code> function. This spreads out the data once again into its original setup.</p>
+<pre><code>spread(scotus_df_example_gather, key = ideology, value = average) </code></pre>
+
 </div>
 </div>
 </div>
@@ -478,8 +670,8 @@ git config --global --list</code></pre>
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="workflow.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="base-r-vs-tidyverse.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="graphics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

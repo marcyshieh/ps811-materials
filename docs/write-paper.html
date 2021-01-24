@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 8 Writing a paper in R Markdown | Introduction to Statistical Computing in Political Science</title>
+  <meta name="description" content="This bookdown book contains materials for PS811." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 8 Writing a paper in R Markdown | Introduction to Statistical Computing in Political Science" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This bookdown book contains materials for PS811." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 8 Writing a paper in R Markdown | Introduction to Statistical Computing in Political Science" />
+  
+  <meta name="twitter:description" content="This bookdown book contains materials for PS811." />
+  
+
+<meta name="author" content="Marcy Shieh" />
+
+
+<meta name="date" content="2020-12-18" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="push-git.html"/>
+<link rel="next" href="bibliography.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="3" data-path="setting-up.html"><a href="setting-up.html"><i class="fa fa-check"></i><b>3</b> Setting Up</a><ul>
+<li class="chapter" data-level="3.1" data-path="setting-up.html"><a href="setting-up.html#install-R"><i class="fa fa-check"></i><b>3.1</b> Installing R</a></li>
+<li class="chapter" data-level="3.2" data-path="setting-up.html"><a href="setting-up.html#install-Rstudio"><i class="fa fa-check"></i><b>3.2</b> Installing RStudio</a></li>
+<li class="chapter" data-level="3.3" data-path="setting-up.html"><a href="setting-up.html#install-latex"><i class="fa fa-check"></i><b>3.3</b> Installing LaTeX</a></li>
+<li class="chapter" data-level="3.4" data-path="setting-up.html"><a href="setting-up.html#knit-RMarkdown"><i class="fa fa-check"></i><b>3.4</b> Knitting R Markdown Files</a></li>
+<li class="chapter" data-level="3.5" data-path="setting-up.html"><a href="setting-up.html#create-Github"><i class="fa fa-check"></i><b>3.5</b> Creating a Github Account</a></li>
+<li class="chapter" data-level="3.6" data-path="setting-up.html"><a href="setting-up.html#setup-Git"><i class="fa fa-check"></i><b>3.6</b> Setting Up Git</a></li>
+<li class="chapter" data-level="3.7" data-path="setting-up.html"><a href="setting-up.html#RStudio-Github"><i class="fa fa-check"></i><b>3.7</b> Connecting RStudio to Git and Github</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="setting-up.html"><a href="setting-up.html#say-hello-to-git-on-rstudio"><i class="fa fa-check"></i><b>3.7.1</b> Say hello to git on RStudio</a></li>
+<li class="chapter" data-level="3.7.2" data-path="setting-up.html"><a href="setting-up.html#create-a-repository"><i class="fa fa-check"></i><b>3.7.2</b> Create a repository</a></li>
+<li class="chapter" data-level="3.7.3" data-path="setting-up.html"><a href="setting-up.html#connect-github-to-rstudio-the-fun-part"><i class="fa fa-check"></i><b>3.7.3</b> Connect Github to RStudio (the fun part)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="setting-up.html"><a href="setting-up.html#work-git"><i class="fa fa-check"></i><b>3.8</b> Working with Git on RStudio</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="setting-up.html"><a href="setting-up.html#how-does-this-all-work"><i class="fa fa-check"></i><b>3.8.1</b> How does this all work?</a></li>
+<li class="chapter" data-level="3.8.2" data-path="setting-up.html"><a href="setting-up.html#check-if-things-happened-as-expected"><i class="fa fa-check"></i><b>3.8.2</b> Check if things happened as expected</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="workflow.html"><a href="workflow.html"><i class="fa fa-check"></i><b>4</b> Workflow</a></li>
+<li class="chapter" data-level="5" data-path="why-create-a-project.html"><a href="why-create-a-project.html"><i class="fa fa-check"></i><b>5</b> Why create a project?</a></li>
+<li class="chapter" data-level="6" data-path="create-proj.html"><a href="create-proj.html"><i class="fa fa-check"></i><b>6</b> Creating a project in RStudio</a></li>
+<li class="chapter" data-level="7" data-path="push-git.html"><a href="push-git.html"><i class="fa fa-check"></i><b>7</b> Pushing a R Markdown document to your Github repository</a></li>
+<li class="chapter" data-level="8" data-path="write-paper.html"><a href="write-paper.html"><i class="fa fa-check"></i><b>8</b> Writing a paper in R Markdown</a><ul>
+<li class="chapter" data-level="8.1" data-path="write-paper.html"><a href="write-paper.html#prerequisites"><i class="fa fa-check"></i><b>8.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="8.2" data-path="write-paper.html"><a href="write-paper.html#installing-papaja"><i class="fa fa-check"></i><b>8.2</b> Installing papaja</a></li>
+<li class="chapter" data-level="8.3" data-path="write-paper.html"><a href="write-paper.html#opening-the-template"><i class="fa fa-check"></i><b>8.3</b> Opening the template</a></li>
+<li class="chapter" data-level="8.4" data-path="write-paper.html"><a href="write-paper.html#getting-to-know-your-apa-r-markdown-template"><i class="fa fa-check"></i><b>8.4</b> Getting to know your APA R Markdown template</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="write-paper.html"><a href="write-paper.html#lets-talk-about-code-chunks"><i class="fa fa-check"></i><b>8.4.1</b> Let’s talk about code chunks</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="write-paper.html"><a href="write-paper.html#code-chunks-in-the-papaja-template"><i class="fa fa-check"></i><b>8.5</b> Code chunks in the papaja template</a></li>
+<li class="chapter" data-level="8.6" data-path="write-paper.html"><a href="write-paper.html#body-of-the-papaja-template"><i class="fa fa-check"></i><b>8.6</b> Body of the papaja template</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i><b>9</b> Bibliography</a></li>
+<li class="chapter" data-level="10" data-path="git-branches.html"><a href="git-branches.html"><i class="fa fa-check"></i><b>10</b> Git Branches</a></li>
+<li class="chapter" data-level="11" data-path="fucntions.html"><a href="fucntions.html"><i class="fa fa-check"></i><b>11</b> Fucntions</a><ul>
+<li class="chapter" data-level="11.1" data-path="fucntions.html"><a href="fucntions.html#using-loops-in-a-dataset"><i class="fa fa-check"></i><b>11.1</b> Using loops in a dataset</a></li>
+<li class="chapter" data-level="11.2" data-path="fucntions.html"><a href="fucntions.html#vectorizing-the-process"><i class="fa fa-check"></i><b>11.2</b> Vectorizing the process</a></li>
+<li class="chapter" data-level="11.3" data-path="fucntions.html"><a href="fucntions.html#using-if"><i class="fa fa-check"></i><b>11.3</b> Using if()</a></li>
+<li class="chapter" data-level="11.4" data-path="fucntions.html"><a href="fucntions.html#using-at"><i class="fa fa-check"></i><b>11.4</b> Using at()</a></li>
+<li class="chapter" data-level="11.5" data-path="fucntions.html"><a href="fucntions.html#defining-your-own-functions"><i class="fa fa-check"></i><b>11.5</b> Defining your own functions</a><ul>
+<li class="chapter" data-level="11.5.1" data-path="fucntions.html"><a href="fucntions.html#anonymous-function"><i class="fa fa-check"></i><b>11.5.1</b> Anonymous Function</a></li>
+<li class="chapter" data-level="11.5.2" data-path="fucntions.html"><a href="fucntions.html#simple-lambda-function"><i class="fa fa-check"></i><b>11.5.2</b> Simple lambda function</a></li>
+<li class="chapter" data-level="11.5.3" data-path="fucntions.html"><a href="fucntions.html#more-complex-lambda-function"><i class="fa fa-check"></i><b>11.5.3</b> More complex lambda function</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="fucntions.html"><a href="fucntions.html#applying-more-than-one-function"><i class="fa fa-check"></i><b>11.6</b> Applying more than one function</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="base-r-vs-tidyverse.html"><a href="base-r-vs-tidyverse.html"><i class="fa fa-check"></i><b>12</b> Base R vs. Tidyverse</a><ul>
+<li class="chapter" data-level="12.1" data-path="base-r-vs-tidyverse.html"><a href="base-r-vs-tidyverse.html#but-first-whats-tidyverse"><i class="fa fa-check"></i><b>12.1</b> But first, what’s Tidyverse?</a></li>
+<li class="chapter" data-level="12.2" data-path="base-r-vs-tidyverse.html"><a href="base-r-vs-tidyverse.html#use-r-as-a-calculator"><i class="fa fa-check"></i><b>12.2</b> Use R as a calculator</a></li>
+<li class="chapter" data-level="12.3" data-path="base-r-vs-tidyverse.html"><a href="base-r-vs-tidyverse.html#creating-objects"><i class="fa fa-check"></i><b>12.3</b> Creating objects</a></li>
+<li class="chapter" data-level="12.4" data-path="base-r-vs-tidyverse.html"><a href="base-r-vs-tidyverse.html#creating-vectors"><i class="fa fa-check"></i><b>12.4</b> Creating vectors</a></li>
+<li class="chapter" data-level="12.5" data-path="base-r-vs-tidyverse.html"><a href="base-r-vs-tidyverse.html#base-r"><i class="fa fa-check"></i><b>12.5</b> Base R</a></li>
+<li class="chapter" data-level="12.6" data-path="base-r-vs-tidyverse.html"><a href="base-r-vs-tidyverse.html#tidy"><i class="fa fa-check"></i><b>12.6</b> Tidyverse</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="data-manipulation.html"><a href="data-manipulation.html"><i class="fa fa-check"></i><b>13</b> Data Manipulation</a><ul>
+<li class="chapter" data-level="13.1" data-path="data-manipulation.html"><a href="data-manipulation.html#data-frame-exercise"><i class="fa fa-check"></i><b>13.1</b> Data frame exercise</a></li>
+<li class="chapter" data-level="13.2" data-path="data-manipulation.html"><a href="data-manipulation.html#rename-data-variables"><i class="fa fa-check"></i><b>13.2</b> Rename data variables</a><ul>
+<li class="chapter" data-level="13.2.1" data-path="data-manipulation.html"><a href="data-manipulation.html#remember-piping"><i class="fa fa-check"></i><b>13.2.1</b> Remember piping?</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="data-manipulation.html"><a href="data-manipulation.html#create-new-data-variables"><i class="fa fa-check"></i><b>13.3</b> Create new data variables</a></li>
+<li class="chapter" data-level="13.4" data-path="data-manipulation.html"><a href="data-manipulation.html#logical-operators"><i class="fa fa-check"></i><b>13.4</b> Logical operators</a></li>
+<li class="chapter" data-level="13.5" data-path="data-manipulation.html"><a href="data-manipulation.html#same-function-multiple-conditions"><i class="fa fa-check"></i><b>13.5</b> Same function, multiple conditions</a></li>
+<li class="chapter" data-level="13.6" data-path="data-manipulation.html"><a href="data-manipulation.html#select-columns"><i class="fa fa-check"></i><b>13.6</b> Select columns</a></li>
+<li class="chapter" data-level="13.7" data-path="data-manipulation.html"><a href="data-manipulation.html#summarize-data"><i class="fa fa-check"></i><b>13.7</b> Summarize data</a></li>
+<li class="chapter" data-level="13.8" data-path="data-manipulation.html"><a href="data-manipulation.html#sort-data"><i class="fa fa-check"></i><b>13.8</b> Sort data</a><ul>
+<li class="chapter" data-level="13.8.1" data-path="data-manipulation.html"><a href="data-manipulation.html#identify-what-to-sort"><i class="fa fa-check"></i><b>13.8.1</b> Identify what to sort</a></li>
+</ul></li>
+<li class="chapter" data-level="13.9" data-path="data-manipulation.html"><a href="data-manipulation.html#merge-datasets"><i class="fa fa-check"></i><b>13.9</b> Merge datasets</a></li>
+<li class="chapter" data-level="13.10" data-path="data-manipulation.html"><a href="data-manipulation.html#view-tables"><i class="fa fa-check"></i><b>13.10</b> View tables</a></li>
+<li class="chapter" data-level="13.11" data-path="data-manipulation.html"><a href="data-manipulation.html#group-variables"><i class="fa fa-check"></i><b>13.11</b> Group variables</a></li>
+<li class="chapter" data-level="13.12" data-path="data-manipulation.html"><a href="data-manipulation.html#reshape-data"><i class="fa fa-check"></i><b>13.12</b> Reshape data</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="graphics.html"><a href="graphics.html"><i class="fa fa-check"></i><b>14</b> Graphics</a><ul>
+<li class="chapter" data-level="14.1" data-path="graphics.html"><a href="graphics.html#scatter-plots"><i class="fa fa-check"></i><b>14.1</b> Scatter plots</a></li>
+<li class="chapter" data-level="14.2" data-path="graphics.html"><a href="graphics.html#box-plots"><i class="fa fa-check"></i><b>14.2</b> Box plots</a></li>
+<li class="chapter" data-level="14.3" data-path="graphics.html"><a href="graphics.html#bar-plots"><i class="fa fa-check"></i><b>14.3</b> Bar plots</a></li>
+<li class="chapter" data-level="14.4" data-path="graphics.html"><a href="graphics.html#line-plots"><i class="fa fa-check"></i><b>14.4</b> Line plots</a></li>
+<li class="chapter" data-level="14.5" data-path="graphics.html"><a href="graphics.html#histogram-and-density-plots"><i class="fa fa-check"></i><b>14.5</b> Histogram and density plots</a></li>
+<li class="chapter" data-level="14.6" data-path="graphics.html"><a href="graphics.html#pie-charts"><i class="fa fa-check"></i><b>14.6</b> Pie charts</a></li>
+<li class="chapter" data-level="14.7" data-path="graphics.html"><a href="graphics.html#load-packages"><i class="fa fa-check"></i><b>14.7</b> Load packages</a></li>
+<li class="chapter" data-level="14.8" data-path="graphics.html"><a href="graphics.html#load-dataset"><i class="fa fa-check"></i><b>14.8</b> Load dataset</a></li>
+<li class="chapter" data-level="14.9" data-path="graphics.html"><a href="graphics.html#components"><i class="fa fa-check"></i><b>14.9</b> Components</a></li>
+<li class="chapter" data-level="14.10" data-path="graphics.html"><a href="graphics.html#create-plot"><i class="fa fa-check"></i><b>14.10</b> Create plot</a></li>
+<li class="chapter" data-level="14.11" data-path="graphics.html"><a href="graphics.html#populate-plot"><i class="fa fa-check"></i><b>14.11</b> Populate plot</a><ul>
+<li class="chapter" data-level="14.11.1" data-path="graphics.html"><a href="graphics.html#dot-plot"><i class="fa fa-check"></i><b>14.11.1</b> Dot plot</a></li>
+<li class="chapter" data-level="14.11.2" data-path="graphics.html"><a href="graphics.html#fit-a-line"><i class="fa fa-check"></i><b>14.11.2</b> Fit a line</a></li>
+</ul></li>
+<li class="chapter" data-level="14.12" data-path="graphics.html"><a href="graphics.html#aesthetics"><i class="fa fa-check"></i><b>14.12</b> Aesthetics</a><ul>
+<li class="chapter" data-level="14.12.1" data-path="graphics.html"><a href="graphics.html#labels"><i class="fa fa-check"></i><b>14.12.1</b> Labels</a></li>
+<li class="chapter" data-level="14.12.2" data-path="graphics.html"><a href="graphics.html#colors"><i class="fa fa-check"></i><b>14.12.2</b> Colors</a></li>
+<li class="chapter" data-level="14.12.3" data-path="graphics.html"><a href="graphics.html#bar-graphs"><i class="fa fa-check"></i><b>14.12.3</b> Bar graphs</a></li>
+<li class="chapter" data-level="14.12.4" data-path="graphics.html"><a href="graphics.html#faceting"><i class="fa fa-check"></i><b>14.12.4</b> Faceting</a></li>
+<li class="chapter" data-level="14.12.5" data-path="graphics.html"><a href="graphics.html#extensions"><i class="fa fa-check"></i><b>14.12.5</b> Extensions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>15</b> Analysis</a><ul>
+<li class="chapter" data-level="15.1" data-path="analysis.html"><a href="analysis.html#descriptive-graph"><i class="fa fa-check"></i><b>15.1</b> Descriptive graph</a></li>
+<li class="chapter" data-level="15.2" data-path="analysis.html"><a href="analysis.html#linear-regression"><i class="fa fa-check"></i><b>15.2</b> Linear regression</a></li>
+<li class="chapter" data-level="15.3" data-path="analysis.html"><a href="analysis.html#diagnostic-plots"><i class="fa fa-check"></i><b>15.3</b> Diagnostic plots</a></li>
+<li class="chapter" data-level="15.4" data-path="analysis.html"><a href="analysis.html#linear-regression-with-standard-errors"><i class="fa fa-check"></i><b>15.4</b> Linear regression with standard errors</a></li>
+<li class="chapter" data-level="15.5" data-path="analysis.html"><a href="analysis.html#logit-regression"><i class="fa fa-check"></i><b>15.5</b> Logit regression</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="tools.html"><a href="tools.html"><i class="fa fa-check"></i><b>16</b> Tools</a></li>
+<li class="chapter" data-level="17" data-path="replication.html"><a href="replication.html"><i class="fa fa-check"></i><b>17</b> Replication</a></li>
+<li class="chapter" data-level="18" data-path="github-pages.html"><a href="github-pages.html"><i class="fa fa-check"></i><b>18</b> GitHub Pages</a><ul>
+<li class="chapter" data-level="18.1" data-path="write-paper.html"><a href="write-paper.html#prerequisites"><i class="fa fa-check"></i><b>18.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="18.2" data-path="github-pages.html"><a href="github-pages.html#step-1-install-hugo"><i class="fa fa-check"></i><b>18.2</b> Step 1: Install Hugo</a><ul>
+<li class="chapter" data-level="18.2.1" data-path="github-pages.html"><a href="github-pages.html#mac-users"><i class="fa fa-check"></i><b>18.2.1</b> Mac Users</a></li>
+<li class="chapter" data-level="18.2.2" data-path="github-pages.html"><a href="github-pages.html#windows-users"><i class="fa fa-check"></i><b>18.2.2</b> Windows users</a></li>
+</ul></li>
+<li class="chapter" data-level="18.3" data-path="github-pages.html"><a href="github-pages.html#step-2-create-site"><i class="fa fa-check"></i><b>18.3</b> Step 2: Create site</a></li>
+<li class="chapter" data-level="18.4" data-path="github-pages.html"><a href="github-pages.html#step-3-add-theme"><i class="fa fa-check"></i><b>18.4</b> Step 3: Add theme</a></li>
+<li class="chapter" data-level="18.5" data-path="github-pages.html"><a href="github-pages.html#step-4-add-content"><i class="fa fa-check"></i><b>18.5</b> Step 4: Add content</a></li>
+<li class="chapter" data-level="18.6" data-path="github-pages.html"><a href="github-pages.html#step-5-fire-up-the-hugo-server"><i class="fa fa-check"></i><b>18.6</b> Step 5: Fire up the Hugo server</a></li>
+<li class="chapter" data-level="18.7" data-path="github-pages.html"><a href="github-pages.html#step-6-configure-your-site"><i class="fa fa-check"></i><b>18.7</b> Step 6: Configure your site</a></li>
+<li class="chapter" data-level="18.8" data-path="github-pages.html"><a href="github-pages.html#step-7-build-pages"><i class="fa fa-check"></i><b>18.8</b> Step 7: Build pages</a></li>
+<li class="chapter" data-level="18.9" data-path="github-pages.html"><a href="github-pages.html#step-8-create-repositories-on-github"><i class="fa fa-check"></i><b>18.9</b> Step 8: Create repositories on GitHub</a></li>
+<li class="chapter" data-level="18.10" data-path="github-pages.html"><a href="github-pages.html#step-9-pull-git-repository-on-to-your-computer"><i class="fa fa-check"></i><b>18.10</b> Step 9: Pull git repository on to your computer</a></li>
+<li class="chapter" data-level="18.11" data-path="github-pages.html"><a href="github-pages.html#step-10-change-public-facing-location"><i class="fa fa-check"></i><b>18.11</b> Step 10: Change public-facing location</a></li>
+<li class="chapter" data-level="18.12" data-path="github-pages.html"><a href="github-pages.html#step-11-create-public-facing-location"><i class="fa fa-check"></i><b>18.12</b> Step 11: Create public-facing location</a></li>
+<li class="chapter" data-level="18.13" data-path="github-pages.html"><a href="github-pages.html#step-12-execute-changes"><i class="fa fa-check"></i><b>18.13</b> Step 12: Execute changes</a></li>
+<li class="chapter" data-level="18.14" data-path="github-pages.html"><a href="github-pages.html#step-13-check-out-your-site"><i class="fa fa-check"></i><b>18.14</b> Step 13: Check out your site</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Statistical Computing in Political Science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="write-paper" class="section level1">
+<h1><span class="header-section-number">Chapter 8</span> Writing a paper in R Markdown</h1>
+<p>Now you are hopefully more comfortable doing simple things with RStudio, R Markdown documents, Git, and GitHub. So now let’s move on to how to do stuff that you already do and figure out how the Git workflow (in conjunction with RStudio) can make it better.</p>
+<p>When you write papers for your classes, you want to write it with the hope that it will turn into a publishable paper. That is the goal, anyway, so let’s strive for it. Political science manuscripts use the <a href="https://ccconline.libguides.com/c.php?g=242121&amp;p=3409502">APA style</a> so you want to find a template that conforms to that style.</p>
+<p>There are many R Markdown templates out there, even specific templates for specific journals, and there are certainly ways you can customize templates to your heart’s desire. When you create a new R Markdown document, you can select “From Template” from the sidebar and see what has already been pre-loaded.</p>
+<p>For the sake of catering to everyone’s needs, we are going to work with the <a href="https://crsh.github.io/papaja_man/introduction.html">papaja</a> R package. papaja, as you may have easily guessed, stands for “preparing APA journal articles.” It’s a package that’s currently in the process of being developed so there might be some kinks here and there (though I haven’t encountered any in my own work). Ultimately, this lesson is to give you a sense of how R Markdown templates work so you go out and explore on your own.</p>
+<div id="prerequisites" class="section level2">
+<h2><span class="header-section-number">8.1</span> Prerequisites</h2>
+<p>Just so you know what is required to run the papaja R package, I’m going to do a breakdown for you. <strong>You should have fulfilled all the prequisites if you completed the previous lesson.</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>To install papaja, you need to install R, which you should have already done. If not, what have I been doing this whole time…?</p></li>
+<li><p>You also need to install <a href="https://pandoc.org/index.html">pandoc</a>, which you <em>should</em> have if you already installed RStudio. Pandoc is a document converter that is pretty versatile and can convert a file from one format to the other pretty easily. It’s worth checking out sometime. But for now, we just need it for papaja to work.</p></li>
+<li><p>You need a TeX distribution, which you already do, from installing LaTeX in the first lesson.</p></li>
+</ol>
+</div>
+<div id="installing-papaja" class="section level2">
+<h2><span class="header-section-number">8.2</span> Installing papaja</h2>
+<ol style="list-style-type: decimal">
+<li><p>papaja is not yet available on CRAN (the Comprehensive R Archive Network), so you need to install it from the creator’s GitHub. To do so, you need to install the <code>devtools</code> package by entering the following into your console.</p>
+<pre><code>install.packages(&quot;devtools&quot;)</code></pre>
+<p>Once you install a package to your computer, you do not have to install it again, unless you update to a new version of R. You can check your installed packages with the <code>installed.packages()</code> command.</p></li>
+<li><p>Access the package you just installed by entering the following into the console.</p>
+<pre><code>library(devtools)</code></pre>
+<p>Think of this as telling your computer to point and click on a program to “open” it. You need to do this every time you open a new R session and wish to use the package—in the same way that you need to click on the RStudio icon every time you want to use it.</p></li>
+<li><p>Enter the following command into the console. This installs the <em>stable</em> development version of the package from Github.</p>
+<pre><code>devtools::install_github(&quot;crsh/papaja&quot;)</code></pre></li>
+</ol>
+<p>The <code>devtools::</code> part of the command simply tells R where the <code>install_github</code> part of the command is coming from. There are cases where you may have loaded two packages and both packages have <code>install_github</code> as a command. Doing the double-colon simply ensures that you are specifying the package that the command is coming from. Since you have only loaded the devtools package so far, you don’t need to specify that <code>install_github</code> is coming from the devtools package, but I just wanted to demonstrate this point in case you ever end up in such a conundrum.</p>
+</div>
+<div id="opening-the-template" class="section level2">
+<h2><span class="header-section-number">8.3</span> Opening the template</h2>
+<ol style="list-style-type: decimal">
+<li><p>Go to File &gt; New File &gt; R Markdown.</p>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture2-img/addins.png" alt="" />
+<p class="caption">apa-article</p>
+</div>
+<p><em>Select APA article (6th edition) from the menu.</em></p></li>
+<li><p>Select “From Template” from the sidebar and select “APA article (6th edition)” on the list. As you can see, it tells you that this template is from papaja package.</p></li>
+<li><p>Click OK.</p>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture2-img/template.png" alt="" />
+<p class="caption">template</p>
+</div>
+<p><em>This is how the template should look like.</em></p></li>
+<li><p>The template appears.</p></li>
+</ol>
+</div>
+<div id="getting-to-know-your-apa-r-markdown-template" class="section level2">
+<h2><span class="header-section-number">8.4</span> Getting to know your APA R Markdown template</h2>
+<p><strong>Lines 1 to 64</strong> is a form-like feature that you can fill out with your own information. This is called a <a href="https://en.wikipedia.org/wiki/YAML">YAML front matter</a>, which you can read more about on your own time. Basically, it’s basically a form you can fill out to define what should be going on in the back end. Most of these fields should be pretty self-explanatory, but I’d like to point out a few things.</p>
+<ul>
+<li><p><strong>Line 49</strong> To figure out word count, I recommend the <a href="https://github.com/benmarwick/wordcountaddin">wordcountaddin</a> package. Not only does it tell you how many words and characters are in your document, but provides some information on the readability of your statistical tables (e.g., regression tables) as well. I suggest not being too worried about this right now, but it is worth thinking about now.</p></li>
+<li><p><strong>Line 51</strong> papaja comes with a “r-reference.bib” file for all your R Markdown documents. You should see the file on your “Files” pane. Your bibliography will live in the .bib file. I’ll talk more about .bib files later.</p></li>
+<li><p><strong>Lines 53-59</strong> may sound ambiguous, but the official papaja page has definitions for each field on their <a href="https://crsh.github.io/papaja_man/r-markdown-components.html#rendering-options">Rendering Options</a> section.</p></li>
+</ul>
+<div id="lets-talk-about-code-chunks" class="section level3">
+<h3><span class="header-section-number">8.4.1</span> Let’s talk about code chunks</h3>
+<p>Put your R commands in a <a href="https://rmarkdown.rstudio.com/lesson-3.html">code chunk</a>. With code chunks, you are basically telling RStudio, “hey, i need you to run this.” Code chunks look like the following.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="write-paper.html#cb4-1"></a><span class="co"># insert R code here</span></span></code></pre></div>
+<p>Of course, you can customize what you do tell your code chunks to do. Here are some examples, but for the full list of options, check out the <a href="https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">R Markdown Cheat Sheet - Section 5: Embed Code</a>.</p>
+<ul>
+<li><p><code>include = FALSE</code> tells R to run the code in the background but NOT show the results or the code on the R Markdown document. This is helpful if you want to show results in a chunk later in the file, but you want to run some commands in the current chunk.</p>
+<ul>
+<li><p><code>echo = FALSE</code> tells R to run the code in the background and not show the code in the R Markdown document, but to show the results. This is helpful for tables and graphics.</p></li>
+<li><p><code>message = FALSE</code> tells R to not show messsages generated by the comamnds in the code chunk. For instance, some packages might provide some messages (e.g., citations) but you do not want it to show up in your R Markdown document.</p></li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="write-paper.html#cb5-1"></a><span class="co"># insert your R code here</span></span></code></pre></div>
+<ul>
+<li><code>fig.cap = "..."</code> tells R to add a caption to your figure. You simply replace <code>...</code> with the caption.</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="write-paper.html#cb6-1"></a><span class="co"># insert your R code here</span></span></code></pre></div>
+<ul>
+<li>You may combine these options by separating them with a comma.</li>
+</ul></li>
+<li><p>You may even name your chunks. In this example, the code chunk is named “chart.” Note that you do NOT separate the <code>r</code> and the name of your chunk with a comma.</p></li>
+</ul>
+<p>Now that you have an understanding of code chunks, let’s explore the code chunks on the R Markdown template we downloaded.</p>
+</div>
+</div>
+<div id="code-chunks-in-the-papaja-template" class="section level2">
+<h2><span class="header-section-number">8.5</span> Code chunks in the papaja template</h2>
+<p><strong>Lines 66-69</strong> is where you put your packages. As you grow into a proficient R user, you are going to use many packages (not just devtools!) and you should load them all in a section that looks like this. In other words…</p>
+<p><strong>Lines 71-75</strong> are where you can set your analysis preferences. The default appears to be code that sets a seed for a random number generator. You may need a seed when you run a say, k-means clustering algorithm, but I wouldn’t worry too much about it right now.</p>
+</div>
+<div id="body-of-the-papaja-template" class="section level2">
+<h2><span class="header-section-number">8.6</span> Body of the papaja template</h2>
+<p><strong>Lines 79-94</strong> shows headings for the document. This is how the headings will look like based on the number of hashes (#) they put. A good way to think about it is <code>#</code> is a the largest heading, and every <code>#</code> you add on makes the heading smaller. For a comprehensive list of headings, check out check out the <a href="https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">R Markdown Cheat Sheet - Section 3: Markdown</a>.</p>
+<p># Methods (one hash - #)</p>
+<p>## Participants (two hashes - ##)</p>
+<p>## Material (two hashes - ##)</p>
+<p>## Procedure (two hashes - ##)</p>
+<p>## Data analysis (two hashes - ##)</p>
+<p># Results (one hash - #)</p>
+<p># Discussion (one hash - #)</p>
+<p>Now, you can create headings and subheadings and subsubheadings, etc.</p>
+<p><strong>Lines 97-106</strong> is the last few pages of the document, which will be devoted to the bibliography. And much of the end of this template is some <a href="https://en.wikibooks.org/wiki/TeX">TeX markup language</a>, which dominates LaTeX but is only sometimes used in R Markdown documents. You don’t have to change any of this, but here is some background on the building blocks.</p>
+<ul>
+<li><code>\newpage</code> command just creates a new page and comes from the TeX language.</li>
+<li><code>\begingroup</code> begins a group and <code>\endgroup</code> ends a group. In essence, you’re putting stuff in a box.
+<ul>
+<li>So you’ve built your box. Within that box, you want your bibliography to indent a certain way. With <code>\parindent</code>, you are indenting the first line of a paragraph (i.e., each new line) and with <code>\leftskip</code>, you can reduce the paragraph size from the left.</li>
+</ul></li>
+<li>The grouping and the formatting are for the bibliography, which the template inserts with the following HTML code. This template handles the bibliography style using HTML/CSS, but this might not be the case with all templates.</li>
+</ul>
+<pre><code>&lt;div id=&quot;refs&quot; custom-style=&quot;Bibliography&quot;&gt;&lt;/div&gt;</code></pre>
+<p>In the next lesson, we will discuss how to customize your bibliography.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="push-git.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bibliography.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ps811-materials.pdf", "ps811-materials.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

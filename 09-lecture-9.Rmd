@@ -2,7 +2,7 @@
 
 In this lecture, you will learn how to do basic linear regressions in R.
 
-# Load packages
+## Load packages
 
 Here are some packages you will need for this lesson.
 
@@ -22,7 +22,7 @@ library("estimatr")
 library("modelsummary")
 ```
 
-# Load data
+## Load data
 
 In this lesson, we will be using the [American National Election Survey (ANES) 2016 dataset](https://electionstudies.org/data-center/2016-time-series-study/). The ANES is a nationally representative dataset of eligible voters in the U.S. fielded by the University of Michigan before and after every presidential election to gauge what Americans thought about major issues.
 
@@ -37,7 +37,7 @@ here("data")
 anes2016 <- read_dta(here("data", "anes_timeseries_2016.dta"))
 ```
 
-# Rename variables
+## Rename variables
 
 Many of the variables in the ANES are just gibberish code. For example:
 
@@ -57,7 +57,7 @@ anes2016$pre.registered <- anes2016$V161011a
 anes2016$pre.gender <- anes2016$V161342
 ```
 
-# Descriptive analysis
+## Descriptive analysis
 
 For non-regression analysis, we may just want to look at the confidence intervals. To do this, we can use the `group.CI()` command. Since we are not grouping post.vote, we just put "1" instead of an actual group.
 
@@ -85,7 +85,7 @@ To group the `post.vote` variable by `pre.gender`, we can do the following...
 4          3        1.000000       1.000000        1.000000
 ```
 
-## Descriptive graph
+### Descriptive graph
 
 Since this is a dataframe so you can turn it into a graph pretty easily.
 
@@ -98,7 +98,7 @@ ggplot(groupCI_anes, aes(x = as.factor(pre.gender), y = post.vote.mean)) +
 
 ![ggplot-groupCI](https://marcyshieh.github.io/ps811/lecture9-img/ggplot-groupCI.png)
 
-# Data summary
+## Data summary
 
 The [`modelsummary` package](this is a dataframe so you can turn it into a graph pretty easily) includes a powerful suite of data summary tools. It has many tools that can create the tables you often see in published articles.
 
@@ -118,7 +118,7 @@ datasummary_correlation(iris)
 
 ![datasummary-correlation-iris](https://marcyshieh.github.io/ps811/lecture9-img/datasummary-correlation-iris.png)
 
-# Regression analysis
+## Regression analysis
 
 For all your data analysis needs in R, I ghihly recommend that you check out the [UCLA data analysis page](https://stats.idre.ucla.edu/other/dae/). If you ever want to know whether you can use a particular regression or how to use a particular regression, go to the UCLA stats page! It is super helpful.
 
@@ -126,7 +126,7 @@ If you don't know how to find what you are looking for, just type "[name of regr
 
 If the options provided to you on the UCLA stats page are confusing, you should use it as a stepping stone to search for something that is easier to understand or suit your needs better.
 
-## Linear regression
+### Linear regression
 
 Run a simple [ordinary least squared regression](https://en.wikipedia.org/wiki/Ordinary_least_squares). The left-hand side is always the dependent variable (outcome), and the right-hand side should contain the independent variable and control variables.
 
@@ -169,7 +169,7 @@ Multiple R-squared:  0.002354,	Adjusted R-squared:  0.001622
 F-statistic: 3.217 on 2 and 2727 DF,  p-value: 0.04021
 ```
 
-## Diagnostic plots
+### Diagnostic plots
 
 Look at the diagnostic plots for residuals, fitted values, Cook’s distance, and leverage. It is important to look at diagnostic plots so you can figure out if there are data points that might influence your results.
 
@@ -196,7 +196,7 @@ For example, I want to see if they are all from the same state (`V161010d` is th
 4 34 [34. New Jersey]  
 ```
 
-## Linear regression with standard errors
+### Linear regression with standard errors
 
 Robust standard errors are useful in social sciences where you don't know the structure of the variations. So to get unnbiased standard errors for OLS, you want to insert your regression into `lm_robust`. Learn more about the command [here](https://www.rdocumentation.org/packages/estimatr/versions/0.26.0/topics/lm_robust).
 
@@ -214,7 +214,7 @@ pre.interest 0.009822509 2727
 pre.party    0.004156056 2727
 ```
 
-## Logit regression
+### Logit regression
 
 You may want to use a generalized linear model if your dependent variable contains binary outcomes.
 

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Setting Up | Introduction to Statistical Computing in Political Science</title>
+  <title>10 Analysis | Introduction to Statistical Computing in Political Science</title>
   <meta name="description" content="This bookdown book contains materials for PS811." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Setting Up | Introduction to Statistical Computing in Political Science" />
+  <meta property="og:title" content="10 Analysis | Introduction to Statistical Computing in Political Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Setting Up | Introduction to Statistical Computing in Political Science" />
+  <meta name="twitter:title" content="10 Analysis | Introduction to Statistical Computing in Political Science" />
   
   <meta name="twitter:description" content="This bookdown book contains materials for PS811." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="workflow.html"/>
+<link rel="prev" href="graphics.html"/>
+<link rel="next" href="tools.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -243,233 +243,352 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="setting-up" class="section level1">
-<h1><span class="header-section-number">2</span> Setting Up</h1>
-<p>In this lecture, you will learn how to knit a document in R Markdown and use basic Git functions.</p>
-<div id="install-R" class="section level2">
-<h2><span class="header-section-number">2.1</span> Installing R</h2>
-<p>R is a statistical programming language that is widely used in the discipline. Go to the <a href="https://www.r-project.org/">R official website</a> to learn more about the software.</p>
-<p>These instructions will help you download R on to your operating system.</p>
-<ol style="list-style-type: decimal">
-<li><p>Go to list of <a href="https://cran.r-project.org/mirrors.html">CRAN mirrors</a>. A “mirror” is essentially a distribution site for the software.</p></li>
-<li><p>Select your preferred CRAN mirror. I recommend that you select the mirror closest to your current location. For example, if you are in Madison, WI, you should consider picking the mirror located at University of Michigan, though any of the midwestern universities will do.</p></li>
-<li><p>Select the download for your operating system.</p></li>
-</ol>
-</div>
-<div id="install-Rstudio" class="section level2">
-<h2><span class="header-section-number">2.2</span> Installing RStudio</h2>
-<p>RStudio is an integrated environment for R. If R is the engine, RStudio is the car. You can use the engine without the car, but you cannot drive the the car without the engine. In other words, you will not be able to use RStudio if you have not yet downloaded R. Always download R first. Go to the <a href="https://rstudio.com/">RStudio official website</a> to learn more about the software.</p>
-<p>These instructions will help you download RStudio on to your operating system.</p>
-<ol style="list-style-type: decimal">
-<li><p>Go to the <a href="https://rstudio.com/products/rstudio/download/">Download RStudio</a> page.</p></li>
-<li><p>Click on the “Download” button" for RStudio Desktop Open Source Licnse Free.</p></li>
-<li><p>Click on the “Download RStudio for [your OS]” button. The website should be detect which version of RStudio that you need to download.</p></li>
-</ol>
-</div>
-<div id="install-latex" class="section level2">
-<h2><span class="header-section-number">2.3</span> Installing LaTeX</h2>
-<p>LaTeX is a software system for document prepartion. While we will not focus on LaTeX functionalities in this class, you will need to download it to compile R Markdown documents. Go to the <a href="https://www.latex-project.org/">LaTeX official website</a> to learn more about the software.</p>
-<p>If, for any reason, you would like to learn LaTeX, I would recommend opening an <a href="https://www.overleaf.com">Overleaf</a> account and leveraging their <a href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes">step-by-step tutorial</a>. While this course will primarily focus on teaching you how to write and generate your documents in R Markdown, you may encounter collaborators who use LaTeX. The good news is that R Markdown is pretty similar to LaTeX, so the skills are definitely transferrable.</p>
-<p>These instructions will help you download LaTeX on to your operating system.</p>
-<ol style="list-style-type: decimal">
-<li><p>Scroll to the third section of the <a href="https://www.latex-project.org/get/">Get</a> page where you see download options for Linux, MacOS, Windows, and Online.</p></li>
-<li><p>Select your operating system.</p>
-<ul>
-<li><p>For MacOS users, you should download <a href="http://www.tug.org/mactex/">MacTeX</a>. You may access <a href="http://www.tug.org/mactex/mactex-download.html">step-by-step instructions here</a>.</p></li>
-<li><p>For Windows users, the website suggests that you download MikTeX, proTeXt, or TeX Live. There is a <a href="https://tex.stackexchange.com/questions/239199/latex-distributions-what-are-their-main-differences">StackExchange post</a> discussing these options and then some. It appears like most people recommend <a href="http://tug.org/texlive/">TeX Live</a>.</p></li>
-</ul></li>
-</ol>
-</div>
-<div id="knit-RMarkdown" class="section level2">
-<h2><span class="header-section-number">2.4</span> Knitting R Markdown Files</h2>
-<ol style="list-style-type: decimal">
-<li><p>Open RStudio.</p></li>
-<li><p>Click on File &gt; New File.</p></li>
-<li><p>Select R Markdown.</p>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/new_r_markdown.png" alt="" />
-<p class="caption">new rmarkdown</p>
-</div>
-<p><em>When you set up a new R Markdown file.</em></p></li>
-<li><p>Make sure the sidebar is set to “Document.”</p></li>
-<li><p>Enter in the title of the document in the “Title” field and your name in the “Author” field.</p></li>
-<li><p>Select HTML as the “Default Output Format” option for now. We will discuss how to output your file in PDF as well later in the lesson.</p></li>
-<li><p>An R Markdown document (with the extension .Rmd) will appear. It will be called Untitled1.Rmd. R Markdown has a default template in place every time you create a new R Markdown document.</p>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/knit.png" alt="" />
-<p class="caption">the knit button</p>
-</div>
-<p><em>The Knit button.</em></p></li>
-<li><p>As you have selected HTML as the <em>default</em> output format, when you click the <strong>Knit</strong> button (it is the icon with a little ball of yarn and needle), it will automatically output the document as a HTML. Prior to outputing the HTML file, however, it will ask you to rename the file to something other than Untitled1.Rmd, which you should certainly do.</p>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/viewer.png" alt="" />
-<p class="caption">viewer tab</p>
-</div>
-<p><em>HTML file in the viewer tab.</em></p></li>
-<li><p>The HTML file will appear on the “Viewer” tab. To open the actual document, click on the button with the arrow pointing to the top right corner.</p></li>
-<li><p>To output the same document as a PDF, click on the small down arrow next to the <strong>Knit</strong> button. Select “Knit to PDF.”</p></li>
-</ol>
-<p>As you can see, you have the option to “Knit to Word” but the political science community has recently turned on Word. As such, you are discouraged from knitting to Word, unless otherwise noted.</p>
-</div>
-<div id="create-Github" class="section level2">
-<h2><span class="header-section-number">2.5</span> Creating a Github Account</h2>
-<p>Github is a website that hosts software development and version control via Git. While you are welcome to use Github alternatives to host your open-source projects in the future, this class will use Github.</p>
-<ol style="list-style-type: decimal">
-<li><p>Create an account on <a href="https://github.com/">Github</a>.</p></li>
-<li><p>With the <a href="https://education.github.com/pack">GitHub Student Developer Pack</a>, students get <a href="https://education.github.com/discount_requests/student_application">Github Pro</a> and many other computing tools for free. You will need to use your university email address to apply, but the application process only took me a few minutes. Review the full list of <a href="https://docs.github.com/en/github/getting-started-with-github/githubs-products#github-pro">Github Pro features here</a>.</p></li>
-</ol>
-</div>
-<div id="setup-Git" class="section level2">
-<h2><span class="header-section-number">2.6</span> Setting Up Git</h2>
-<p>Git is a version-control system for tracking changes. Initially, software developers were the main users of Git. But lately, people of all stripes have adopted Git into their workflow. Git is especially useful for collaborative work because you will be able to identify information about edits to a file, including what changed, who made the change, and when the perrson made the change. Git is useful for solo work as well because it beats saving your document as a new document whenever you make a change. Visit <a href="https://git-scm.com/">the official Git website</a> to learn more about Git.</p>
-<p>The official Git website has a helpful guide on <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">installing Git</a> for your operating system. I don’t think I can improve on their existing guidance other than the fact that I do <em>not</em> recommend that you download from the source.</p>
-</div>
-<div id="RStudio-Github" class="section level2">
-<h2><span class="header-section-number">2.7</span> Connecting RStudio to Git and Github</h2>
-<p>Much of this section is indebted to <a href="https://happygitwithr.com/rstudio-git-github.html">Happy Git and GitHub for the useR</a> page on integrating RStudio with Git and Github.</p>
-<p>Since I spend the better part of my life in RStudio, I want it to be able to connect to everything, including Git and Github. You are welcome to use <a href="https://www.sourcetreeapp.com/">SourceTree</a> and other Git clients, but I prefer to consolidate all my work into my trusty RStudio environment due to convenience/laziness. As such, my lectures will simply assume that you use Github and RStudio and not their alternatives. Of course, you are welcome to expore the alternatives in your free time. In fact, I highly recommend that you do so because I want you to end up with a workflow that works for you. The good news is, once you start familiarizing yourself with these basic building blocks, other tools will be easier to pick up.</p>
-<div id="say-hello-to-git-on-rstudio" class="section level3">
-<h3><span class="header-section-number">2.7.1</span> Say hello to git on RStudio</h3>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/terminal.png" alt="" />
-<p class="caption">terminal tab</p>
-</div>
-<p><em>Terminal tab in RStudio.</em></p>
-<ol style="list-style-type: decimal">
-<li><p>Click on the Terminal tab in RStudio.</p></li>
-<li><p>Enter the following commands into the Terminal (i.e., also known as “the shell”) and click “Enter.” You may copy and paste all three lines at once then click “Enter,” or type each line one by one, clicking “Enter” each time you need to start a new line.</p></li>
-</ol>
-<pre><code>git config --global user.name &#39;Your Name&#39;
-git config --global user.email &#39;yourgithub@email.com&#39;
-git config --global --list</code></pre>
-<p>You have “introduced” yourself to Git. Hopefully this is the beginning of a beautiful friendship.</p>
-</div>
-<div id="create-a-repository" class="section level3">
-<h3><span class="header-section-number">2.7.2</span> Create a repository</h3>
-<ol start="3" style="list-style-type: decimal">
-<li><p>Go to the main <a href="https://github.com">Github</a> site and make sure you are logged in. On the main page, click on the green “New” button on the right sidebar to create a new repository on Github.</p></li>
-<li><p>On the “Create a new repository” page, enter the following:</p>
-<ul>
-<li>Repository name: <code>ps811-exercises</code></li>
-<li>Description (optional): You can enter some description here about your folder, such as “assignments for ps811”</li>
-<li>Select “Public” for now, though you do have the option for “Private” for future repositories.</li>
-<li>Check “Add a README file.”</li>
-</ul></li>
-<li><p>Click on the “Create repository” button.</p></li>
-</ol>
-<p>Your repository has been created.</p>
-</div>
-<div id="connect-github-to-rstudio-the-fun-part" class="section level3">
-<h3><span class="header-section-number">2.7.3</span> Connect Github to RStudio (the fun part)</h3>
-<p>The process technically <em>clones</em> the Github repository to your computer, but so much of the magic happens in RStudio that it <em>feels</em> that I am connecting Github to RStudio.</p>
-<ol start="6" style="list-style-type: decimal">
-<li><p>Go to RStudio. Go to File &gt; New Project.</p></li>
-<li><p>Select “Version Control.”</p></li>
-<li><p>Select “Git.”</p></li>
-<li><p>Go to Github. Find the Git repository that you created in Step 5.</p></li>
-<li><p>Click on the “Code” button (in green). Copy and paste the URL under “Clone with HTTPS.” The URL will end in .git, e.g., <code>https://github.com/marcyshieh/ps811.git</code>.</p>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/new_project.png" alt="" />
-<p class="caption">git pane</p>
-</div>
-<p><em>New project pop-up form.</em></p></li>
-<li><p>Go back to RStudio and fill out the following:</p>
-<ul>
-<li>Repository URL: The .git URL you copied in Step 10.</li>
-<li>Project directory name: This will default to whatever you named your Github repository. You can change it, or you can keep it the same for consistency (or, so you won’t be confused).</li>
-<li>Create project as a subdirectory of: Find the directory on <em>your computer</em> that you want this copy of your Github repository to live in.</li>
-</ul></li>
-<li><p>Check the “Open in New Session” box so you can have your projects (and misc non-project files) in different RStudio windows, but this is not necessary.</p></li>
-<li><p>Click “Create Project.”</p></li>
-</ol>
-</div>
-</div>
-<div id="work-git" class="section level2">
-<h2><span class="header-section-number">2.8</span> Working with Git on RStudio</h2>
-<p>You should see all the files from your Github repository in the RStudio file browser pane. This means that everything has been <em>cloned</em> from your Github repository to your computer or, in other words, downloaded.</p>
-<div id="how-does-this-all-work" class="section level3">
-<h3><span class="header-section-number">2.8.1</span> How does this all work?</h3>
-<ol start="2" style="list-style-type: decimal">
-<li><p>In the file browser pane, open <code>README.md</code>.</p></li>
-<li><p>Type in whatever you want in the file. A joke, the name of your celebrity crush, your favorite <em>Riverdale</em> character. Whatever you want, as long as it’s not rude and/or incendiary.</p></li>
-<li><p>Save the file.</p>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/git_pane.png" alt="" />
-<p class="caption">the git pane</p>
-</div>
-<p><em>The Git pane.</em></p></li>
-<li><p>Click on the Git tab on the upper right pane.</p></li>
-</ol>
-<p>The Git tab only shows up once you create an RStudio Project.</p>
-<ol start="6" style="list-style-type: decimal">
-<li><p>You will see that the <code>README.md</code> filepath you just edited show up under the Git tab. The Status will be a “M,” which stands for “Modified.”</p></li>
-<li><p>Check the “Staged” box.</p></li>
-<li><p>Click Commit.</p></li>
-<li><p>The “RStudio: Review Changes” window will appear as a pop-up. Essentially, this allows you to validate whether or not you want to <em>push</em> the changes you made on your computer to your Github repository.</p></li>
-<li><p>Type a coherent commit message into the “Commit message” box.</p></li>
-<li><p>Click “Push.”</p></li>
-<li><p>A “Git Commit” pop-up will appear, with a message that kind of looks like this:</p></li>
-</ol>
-<pre><code>&gt;&gt; git commit -F blahblahblah.txt
-[master beded87] edit edit
-1 file changed, 49 insertions(+), 2 deletions(-)</code></pre>
-<div id="review-changes-deep-dive" class="section level4">
-<h4><span class="header-section-number">2.8.1.1</span> Review changes deep-dive</h4>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/commit_message.png" alt="" />
-<p class="caption">3 panes</p>
-</div>
-<p><em>The 3 panes of RStudio: Review Changes.</em></p>
-<p>There are 3 panes, which I will introduce in clockwork order:</p>
-<p><strong>Pane 1</strong> The files you changed.</p>
-<p><strong>Pane 2</strong> Commit messsage textbox. Here, you write some notes on what you changed. I am personally <em>horrible</em> at writing commit messages because I get impatient and lazy—I honestly just want to write, “I changed some stuff”—but that really negates the whole purpose, doesn’t it? So let’s make it our goal to get better at writing commit messages.</p>
-<p><strong>Pane 3</strong> The large pane on the bottom that show the changes you made. New additions are in gray, deletions are in red, and replacements are in green. You have the options of “stage chunk” or “discard chunk” for each gray, red, and green highlight.</p>
-<ul>
-<li>Stage chunk: You will be confirming the change and pushing the change out to the Github repository.</li>
-<li>Discard chunk: You will NOT be confirming the change annd you will NOT be pushing the change out to the Github repository.</li>
-<li>You may also “Stage All” or “Discard All.”</li>
-</ul>
-</div>
-</div>
-<div id="check-if-things-happened-as-expected" class="section level3">
-<h3><span class="header-section-number">2.8.2</span> Check if things happened as expected</h3>
-<ol start="13" style="list-style-type: decimal">
-<li><p>Return to your browser, go to <a href="https://github.com">Github</a>, and find your repository. If you never left your repository, click “Refresh” on your browser.</p></li>
-<li><p>Click on the README.md file—though, to be honest, your Github repository defaults to the README file when you land on the repository. But click on it anyway.</p></li>
-<li><p>On this page, you can see who contributes to the file (it should be you for now) and when it was last udpated.</p>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/history.png" alt="" />
-<p class="caption">history</p>
-</div>
-<p><em>Github repository history</em></p></li>
-</ol>
-<p>The “History” button allows you to see who last updated the file, when, and which client they used to update the file. For each “commit,” there are three icons (from left to right): a clipboard, an ID number, angle brackets.</p>
-<ul>
-<li>Clipboard: This copies the <a href="https://en.wikipedia.org/wiki/SHA-1">SHA-1</a> and puts it on your clipboard. I wouldn’t worry too much about it.</li>
-<li>ID number: This takes you to the gray, red, and green highlights that indicated the changes at the time of the commit.</li>
-<li>Angle brackets: This takes you to the repository at the time of the commit. A time machine, basically.</li>
-</ul>
-<div id="viewing-history-in-rstudio" class="section level4">
-<h4><span class="header-section-number">2.8.2.1</span> Viewing history in RStudio</h4>
-<p>You may also view the history in RStudio.</p>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/git-history-rstudio.png" alt="" />
-<p class="caption">history-rstudio</p>
-</div>
-<p><em>How to access History in RStudio.</em></p>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/git-history-rstudio-window.png" alt="" />
-<p class="caption">history-window</p>
-</div>
-<p><em>Window featuring Git History in RStudio.</em></p>
-</div>
-<div id="deleting-the-repository" class="section level4">
-<h4><span class="header-section-number">2.8.2.2</span> Deleting the Repository</h4>
-<p>If, for any reason, you would like to delete your repository, you should follow the steps below.</p>
-<p><strong>Local</strong> Find the directory on your computer and delete it like you would delete any normal folder.</p>
-<p><strong>Github</strong> Go to the browser, go to Github, find your repository, and click “Settings” on the top repository-specific menu. Scroll all the way to the bottom and click on the “Delete this repository” button, then follow the instructions.</p>
+<div id="analysis" class="section level1">
+<h1><span class="header-section-number">10</span> Analysis</h1>
+<p>In this lecture, you will learn how to do basic linear regressions in R.</p>
+<div id="load-packages" class="section level2">
+<h2><span class="header-section-number">10.1</span> Load packages</h2>
+<p>Here are some packages you will need for this lesson.</p>
+<pre><code># load package
+library(&quot;here&quot;)
+library(&quot;haven&quot;)
 
+# here are some useful data analysis packages
+library(&quot;Rmisc&quot;)
+library(&quot;magrittr&quot;)
+library(&quot;tidyverse&quot;)
+library(&quot;ggplot2&quot;)
+library(&quot;broom&quot;)
+library(&quot;MASS&quot;)
+library(&quot;estimatr&quot;)
+library(&quot;modelsummary&quot;)</code></pre>
 </div>
+<div id="load-data" class="section level2">
+<h2><span class="header-section-number">10.2</span> Load data</h2>
+<p>In this lesson, we will be using the <a href="https://electionstudies.org/data-center/2016-time-series-study/">American National Election Survey (ANES) 2016 dataset</a>. The ANES is a nationally representative dataset of eligible voters in the U.S. fielded by the University of Michigan before and after every presidential election to gauge what Americans thought about major issues.</p>
+<p>Using the <code>here</code> package, you can set up folders and directories.</p>
+<pre><code># setup folders and directories
+here(&quot;code&quot;)
+here(&quot;data&quot;)
+
+# read stata data in R
+anes2016 &lt;- read_dta(here(&quot;data&quot;, &quot;anes_timeseries_2016.dta&quot;))</code></pre>
+</div>
+<div id="rename-variables" class="section level2">
+<h2><span class="header-section-number">10.3</span> Rename variables</h2>
+<p>Many of the variables in the ANES are just gibberish code. For example:</p>
+<pre><code># DV: V162034: POST: Did R vote for President
+# IV: V162256: PRE: R&#39;s interest in politics
+# control: V161019: PRE: party of registration</code></pre>
+<p>You may want to change your variables of interests to names that are easier to reference.</p>
+<pre><code># these names are hard to remember, so you can change them
+anes2016$post.vote &lt;- anes2016$V162034
+anes2016$pre.interest &lt;- anes2016$V162256
+anes2016$pre.party &lt;- anes2016$V161019
+anes2016$pre.registered &lt;- anes2016$V161011a
+anes2016$pre.gender &lt;- anes2016$V161342</code></pre>
+</div>
+<div id="descriptive-analysis" class="section level2">
+<h2><span class="header-section-number">10.4</span> Descriptive analysis</h2>
+<p>For non-regression analysis, we may just want to look at the confidence intervals. To do this, we can use the <code>group.CI()</code> command. Since we are not grouping post.vote, we just put “1” instead of an actual group.</p>
+<p>Note that <code>&gt;</code> precedes R commands. If you want to run the line in R, please remove <code>&gt;</code>.</p>
+<pre><code># since we are not grouping post.vote, we just put &quot;1&quot; instead of an actual group
+
+&gt; group.CI(post.vote ~ 1, data = anes2016)
+  post.vote.upper post.vote.mean post.vote.lower
+1         1.01874       1.014286        1.009832</code></pre>
+<p>To group the <code>post.vote</code> variable by <code>pre.gender</code>, we can do the following…</p>
+<pre><code># now grouping vote for president...
+
+&gt; groupCI_anes &lt;- group.CI(post.vote ~ pre.gender, data = anes2016)
+&gt; groupCI_anes
+  pre.gender post.vote.upper post.vote.mean post.vote.lower
+1         -9        1.000000       1.000000        1.000000
+2          1        1.023858       1.016746        1.009635
+3          2        1.018220       1.012483        1.006745
+4          3        1.000000       1.000000        1.000000</code></pre>
+<div id="descriptive-graph" class="section level3">
+<h3><span class="header-section-number">10.4.1</span> Descriptive graph</h3>
+<p>Since this is a dataframe so you can turn it into a graph pretty easily.</p>
+<pre><code># this is a dataframe so you can turn it into a graph pretty easily
+ggplot(groupCI_anes, aes(x = as.factor(pre.gender), y = post.vote.mean)) + 
+  geom_pointrange(aes(ymin = post.vote.lower, ymax = post.vote.upper)) +
+  theme(panel.grid.minor = element_blank())</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture9-img/ggplot-groupCI.png" alt="" />
+<p class="caption">ggplot-groupCI</p>
+</div>
+</div>
+</div>
+<div id="data-summary" class="section level2">
+<h2><span class="header-section-number">10.5</span> Data summary</h2>
+<p>The <a href="this%20is%20a%20dataframe%20so%20you%20can%20turn%20it%20into%20a%20graph%20pretty%20easily"><code>modelsummary</code> package</a> includes a powerful suite of data summary tools. It has many tools that can create the tables you often see in published articles.</p>
+<p>You may want to look at each varaible by category. Let’s use the <code>iris</code> dataset because there are fewer varibles…the ANES has too many variables and may not make the best example…</p>
+<pre><code>datasummary_skim(iris)</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture9-img/datasummary-skim-iris.png" alt="" />
+<p class="caption">datasummary-skim-iris</p>
+</div>
+<p>You can also look at the correlation between the variables.</p>
+<pre><code>datasummary_correlation(iris)</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture9-img/datasummary-correlation-iris.png" alt="" />
+<p class="caption">datasummary-correlation-iris</p>
+</div>
+</div>
+<div id="regression-analysis" class="section level2">
+<h2><span class="header-section-number">10.6</span> Regression analysis</h2>
+<p>For all your data analysis needs in R, I ghihly recommend that you check out the <a href="https://stats.idre.ucla.edu/other/dae/">UCLA data analysis page</a>. If you ever want to know whether you can use a particular regression or how to use a particular regression, go to the UCLA stats page! It is super helpful.</p>
+<p>If you don’t know how to find what you are looking for, just type “[name of regression or type of dependent variable] UCLA R data analysis” into Google.</p>
+<p>If the options provided to you on the UCLA stats page are confusing, you should use it as a stepping stone to search for something that is easier to understand or suit your needs better.</p>
+<div id="linear-regression" class="section level3">
+<h3><span class="header-section-number">10.6.1</span> Linear regression</h3>
+<p>Run a simple <a href="https://en.wikipedia.org/wiki/Ordinary_least_squares">ordinary least squared regression</a>. The left-hand side is always the dependent variable (outcome), and the right-hand side should contain the independent variable and control variables.</p>
+<p>You typically use an OLS when their dependent variable is continuous &amp; unbounded. There are some arguments that you can use OLS for binary dependent variable in experiment, as Gerber and Green (2012) argue that the average treatment effect (ATE) is unbiased.</p>
+<p>If you ever doubt your use of OLS, you should check out <a href="ttps://www.albert.io/blog/key-assumptions-of-ols-econometrics-review/">OLS assumptions</a> and <a href="https://www.theanalysisfactor.com/dependent-variables-never-meet-normality/">consider your dependnet variables</a>.</p>
+<p>For the sake of creating examples, I might be violating some assumptions and not thinking about the variables carefully.</p>
+<p>You should think about your tests carefully in your own work and if you do want to use something that’s not the norm, you should make sure that you justify your case. One great way to do this is cite other people’s work that you’re borrowing from, or conduct some sort of validation mechanism.</p>
+<pre><code>ols &lt;-
+  anes2016 %&gt;%
+  lm(post.vote ~ pre.interest + pre.party, data = .)</code></pre>
+<p>Look at the regression table.</p>
+<pre><code>&gt; summary(ols)
+
+Call:
+lm(formula = post.vote ~ pre.interest + pre.party, data = .)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.02985 -0.01699 -0.01430 -0.01181  0.99338 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  1.002978   0.005224 192.011   &lt;2e-16 ***
+pre.interest 0.005182   0.002323   2.231   0.0258 *  
+pre.party    0.001536   0.001235   1.244   0.2136    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.1186 on 2727 degrees of freedom
+Multiple R-squared:  0.002354,	Adjusted R-squared:  0.001622 
+F-statistic: 3.217 on 2 and 2727 DF,  p-value: 0.04021</code></pre>
+</div>
+<div id="diagnostic-plots" class="section level3">
+<h3><span class="header-section-number">10.6.2</span> Diagnostic plots</h3>
+<p>Look at the diagnostic plots for residuals, fitted values, Cook’s distance, and leverage. It is important to look at diagnostic plots so you can figure out if there are data points that might influence your results.</p>
+<pre><code>opar &lt;- par(mfrow = c(2,2), oma = c(0, 0, 1.1, 0))
+plot(ols, las = 1)
+par(opar)</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture9-img/opar.png" alt="" />
+<p class="caption">opar</p>
+</div>
+<p>You can use a simple base R command to examine the observations. You can see where these respondents are from, etc. and see why their observations are out of the norm.</p>
+<p>For example, I want to see if they are all from the same state (<code>V161010d</code> is the state variable).</p>
+<pre><code>&gt; anes2016[c(1884, 1918, 2464, 2458), &quot;V161010d&quot;]
+# A tibble: 4 x 1
+               V161010d
+              &lt;dbl+lbl&gt;
+1 42 [42. Pennsylvania]
+2 47 [47. Tennessee]   
+3 39 [39. Ohio]        
+4 34 [34. New Jersey]  </code></pre>
+</div>
+<div id="linear-regression-with-standard-errors" class="section level3">
+<h3><span class="header-section-number">10.6.3</span> Linear regression with standard errors</h3>
+<p>Robust standard errors are useful in social sciences where you don’t know the structure of the variations. So to get unnbiased standard errors for OLS, you want to insert your regression into <code>lm_robust</code>. Learn more about the command <a href="https://www.rdocumentation.org/packages/estimatr/versions/0.26.0/topics/lm_robust">here</a>.</p>
+<p>Note that the UCLA page suggests <code>rlm()</code> but I think <code>lm_robust</code> is easier to use.</p>
+<pre><code>&gt; lm_robust(post.vote ~ pre.interest + pre.party, data = anes2016)
+                Estimate  Std. Error    t value   Pr(&gt;|t|)      CI Lower
+(Intercept)  1.002977920 0.004447216 225.529416 0.00000000  0.9942576670
+pre.interest 0.005182496 0.002366346   2.190084 0.02860257  0.0005424841
+pre.party    0.001535810 0.001336292   1.149308 0.25052992 -0.0010844361
+                CI Upper   DF
+(Intercept)  1.011698172 2727
+pre.interest 0.009822509 2727
+pre.party    0.004156056 2727</code></pre>
+</div>
+<div id="logit-regression" class="section level3">
+<h3><span class="header-section-number">10.6.4</span> Logit regression</h3>
+<p>You may want to use a generalized linear model if your dependent variable contains binary outcomes.</p>
+<p>You may want to first check the <a href="https://www.rdocumentation.org/packages/estimatr/versions/0.26.0/topics/lm_robust">“family” of distributions</a> of your outcome using a histogram. I like to use base R for this so I can quickly eyeball the distribution of the data.</p>
+<pre><code>hist(anes2016$post.vote)</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture9-img/hist-before.png" alt="" />
+<p class="caption">hist-before</p>
+</div>
+<p>The data is a bit of a mess. You may want to only keep the respondents who either voted or did not vote.</p>
+<pre><code>anes2016 &lt;-
+  anes2016 %&gt;%
+  filter(post.vote == 1 | post.vote == 2)</code></pre>
+<p>You can look at the histogram again.</p>
+<pre><code>hist(anes2016$post.vote)</code></pre>
+<p>Annoyingly, <code>1</code> = voted for president and <code>2</code> = did not vote for president. Grrr…</p>
+<p>Many binary variables are not perfectly <code>0</code> and <code>1</code> unless you convert it. I personally like to create a new variable if I am modifying an existing variable (so I always have the original variable around in case I need to go back and check something).</p>
+<pre><code>anes2016 &lt;-
+  anes2016 %&gt;%
+  mutate(
+    post.vote.binary = ifelse(post.vote == 1, 1, 0))</code></pre>
+<pre><code>hist(anes2016$post.vote.binary)</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture9-img/hist-after.png" alt="" />
+<p class="caption">hist-after</p>
+</div>
+<p>Now it is <code>1</code> = voted for president and <code>2</code> = did not vote for president. Yay!</p>
+<p>For the gender variable, you may convert it to only look at the women vote. For a dataset like the ANES, the survey does not take into careful consideration of gender issues, but other surveys—and hopefully your own—take it into account. But one aspect of representative voting that people are interested in, and that a representative dataset like the ANES is able to evaluate, is how <em>women</em> vote. One way to do this is to convert the gender variable to “woman” or “not woman.”</p>
+<p>Here, if <code>pre.gender</code> == 2, then the respondent is a woman. From this variable, you want to create a variable for respondents who identify as women.</p>
+<pre><code>anes2016 &lt;-
+  anes2016 %&gt;%
+  mutate(
+    pre.female = ifelse(pre.gender == 2, 1, 0))</code></pre>
+<p>Now, you want to know if identifying as female makes a respondent more likely to vote for president. Since <code>pre.female</code> is a binary variable, you will want to use a GLM.</p>
+<pre><code>logit &lt;- glm(post.vote.binary ~ pre.female, family = binomial, data = anes2016)</code></pre>
+<p>Then, you want to look at the regression table.</p>
+<pre><code>&gt; summary(logit)
+
+Call:
+glm(formula = post.vote.binary ~ pre.female, family = binomial, 
+    data = anes2016)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.9609   0.1585   0.1585   0.1813   0.1813  
+
+Coefficients:
+            Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)   4.0999     0.2200  18.634   &lt;2e-16 ***
+pre.female    0.2710     0.3235   0.838    0.402    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 408.82  on 2729  degrees of freedom
+Residual deviance: 408.12  on 2728  degrees of freedom
+AIC: 412.12
+
+Number of Fisher Scoring iterations: 7</code></pre>
+<p>You may ask yourself, “How do I transfer my regression table into R Markdown??”</p>
+<p>Let me introduce you to the <code>stargazer</code> package. Here is the best <a href="https://www.jakeruss.com/cheatsheets/stargazer/">Stargazer tutorial</a>.</p>
+<p>Install and load <code>stargazer</code>.</p>
+<pre><code>install.packages(&quot;stargazer&quot;)
+library(stargazer)</code></pre>
+<p>First off, stargazer makes your tables look NICE.</p>
+<pre><code>stargazer(logit, type = &quot;text&quot;,
+          # you can customize the labels
+          title            = &quot;Effect of gender on voting for president&quot;,
+          covariate.labels = c(&quot;Female&quot;),
+          dep.var.labels   = &quot;Voted for president&quot;)</code></pre>
+<p>This is a nice <code>stargazer</code> text table. It kinda looks like you ripped it out of a published journal!</p>
+<pre><code>Effect of gender on voting for president
+=============================================
+                      Dependent variable:    
+                  ---------------------------
+                      Voted for president    
+---------------------------------------------
+Female                       0.271           
+                            (0.324)          
+                                             
+Constant                   4.100***          
+                            (0.220)          
+                                             
+---------------------------------------------
+Observations                 2,730           
+Log Likelihood             -204.059          
+Akaike Inf. Crit.           412.119          
+=============================================
+Note:             *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+<p>But how do you insert this into your R Markdown document?</p>
+<p>Well, you will want to print it as a LaTeX table because R Markdown has built-in tex options. I think tex is nicer for formatting and typesetting, but R markdown is more convenient (I think!).</p>
+<p>Remove the beginning hashtags <code>#</code> in the code…</p>
+<pre><code># ```{r, results=&#39;asis&#39;}
+stargazer(logit, type=&#39;latex&#39;,
+          title            = &quot;Effect of gender on voting for president&quot;,
+          covariate.labels = c(&quot;Female&quot;),
+          dep.var.labels   = &quot;Voted for president&quot;,
+          # you can cite the package in your References section, but it might be frustrating to see a citation every time you run stargazer...but you can just set it to header = FALSE and everything is okay
+          header = FALSE)
+# ```</code></pre>
+<p>You’ll need to do this for your homework assignment!</p>
+<p>Now, you can create a second regression with some controls…</p>
+<pre><code># V165510: age group
+# V165511: education</code></pre>
+<p>In reality, you should clean the variables like I did with the vote and gender variables.</p>
+<pre><code>logit2 &lt;- glm(post.vote.binary ~ pre.female + V165510 + V165511, family = binomial, data = anes2016)
+# check out the table</code></pre>
+<p>Here’s the GLM summary table.</p>
+<pre><code>&gt; summary(logit2)
+
+Call:
+glm(formula = post.vote.binary ~ pre.female + V165510 + V165511, 
+    family = binomial, data = anes2016)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-3.0468   0.1590   0.1601   0.1817   0.2058  
+
+Coefficients:
+            Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)   4.1517     0.2530  16.412   &lt;2e-16 ***
+pre.female    0.2688     0.3236   0.831    0.406    
+V165510       0.1548     0.3269   0.473    0.636    
+V165511      -0.1266     0.2767  -0.458    0.647    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 408.82  on 2729  degrees of freedom
+Residual deviance: 407.89  on 2726  degrees of freedom
+AIC: 415.89
+
+Number of Fisher Scoring iterations: 7</code></pre>
+<p>Personally I like seeing the table in R first before I put it in R Markdown, but this is a matter of personal taste.</p>
+<pre><code>stargazer(logit, logit2, type=&#39;text&#39;,
+          title            = &quot;Effect of gender on voting for president&quot;,
+          covariate.labels = c(&quot;Female&quot;, &quot;Age&quot;, &quot;Education&quot;),
+          dep.var.labels   = &quot;Voted for president&quot;,
+          header = FALSE)</code></pre>
+<p>This is how it looks…</p>
+<pre><code>Effect of gender on voting for president
+==============================================
+                      Dependent variable:     
+                  ----------------------------
+                      Voted for president     
+                       (1)            (2)     
+----------------------------------------------
+Female                0.271          0.269    
+                     (0.324)        (0.324)   
+                                              
+Age                                  0.155    
+                                    (0.327)   
+                                              
+Education                           -0.127    
+                                    (0.277)   
+                                              
+Constant             4.100***      4.152***   
+                     (0.220)        (0.253)   
+                                              
+----------------------------------------------
+Observations          2,730          2,730    
+Log Likelihood       -204.059      -203.945   
+Akaike Inf. Crit.    412.119        415.890   
+==============================================
+Note:              *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+<p>For log odds in a GLM table, you may want to convert the coefficients into odds ratios so they’re easier to interpret. To do this, I recommend <a href="https://cimentadaj.github.io/blog/2016-08-22-producing-stargazer-tables-with-odds-ratios-and-standard-errors-in-r/producing-stargazer-tables-with-odds-ratios-and-standard-errors-in-r/">Jorge Cimentada’s nifty function</a>.</p>
+<p>I like tables but there are people out there who do not like tables. To appease society, you can use <a href="https://cran.r-project.org/web/packages/coefplot/coefplot.pdf"><code>coefplots</code> package</a> or the tools in the <code>modelsummary</code> package. Here is an example of plotting coefficient plots in the <code>modelsummary</code> package.</p>
+<pre><code>modelplot(ols)
+# change variable names on coefplot
+vars &lt;- c(&#39;pre.interest&#39; = &#39;Interest&#39;,
+        &#39;pre.party&#39; = &#39;Party&#39;)</code></pre>
+<p>Now for the graph…</p>
+<pre><code># ta-da!
+modelplot(ols, coef_map = vars)</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture9-img/modelsummary-coefplot.png" alt="" />
+<p class="caption">modelsummary-coefplot</p>
+</div>
+
 </div>
 </div>
 </div>
@@ -478,8 +597,8 @@ git config --global --list</code></pre>
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="workflow.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="graphics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tools.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

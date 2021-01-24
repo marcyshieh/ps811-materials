@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Setting Up | Introduction to Statistical Computing in Political Science</title>
+  <title>9 Graphics | Introduction to Statistical Computing in Political Science</title>
   <meta name="description" content="This bookdown book contains materials for PS811." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Setting Up | Introduction to Statistical Computing in Political Science" />
+  <meta property="og:title" content="9 Graphics | Introduction to Statistical Computing in Political Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Setting Up | Introduction to Statistical Computing in Political Science" />
+  <meta name="twitter:title" content="9 Graphics | Introduction to Statistical Computing in Political Science" />
   
   <meta name="twitter:description" content="This bookdown book contains materials for PS811." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="workflow.html"/>
+<link rel="prev" href="data-manipulation.html"/>
+<link rel="next" href="analysis.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -243,231 +243,367 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="setting-up" class="section level1">
-<h1><span class="header-section-number">2</span> Setting Up</h1>
-<p>In this lecture, you will learn how to knit a document in R Markdown and use basic Git functions.</p>
-<div id="install-R" class="section level2">
-<h2><span class="header-section-number">2.1</span> Installing R</h2>
-<p>R is a statistical programming language that is widely used in the discipline. Go to the <a href="https://www.r-project.org/">R official website</a> to learn more about the software.</p>
-<p>These instructions will help you download R on to your operating system.</p>
-<ol style="list-style-type: decimal">
-<li><p>Go to list of <a href="https://cran.r-project.org/mirrors.html">CRAN mirrors</a>. A “mirror” is essentially a distribution site for the software.</p></li>
-<li><p>Select your preferred CRAN mirror. I recommend that you select the mirror closest to your current location. For example, if you are in Madison, WI, you should consider picking the mirror located at University of Michigan, though any of the midwestern universities will do.</p></li>
-<li><p>Select the download for your operating system.</p></li>
-</ol>
+<div id="graphics" class="section level1">
+<h1><span class="header-section-number">9</span> Graphics</h1>
+<p>In this lecture, you will learn how to create graphics in R.</p>
+<p>You can create graphics using both base R functions or the <code>ggplot2</code> R package. Personally, I like to use base R functions to preview my graphs, but I use <code>ggplot2</code> for graphs I want to show to the masses.</p>
+<p>Here are some packages that we will use for this lesson.</p>
+<pre><code>library(&quot;here&quot;)
+library(&quot;readxl&quot;) # read excel data in R
+library(&quot;countrycode&quot;)</code></pre>
+<p>And let’s refer to some files and folders.</p>
+<pre><code># setup folders and directories
+here(&quot;data&quot;)
+here(&quot;code&quot;)</code></pre>
+<div id="i-am-going-to-pay-lip-service-to-the-comparativists" class="section level2">
+<h2><span class="header-section-number">9.1</span> I am going to pay lip service to the comparativists…</h2>
+<p>By now, students of comparative politics students are probably familiar with the Correlates of War (CoW) and Polity IV datasets. These are extremely popular datasets that scholars tends to use separately or in tandem. If you ever do want to use them in tandem, you are in luck! Because they are so popular, there is already an R package that allows you to merge the two datasets painlessly.</p>
+<p>And Americanists: it’s good to know about the flagship datasets in other subfields. It makes you a well-rounded scholar.</p>
+<p>First, download the CoW <a href="https://correlatesofwar.org/data-sets/national-material-capabilities">national mateiral capabilities dataset</a> and Polity IV <a href="http://www.systemicpeace.org/inscrdata.html">coup d’etat dataset</a>. Then, load them into R.</p>
+<p>Please download the codebooks as well. You should always download the codebooks or bookmark an online version if they’re available.</p>
+<pre><code># read excel data in R: coup data
+# http://www.systemicpeace.org/inscrdata.html
+coups_polity &lt;- read_excel(here(&quot;data&quot;, &quot;CSPCoupsListv2018.xls&quot;))
+
+# read csv file in R: national trade data
+# https://correlatesofwar.org/data-sets/bilateral-trade
+power_cow &lt;- read.csv(here(&quot;data&quot;, &quot;NMC_v4_0.csv&quot;))</code></pre>
+<p>You have installed the <code>countrycode</code> R package earlier in the lesson. Now it is time to use it. Here, you basically want to make sure the country IDs fo reach dataset “link” together. Many datasets label their countries differently–some with numbers, some with abbreviations, some with different abbreviations. Think of this linking exercise in this logical sequence: A = B, B = B, B = C.</p>
+<p>In the example below, we can see that the Polity <code>scode</code> variable is equal to the <code>p4c</code> variable in the <code>countrycode</code> package. We want to link Polity data to CoW numeric data, which is in the CoW dataset we downloaded. Once we merge the Polity ID to the CoW ID, we can merge the coup and trade datasets and use that common ID to link to a country name.</p>
+<pre><code>coups_polity$p4c &lt;- countrycode(coups_polity$scode, origin = &quot;p4c&quot;, destination = &quot;cown&quot;)
+
+power_cow$cown &lt;- countrycode(power_cow$ccode, origin = &quot;cown&quot;, destination = &quot;cown&quot;)
+
+coups_power &lt;- merge(coups_polity, power_cow, id=&quot;cown&quot;)
+
+coups_power$country &lt;- countrycode(coups_power$cown, origin = &quot;cown&quot;, destination = &quot;country.name&quot;)</code></pre>
+<p>As a sanity check—and because these datasets aren’t that big anyway—I’d like to <code>View()</code> my dataset in R and look at their variable <code>names()</code>.</p>
+<pre><code># view the dataset
+View(coups_power)
+
+# look at the variable names
+names(coups_power)</code></pre>
 </div>
-<div id="install-Rstudio" class="section level2">
-<h2><span class="header-section-number">2.2</span> Installing RStudio</h2>
-<p>RStudio is an integrated environment for R. If R is the engine, RStudio is the car. You can use the engine without the car, but you cannot drive the the car without the engine. In other words, you will not be able to use RStudio if you have not yet downloaded R. Always download R first. Go to the <a href="https://rstudio.com/">RStudio official website</a> to learn more about the software.</p>
-<p>These instructions will help you download RStudio on to your operating system.</p>
+<div id="base-r-graphs" class="section level2">
+<h2><span class="header-section-number">9.2</span> base R graphs</h2>
+<p>Sometimes you want to look at the distribution of a particular variable or the correlation of two variables, so you want a quick and dirty function that allows you to do those things, without having to think too much about other stuff. That’s where base R graphs can be useful.</p>
+<div id="scatter-plots" class="section level3">
+<h3><span class="header-section-number">9.2.1</span> Scatter plots</h3>
+<p>To learn more about scatterplots, review the <a href="http://www.sthda.com/english/wiki/scatter-plots-r-base-graphs">STHDA tutorial</a>.</p>
+<p>So say for some reason, we want to answer the question: Does a higher urban population lead to a higher total population? (This is a random question with no theoretical backing. I don’t know anything about these datasets.)</p>
+<p>We want to define our X (urban population) and Y (total population).</p>
+<pre><code>x &lt;- coups_power$upop
+y &lt;- coups_power$tpop</code></pre>
+<p>You want to use the <code>plot()</code> command to create a scatterplot. Let’s break it down.</p>
 <ol style="list-style-type: decimal">
-<li><p>Go to the <a href="https://rstudio.com/products/rstudio/download/">Download RStudio</a> page.</p></li>
-<li><p>Click on the “Download” button" for RStudio Desktop Open Source Licnse Free.</p></li>
-<li><p>Click on the “Download RStudio for [your OS]” button. The website should be detect which version of RStudio that you need to download.</p></li>
+<li><p>You have already defined <code>x</code> and <code>y</code> in the previous two lines of code.</p></li>
+<li><p><code>main</code> defines the title of the graph.</p></li>
+<li><p><code>xlab</code> and <code>ylab</code> are the labels for the x and y axes.</p></li>
+<li><p><code>pch</code> are plot symbols. You can obtain the full list of plot symbols at <a href="http://www.sthda.com/english/wiki/r-plot-pch-symbols-the-different-point-shapes-available-in-r">STHDA</a>.</p></li>
+<li><p><code>frame = TRUE</code> creates a box around the graph. If <code>frame = FALSE</code>, the box disappears.</p></li>
+<li><p><code>abline(lm(y ~ x, data = coups_power), col = "blue")</code> adds a blue regression line.</p></li>
 </ol>
+<pre><code>plot(x, y, main = &quot;Effect of urban population on total population&quot;,
+     xlab = &quot;urban population&quot;, ylab = &quot;total population&quot;,
+     pch = 19, frame = TRUE)
+abline(lm(y ~ x, data = coups_power), col = &quot;blue&quot;)</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/base-scatter.png" alt="" />
+<p class="caption">base-scatter</p>
 </div>
-<div id="install-latex" class="section level2">
-<h2><span class="header-section-number">2.3</span> Installing LaTeX</h2>
-<p>LaTeX is a software system for document prepartion. While we will not focus on LaTeX functionalities in this class, you will need to download it to compile R Markdown documents. Go to the <a href="https://www.latex-project.org/">LaTeX official website</a> to learn more about the software.</p>
-<p>If, for any reason, you would like to learn LaTeX, I would recommend opening an <a href="https://www.overleaf.com">Overleaf</a> account and leveraging their <a href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes">step-by-step tutorial</a>. While this course will primarily focus on teaching you how to write and generate your documents in R Markdown, you may encounter collaborators who use LaTeX. The good news is that R Markdown is pretty similar to LaTeX, so the skills are definitely transferrable.</p>
-<p>These instructions will help you download LaTeX on to your operating system.</p>
+</div>
+<div id="box-plots" class="section level3">
+<h3><span class="header-section-number">9.2.2</span> Box plots</h3>
+<p>You want to create a boxplot of the variable the counts the number of successful coups.</p>
+<pre><code># Box plot of one variable: success of coups
+boxplot(coups_power$success)</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/base-boxplot.png" alt="" />
+<p class="caption">base-boxplot</p>
+</div>
+</div>
+<div id="bar-plots" class="section level3">
+<h3><span class="header-section-number">9.2.3</span> Bar plots</h3>
+<p>Now we can create a simple barplot of the number of successful coups.</p>
+<pre><code>barplot(coups_power$success)</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/base-barplot.png" alt="" />
+<p class="caption">base-barplot</p>
+</div>
+<p>Well, that doesn’t look too great. Why don’t you plop the counts into a table instead?</p>
+<pre><code>barplot(table(coups_power$success))</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/base-barplot-table.png" alt="" />
+<p class="caption">base-barplot-table</p>
+</div>
+<p>You can even consider looking at the number of successful coups per year.</p>
+<pre><code>barplot(table(coups_power$success, coups_power$year))</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/base-barplot-xtable.png" alt="" />
+<p class="caption">base-barplot-xtable</p>
+</div>
+</div>
+<div id="line-plots" class="section level3">
+<h3><span class="header-section-number">9.2.4</span> Line plots</h3>
+<p>Instead of pre-defining the X and Y variables like we did for the scatterplots, we can directly plop the X and Y variables into the <code>plot()</code> function. Let’s review the different components.</p>
 <ol style="list-style-type: decimal">
-<li><p>Scroll to the third section of the <a href="https://www.latex-project.org/get/">Get</a> page where you see download options for Linux, MacOS, Windows, and Online.</p></li>
-<li><p>Select your operating system.</p>
+<li><code>type</code> indicates the type of line. So <code>type = l</code> indicates a <em>line</em>, and <code>type = p</code> indicates <em>points</em>. Quick-R has a <a href="https://www.statmethods.net/graphs/line.html">list of type values</a>.</li>
+</ol>
+<pre><code>plot(coups_power$year, coups_power$success, type = &quot;l&quot;, lty = 1)</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/base-lineplot.png" alt="" />
+<p class="caption">base-lineplot</p>
+</div>
+</div>
+<div id="histogram-and-density-plots" class="section level3">
+<h3><span class="header-section-number">9.2.5</span> Histogram and density plots</h3>
+<p>You can also create a histogram of the number of successful coups. You can also specify the <code>breaks</code> by <a href="https://rstudio-pubs-static.s3.amazonaws.com/291013_43f602f67dfa4e4e82c4410b17bdfb11.html">indicating the algorithm</a> you prefer.</p>
+<pre><code>hist(coups_power$success, breaks = &quot;Sturges&quot;)</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/base-hist.png" alt="" />
+<p class="caption">base-hist</p>
+</div>
+</div>
+<div id="pie-charts" class="section level3">
+<h3><span class="header-section-number">9.2.6</span> Pie charts</h3>
+<p>I’m not going to teach how to create a pie chart. There is extensive documentation on the Internet about why pie charts are evil. Look them up. In any case, social scientists are not fans of pie charts. Do not be surprised if you create a pie chart and someone tells you to change it into a bar plot. If you somehow learn how to create a pie chart in R, I just want it to be on the record that you did not learn it from me.</p>
+</div>
+</div>
+<div id="world-of-ggplot2" class="section level2">
+<h2><span class="header-section-number">9.3</span> World of <code>ggplot2</code></h2>
+<p>The <code>gg</code> in <code>ggplot2</code> apparently stands for “grammar of graphics.” This sounds way too hifaluten for me to actually explain, but essentially, it is a package that abides by a certain structure. <em>What structure?</em> you may ask. Well, there are components of a <code>ggplot2</code> graph that you will see all the time, not unlike prepositions or punctuations in the English language.</p>
+<p>If you are curious about the nitty gritty theory of graphic-building, Hadley Wickham’s <a href="http://byrneslab.net/classes/biol607/readings/wickham_layered-grammar.pdf">“A Layered Grammar of Graphics”</a> (Wickham created <code>ggplot2</code>) might make a good nightcap.</p>
+<p>In general, I highly recommend looking at the <a href="https://ggplot2.tidyverse.org/index.html">official ggplot2 website</a> because they do a pretty good job explaining everything. If you care about making things look pretty, I would point you to <a href="https://www.r-graph-gallery.com/">the R Gallery</a> for some <code>ggplot2</code> inspo.</p>
+<p>I am also indebted to <a href="http://r-statistics.co/Complete-Ggplot2-Tutorial-Part1-With-R-Code.html">Selva Prabhakaran</a> and <a href="https://mikedecr.github.io/courses/811/811-04-graphics/">Mike DeCrescenzo</a> for their excellent tutorials.</p>
+<div id="load-packages" class="section level3">
+<h3><span class="header-section-number">9.3.1</span> Load packages</h3>
+<pre><code>library(&quot;magrittr&quot;)
+library(&quot;tidyverse&quot;)
+library(&quot;ggplot2&quot;)
+library(&quot;scales&quot;)</code></pre>
+</div>
+<div id="load-dataset" class="section level3">
+<h3><span class="header-section-number">9.3.2</span> Load dataset</h3>
+<p>The truth is, you’re probably not going to write a <code>ggplot2</code> graph from scratch because you’re not a machine. You’re probably going to copy and paste the code from the Internet or an old .R file. The goal of this lesson is to help you learn how to recycle the <code>ggplot2</code> structure so you can customize it to your intended use. In short, I just want you to understand what to do with a <code>ggplot2</code> structure and mold it into something you can use.</p>
+</div>
+<div id="components" class="section level3">
+<h3><span class="header-section-number">9.3.3</span> Components</h3>
+<p>Here are some <code>ggplot2</code> components that you need to know. We’ll revisit them again and discuss how to use them, but here’s a general overview.</p>
 <ul>
-<li><p>For MacOS users, you should download <a href="http://www.tug.org/mactex/">MacTeX</a>. You may access <a href="http://www.tug.org/mactex/mactex-download.html">step-by-step instructions here</a>.</p></li>
-<li><p>For Windows users, the website suggests that you download MikTeX, proTeXt, or TeX Live. There is a <a href="https://tex.stackexchange.com/questions/239199/latex-distributions-what-are-their-main-differences">StackExchange post</a> discussing these options and then some. It appears like most people recommend <a href="http://tug.org/texlive/">TeX Live</a>.</p></li>
-</ul></li>
-</ol>
-</div>
-<div id="knit-RMarkdown" class="section level2">
-<h2><span class="header-section-number">2.4</span> Knitting R Markdown Files</h2>
-<ol style="list-style-type: decimal">
-<li><p>Open RStudio.</p></li>
-<li><p>Click on File &gt; New File.</p></li>
-<li><p>Select R Markdown.</p>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/new_r_markdown.png" alt="" />
-<p class="caption">new rmarkdown</p>
-</div>
-<p><em>When you set up a new R Markdown file.</em></p></li>
-<li><p>Make sure the sidebar is set to “Document.”</p></li>
-<li><p>Enter in the title of the document in the “Title” field and your name in the “Author” field.</p></li>
-<li><p>Select HTML as the “Default Output Format” option for now. We will discuss how to output your file in PDF as well later in the lesson.</p></li>
-<li><p>An R Markdown document (with the extension .Rmd) will appear. It will be called Untitled1.Rmd. R Markdown has a default template in place every time you create a new R Markdown document.</p>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/knit.png" alt="" />
-<p class="caption">the knit button</p>
-</div>
-<p><em>The Knit button.</em></p></li>
-<li><p>As you have selected HTML as the <em>default</em> output format, when you click the <strong>Knit</strong> button (it is the icon with a little ball of yarn and needle), it will automatically output the document as a HTML. Prior to outputing the HTML file, however, it will ask you to rename the file to something other than Untitled1.Rmd, which you should certainly do.</p>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/viewer.png" alt="" />
-<p class="caption">viewer tab</p>
-</div>
-<p><em>HTML file in the viewer tab.</em></p></li>
-<li><p>The HTML file will appear on the “Viewer” tab. To open the actual document, click on the button with the arrow pointing to the top right corner.</p></li>
-<li><p>To output the same document as a PDF, click on the small down arrow next to the <strong>Knit</strong> button. Select “Knit to PDF.”</p></li>
-</ol>
-<p>As you can see, you have the option to “Knit to Word” but the political science community has recently turned on Word. As such, you are discouraged from knitting to Word, unless otherwise noted.</p>
-</div>
-<div id="create-Github" class="section level2">
-<h2><span class="header-section-number">2.5</span> Creating a Github Account</h2>
-<p>Github is a website that hosts software development and version control via Git. While you are welcome to use Github alternatives to host your open-source projects in the future, this class will use Github.</p>
-<ol style="list-style-type: decimal">
-<li><p>Create an account on <a href="https://github.com/">Github</a>.</p></li>
-<li><p>With the <a href="https://education.github.com/pack">GitHub Student Developer Pack</a>, students get <a href="https://education.github.com/discount_requests/student_application">Github Pro</a> and many other computing tools for free. You will need to use your university email address to apply, but the application process only took me a few minutes. Review the full list of <a href="https://docs.github.com/en/github/getting-started-with-github/githubs-products#github-pro">Github Pro features here</a>.</p></li>
-</ol>
-</div>
-<div id="setup-Git" class="section level2">
-<h2><span class="header-section-number">2.6</span> Setting Up Git</h2>
-<p>Git is a version-control system for tracking changes. Initially, software developers were the main users of Git. But lately, people of all stripes have adopted Git into their workflow. Git is especially useful for collaborative work because you will be able to identify information about edits to a file, including what changed, who made the change, and when the perrson made the change. Git is useful for solo work as well because it beats saving your document as a new document whenever you make a change. Visit <a href="https://git-scm.com/">the official Git website</a> to learn more about Git.</p>
-<p>The official Git website has a helpful guide on <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">installing Git</a> for your operating system. I don’t think I can improve on their existing guidance other than the fact that I do <em>not</em> recommend that you download from the source.</p>
-</div>
-<div id="RStudio-Github" class="section level2">
-<h2><span class="header-section-number">2.7</span> Connecting RStudio to Git and Github</h2>
-<p>Much of this section is indebted to <a href="https://happygitwithr.com/rstudio-git-github.html">Happy Git and GitHub for the useR</a> page on integrating RStudio with Git and Github.</p>
-<p>Since I spend the better part of my life in RStudio, I want it to be able to connect to everything, including Git and Github. You are welcome to use <a href="https://www.sourcetreeapp.com/">SourceTree</a> and other Git clients, but I prefer to consolidate all my work into my trusty RStudio environment due to convenience/laziness. As such, my lectures will simply assume that you use Github and RStudio and not their alternatives. Of course, you are welcome to expore the alternatives in your free time. In fact, I highly recommend that you do so because I want you to end up with a workflow that works for you. The good news is, once you start familiarizing yourself with these basic building blocks, other tools will be easier to pick up.</p>
-<div id="say-hello-to-git-on-rstudio" class="section level3">
-<h3><span class="header-section-number">2.7.1</span> Say hello to git on RStudio</h3>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/terminal.png" alt="" />
-<p class="caption">terminal tab</p>
-</div>
-<p><em>Terminal tab in RStudio.</em></p>
-<ol style="list-style-type: decimal">
-<li><p>Click on the Terminal tab in RStudio.</p></li>
-<li><p>Enter the following commands into the Terminal (i.e., also known as “the shell”) and click “Enter.” You may copy and paste all three lines at once then click “Enter,” or type each line one by one, clicking “Enter” each time you need to start a new line.</p></li>
-</ol>
-<pre><code>git config --global user.name &#39;Your Name&#39;
-git config --global user.email &#39;yourgithub@email.com&#39;
-git config --global --list</code></pre>
-<p>You have “introduced” yourself to Git. Hopefully this is the beginning of a beautiful friendship.</p>
-</div>
-<div id="create-a-repository" class="section level3">
-<h3><span class="header-section-number">2.7.2</span> Create a repository</h3>
-<ol start="3" style="list-style-type: decimal">
-<li><p>Go to the main <a href="https://github.com">Github</a> site and make sure you are logged in. On the main page, click on the green “New” button on the right sidebar to create a new repository on Github.</p></li>
-<li><p>On the “Create a new repository” page, enter the following:</p>
-<ul>
-<li>Repository name: <code>ps811-exercises</code></li>
-<li>Description (optional): You can enter some description here about your folder, such as “assignments for ps811”</li>
-<li>Select “Public” for now, though you do have the option for “Private” for future repositories.</li>
-<li>Check “Add a README file.”</li>
-</ul></li>
-<li><p>Click on the “Create repository” button.</p></li>
-</ol>
-<p>Your repository has been created.</p>
-</div>
-<div id="connect-github-to-rstudio-the-fun-part" class="section level3">
-<h3><span class="header-section-number">2.7.3</span> Connect Github to RStudio (the fun part)</h3>
-<p>The process technically <em>clones</em> the Github repository to your computer, but so much of the magic happens in RStudio that it <em>feels</em> that I am connecting Github to RStudio.</p>
-<ol start="6" style="list-style-type: decimal">
-<li><p>Go to RStudio. Go to File &gt; New Project.</p></li>
-<li><p>Select “Version Control.”</p></li>
-<li><p>Select “Git.”</p></li>
-<li><p>Go to Github. Find the Git repository that you created in Step 5.</p></li>
-<li><p>Click on the “Code” button (in green). Copy and paste the URL under “Clone with HTTPS.” The URL will end in .git, e.g., <code>https://github.com/marcyshieh/ps811.git</code>.</p>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/new_project.png" alt="" />
-<p class="caption">git pane</p>
-</div>
-<p><em>New project pop-up form.</em></p></li>
-<li><p>Go back to RStudio and fill out the following:</p>
-<ul>
-<li>Repository URL: The .git URL you copied in Step 10.</li>
-<li>Project directory name: This will default to whatever you named your Github repository. You can change it, or you can keep it the same for consistency (or, so you won’t be confused).</li>
-<li>Create project as a subdirectory of: Find the directory on <em>your computer</em> that you want this copy of your Github repository to live in.</li>
-</ul></li>
-<li><p>Check the “Open in New Session” box so you can have your projects (and misc non-project files) in different RStudio windows, but this is not necessary.</p></li>
-<li><p>Click “Create Project.”</p></li>
-</ol>
-</div>
-</div>
-<div id="work-git" class="section level2">
-<h2><span class="header-section-number">2.8</span> Working with Git on RStudio</h2>
-<p>You should see all the files from your Github repository in the RStudio file browser pane. This means that everything has been <em>cloned</em> from your Github repository to your computer or, in other words, downloaded.</p>
-<div id="how-does-this-all-work" class="section level3">
-<h3><span class="header-section-number">2.8.1</span> How does this all work?</h3>
-<ol start="2" style="list-style-type: decimal">
-<li><p>In the file browser pane, open <code>README.md</code>.</p></li>
-<li><p>Type in whatever you want in the file. A joke, the name of your celebrity crush, your favorite <em>Riverdale</em> character. Whatever you want, as long as it’s not rude and/or incendiary.</p></li>
-<li><p>Save the file.</p>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/git_pane.png" alt="" />
-<p class="caption">the git pane</p>
-</div>
-<p><em>The Git pane.</em></p></li>
-<li><p>Click on the Git tab on the upper right pane.</p></li>
-</ol>
-<p>The Git tab only shows up once you create an RStudio Project.</p>
-<ol start="6" style="list-style-type: decimal">
-<li><p>You will see that the <code>README.md</code> filepath you just edited show up under the Git tab. The Status will be a “M,” which stands for “Modified.”</p></li>
-<li><p>Check the “Staged” box.</p></li>
-<li><p>Click Commit.</p></li>
-<li><p>The “RStudio: Review Changes” window will appear as a pop-up. Essentially, this allows you to validate whether or not you want to <em>push</em> the changes you made on your computer to your Github repository.</p></li>
-<li><p>Type a coherent commit message into the “Commit message” box.</p></li>
-<li><p>Click “Push.”</p></li>
-<li><p>A “Git Commit” pop-up will appear, with a message that kind of looks like this:</p></li>
-</ol>
-<pre><code>&gt;&gt; git commit -F blahblahblah.txt
-[master beded87] edit edit
-1 file changed, 49 insertions(+), 2 deletions(-)</code></pre>
-<div id="review-changes-deep-dive" class="section level4">
-<h4><span class="header-section-number">2.8.1.1</span> Review changes deep-dive</h4>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/commit_message.png" alt="" />
-<p class="caption">3 panes</p>
-</div>
-<p><em>The 3 panes of RStudio: Review Changes.</em></p>
-<p>There are 3 panes, which I will introduce in clockwork order:</p>
-<p><strong>Pane 1</strong> The files you changed.</p>
-<p><strong>Pane 2</strong> Commit messsage textbox. Here, you write some notes on what you changed. I am personally <em>horrible</em> at writing commit messages because I get impatient and lazy—I honestly just want to write, “I changed some stuff”—but that really negates the whole purpose, doesn’t it? So let’s make it our goal to get better at writing commit messages.</p>
-<p><strong>Pane 3</strong> The large pane on the bottom that show the changes you made. New additions are in gray, deletions are in red, and replacements are in green. You have the options of “stage chunk” or “discard chunk” for each gray, red, and green highlight.</p>
-<ul>
-<li>Stage chunk: You will be confirming the change and pushing the change out to the Github repository.</li>
-<li>Discard chunk: You will NOT be confirming the change annd you will NOT be pushing the change out to the Github repository.</li>
-<li>You may also “Stage All” or “Discard All.”</li>
+<li><p><code>data</code>: the data source that you are using to grab variables from to put on the graph</p></li>
+<li><p><code>aesthetics</code>: how your graph should look like (e.g., colors)</p></li>
+<li><p><code>geoms</code>: how you want to plot your graph (e.g, line, points, bargraph)</p></li>
+<li><p><code>scale</code>: how you want to present your graph (e.g., by color, which axes)</p></li>
+<li><p><code>coordinates</code>: what kind of plane you are plotting (for the purpose of not being confusing, we are going to use the x and y coordinates)</p></li>
+<li><p><code>facets</code>: split up your graph into different categories</p></li>
+<li><p><code>theme</code>: change font size, font color, etc.</p></li>
 </ul>
 </div>
-</div>
-<div id="check-if-things-happened-as-expected" class="section level3">
-<h3><span class="header-section-number">2.8.2</span> Check if things happened as expected</h3>
-<ol start="13" style="list-style-type: decimal">
-<li><p>Return to your browser, go to <a href="https://github.com">Github</a>, and find your repository. If you never left your repository, click “Refresh” on your browser.</p></li>
-<li><p>Click on the README.md file—though, to be honest, your Github repository defaults to the README file when you land on the repository. But click on it anyway.</p></li>
-<li><p>On this page, you can see who contributes to the file (it should be you for now) and when it was last udpated.</p>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/history.png" alt="" />
-<p class="caption">history</p>
-</div>
-<p><em>Github repository history</em></p></li>
+<div id="create-plot" class="section level3">
+<h3><span class="header-section-number">9.3.4</span> Create plot</h3>
+<p>Create a plot with <code>ggplot2</code>.</p>
+<ol style="list-style-type: decimal">
+<li><p>You put everything in the command <code>ggplot()</code>.</p></li>
+<li><p><code>data</code> allows you to refer to your dataset and in this case, it is <code>power_cow</code>.</p></li>
+<li><p>Within the <code>aes</code> command, you put in your X and Y variables. In this case, the x-axis is <code>year</code> and the y-axis is <code>milex</code> (military expenditures).</p></li>
 </ol>
-<p>The “History” button allows you to see who last updated the file, when, and which client they used to update the file. For each “commit,” there are three icons (from left to right): a clipboard, an ID number, angle brackets.</p>
+<pre><code># milex: military expenditures
+ggplot(data = power_cow, aes(x = year, y = milex))</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/ggplot-create.png" alt="" />
+<p class="caption">ggplot-create</p>
+</div>
+<p>You’ve created the plot. But it’s not populated…</p>
+</div>
+<div id="populate-plot" class="section level3">
+<h3><span class="header-section-number">9.3.5</span> Populate plot</h3>
+<p>You want to “color in the lines” and decide how to populate the graph.</p>
+<div id="dot-plot" class="section level4">
+<h4><span class="header-section-number">9.3.5.1</span> Dot plot</h4>
 <ul>
-<li>Clipboard: This copies the <a href="https://en.wikipedia.org/wiki/SHA-1">SHA-1</a> and puts it on your clipboard. I wouldn’t worry too much about it.</li>
-<li>ID number: This takes you to the gray, red, and green highlights that indicated the changes at the time of the commit.</li>
-<li>Angle brackets: This takes you to the repository at the time of the commit. A time machine, basically.</li>
+<li><code>geom_point</code>: create a dot plot</li>
 </ul>
-<div id="viewing-history-in-rstudio" class="section level4">
-<h4><span class="header-section-number">2.8.2.1</span> Viewing history in RStudio</h4>
-<p>You may also view the history in RStudio.</p>
+<pre><code>ggplot(data = power_cow, aes(x = milper, y = milex)) +
+  geom_point()</code></pre>
 <div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/git-history-rstudio.png" alt="" />
-<p class="caption">history-rstudio</p>
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/ggplot-point.png" alt="" />
+<p class="caption">ggplot-point</p>
 </div>
-<p><em>How to access History in RStudio.</em></p>
+</div>
+<div id="fit-a-line" class="section level4">
+<h4><span class="header-section-number">9.3.5.2</span> Fit a line</h4>
+<p>You can also fit a regression line on your plot. Notice that, instead of <code>lm</code>, you use <code>geom_smooth</code> and define the <code>method</code> to use to create your line. All options are on the <a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">ggplot2 smoothed conditional means page</a>, under the methods definition.</p>
+<pre><code>ggplot(data = power_cow, aes(x = milper, y = milex)) +
+  geom_point() +
+  geom_smooth(method=&quot;lm&quot;)</code></pre>
 <div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/git-history-rstudio-window.png" alt="" />
-<p class="caption">history-window</p>
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/ggplot-point-lm.png" alt="" />
+<p class="caption">ggplot-point-lm</p>
 </div>
-<p><em>Window featuring Git History in RStudio.</em></p>
+<p>You can also turn your <code>ggplot</code> into an object.</p>
+<pre><code>g &lt;- ggplot(power_cow, aes(x = milper, y = milex)) + geom_point() + geom_smooth(method=&quot;lm&quot;)</code></pre>
+<p>Then you can access the <code>ggplot</code> by just referring to the object <code>g</code>.</p>
+<pre><code>g</code></pre>
 </div>
-<div id="deleting-the-repository" class="section level4">
-<h4><span class="header-section-number">2.8.2.2</span> Deleting the Repository</h4>
-<p>If, for any reason, you would like to delete your repository, you should follow the steps below.</p>
-<p><strong>Local</strong> Find the directory on your computer and delete it like you would delete any normal folder.</p>
-<p><strong>Github</strong> Go to the browser, go to Github, find your repository, and click “Settings” on the top repository-specific menu. Scroll all the way to the bottom and click on the “Delete this repository” button, then follow the instructions.</p>
+</div>
+<div id="aesthetics" class="section level3">
+<h3><span class="header-section-number">9.3.6</span> Aesthetics</h3>
+<p>You can control how your plot looks in ggplot. Of course, you can do this with base R as well, but ggplot is much more versatile with what you can do with your graph.</p>
+<div id="labels" class="section level4">
+<h4><span class="header-section-number">9.3.6.1</span> Labels</h4>
+<pre><code>g + labs(title=&quot;Military Personnel and Expenditures&quot;, subtitle=&quot;From power COW dataset&quot;, y=&quot;Expenditures&quot;, x=&quot;Personnel&quot;, caption=&quot;Military&quot;)</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/ggplot-scatter-labels.png" alt="" />
+<p class="caption">ggplot-scatter-labels</p>
+</div>
+</div>
+<div id="colors" class="section level4">
+<h4><span class="header-section-number">9.3.6.2</span> Colors</h4>
+<p>Be careful. Color-blind people hate colors. People with colorblindness have a difficult time reading graphs with too many colors/too many similar colors. Please consider reading about <a href="https://jfly.uni-koeln.de/color/">best practices</a> when it comes to using colors in a way that is accessible to all people.</p>
+<p>There are <a href="these%20palettes%20are%20supposedly%20colorblind-friendly">some palettes</a> that are supposedly colorblind-friendly. I cannot attest to their effectiveness. In general, you should try to use black and white as much as possible just because your paper will likely bepublished in black and white. Colors can be fun for presentations, but not always useful otherwise.</p>
+<div id="change-color-and-size-of-points" class="section level5">
+<h5><span class="header-section-number">9.3.6.2.1</span> Change color and size of points</h5>
+<pre><code>ggplot(power_cow, aes(x = milper, y = milex)) + 
+  # Set color and size for points
+  # here are some colors (starts from page 2): http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf
+  geom_point(col=&quot;steelblue&quot;, size=3) + 
+  geom_smooth(method=&quot;lm&quot;, col=&quot;firebrick&quot;) +  # change the color of line
+  labs(title=&quot;Military Personnel and Expenditures&quot;, subtitle=&quot;From power COW dataset&quot;, y=&quot;Expenditures&quot;, x=&quot;Personnel&quot;, caption=&quot;Military&quot;)</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/ggplot-point-size-color.png" alt="" />
+<p class="caption">ggplot-point-size-color</p>
+</div>
+<p>You may also change colors to reflect the category in another variable.</p>
+<pre><code>ggplot(power_cow, aes(x = milper, y = milex)) + 
+  geom_point(aes(col=year), size=3) + 
+  # Set color to vary based on state categories.
+  geom_smooth(method=&quot;lm&quot;, col=&quot;firebrick&quot;, size=2) +
+  labs(title=&quot;Military Personnel and Expenditures&quot;, subtitle=&quot;From power COW dataset&quot;, y=&quot;Expenditures&quot;, x=&quot;Personnel&quot;, caption=&quot;Military&quot;)</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/ggplot-point-year-gradient.png" alt="" />
+<p class="caption">ggplot-point-year-gradient</p>
+</div>
+<p>Notice how the year is a gradient. You may want to change it into factors…</p>
+<pre><code>ggplot(power_cow, aes(x = milper, y = milex)) + 
+  geom_point(aes(col=factor(year)), size=3) + 
+  # Set color to vary based on state categories.
+  geom_smooth(method=&quot;lm&quot;, col=&quot;firebrick&quot;, size=2) +
+  labs(title=&quot;Military Personnel and Expenditures&quot;, subtitle=&quot;From power COW dataset&quot;, y=&quot;Expenditures&quot;, x=&quot;Personnel&quot;, caption=&quot;Military&quot;)</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/ggplot-point-toomanyyears.png" alt="" />
+<p class="caption">ggplot-point-toomanyyears</p>
+</div>
+<p>You may notice that there are just too many years. Instead, you may want to filter to the last five years in the dataset. You can do this by leveraging your data manipulation skills.</p>
+<pre><code>power_cow2 &lt;- dplyr::filter(power_cow, year == 1995:2000)
+power_cow2</code></pre>
+<p>Now you can plot a slightly less annoying graph.</p>
+<ul>
+<li>by doing <code>factor(year)</code>, I am grouping the points together by year.</li>
+</ul>
+<pre><code># I turned it into an object so we can play around with it later...
+gg2 &lt;- ggplot(power_cow2, aes(x = milper, y = milex)) + 
+  geom_point(aes(col=factor(year)), size=3) + 
+  geom_smooth(method=&quot;lm&quot;, col=&quot;firebrick&quot;, size=2) +
+  labs(title=&quot;Military Personnel and Expenditures&quot;, subtitle=&quot;From power COW dataset&quot;, y=&quot;Expenditures&quot;, x=&quot;Personnel&quot;, caption=&quot;Military&quot;)
+  
+# check out the graph-object
+gg2</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/ggplot-factor-years.png" alt="" />
+<p class="caption">ggplot-factor-years</p>
+</div>
+<p>You may also change the color schemes if you’re not happy with it. You can use the <code>RColorBrewer</code> package. All the palettes in the library are <a href="http://applied-r.com/rcolorbrewer-palettes/#:~:text=RColorBrewer%20is%20an%20R%20packages,data%2C%20dark%20for%20high%20data">available here</a>. There are also many other palette packages you can find on the web.</p>
+<pre><code>library(RColorBrewer)
+gg2 + scale_colour_brewer(palette = &quot;Set1&quot;)</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/ggplot-year-colorbrewer.png" alt="" />
+<p class="caption">ggplot-year-colorbrewer</p>
+</div>
+</div>
+</div>
+<div id="bar-graphs" class="section level4">
+<h4><span class="header-section-number">9.3.6.3</span> Bar graphs</h4>
+<ul>
+<li><p><code>geom_bar</code>: you want to create a bar graph this time so you are going to use <code>geom_bar</code></p></li>
+<li><p><code>stat = 'identity'</code>: sums the number of military expenditures per year</p></li>
+<li><p><code>scale_y_continuous(labels = scales::comma)</code>: tells the graph to create a y-axis that has labels separated by commas. For more options. review <a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">ggplot2’s guide on position scales for continuous data</a>.</p></li>
+</ul>
+<pre><code>ggplot(power_cow2, aes(x=factor(year), y=milex, label=milex)) + 
+  geom_bar(stat=&#39;identity&#39;, width=.5) +
+  labs(title=&quot;Military Expenditures by Year&quot;, subtitle=&quot;Around the world&quot;, y=&quot;Expenditures ($)&quot;, x=&quot;Year&quot;) +
+  scale_y_continuous(labels = scales::comma)</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/ggplot-bargraph.png" alt="" />
+<p class="caption">ggplot-bargraph</p>
+</div>
+</div>
+<div id="faceting" class="section level4">
+<h4><span class="header-section-number">9.3.6.4</span> Faceting</h4>
+<p>What if I want to separate my graphs by states (i.e., countries)? You can use <code>facet_wrap</code>. You can use facets to put your graphs in a grid. Review the <a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">ggplot2 guide on facets</a> for more information.</p>
+<pre><code>ggplot(power_cow2, aes(x=factor(year), y=milex, label=milex)) + 
+  geom_bar(stat=&#39;identity&#39;, width=.5) +
+  labs(title=&quot;Military Expenditures by Year&quot;, subtitle=&quot;Around the world&quot;, y=&quot;Expenditures ($)&quot;, x=&quot;Year&quot;) +
+  scale_y_continuous(labels = scales::comma) +
+  facet_wrap(~ stateabb)</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/ggplot-facetwrap.png" alt="" />
+<p class="caption">ggplot-facetwrap</p>
+</div>
+<p>Sigh, but the x-axis looks ugly and I can’t read it. Why don’t we rotate it?</p>
+<ul>
+<li><code>angle = 90</code>: rotate it by 90 degrees</li>
+<li><code>hjust</code>: horizontal justification (right-justified) if 1; left-justified if hjust = 0</li>
+</ul>
+<pre><code>ggplot(power_cow2, aes(x=factor(year), y=milex, label=milex)) + 
+  geom_bar(stat=&#39;identity&#39;, width=.5) +
+  labs(title=&quot;Military Expenditures by Year&quot;, subtitle=&quot;Around the world&quot;, y=&quot;Expenditures ($)&quot;, x=&quot;Year&quot;) +
+  scale_y_continuous(labels = scales::comma) +
+  facet_wrap(~ stateabb) +
+  theme(axis.text.x=element_text(angle=90, hjust=1))</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/ggplot-facetwrap-rotate.png" alt="" />
+<p class="caption">ggplot-facetwrap-rotate</p>
+</div>
+<p>This is a lot to digest…</p>
+<p>We can do some more tweaking…</p>
+<ul>
+<li><p><code>scale_y_continuous</code>: you can <a href="https://stackoverflow.com/questions/52602503/display-an-axis-value-in-millions-in-ggplot">change the scale</a> to 0, 10, 20, 30 M</p></li>
+<li><p><code>theme(axis.text.x=element_text(angle=90, hjust=1, size = 4))</code>: <code>size = 4</code> is the size of the font in the x-axis</p></li>
+</ul>
+<pre><code>ggplot(power_cow2, aes(x=stateabb, y=milex, label=milex)) + 
+  geom_bar(stat=&#39;identity&#39;, width=.5) +
+  labs(title=&quot;Military Expenditures by Year&quot;, subtitle=&quot;Around the world&quot;, y=&quot;Expenditures ($)&quot;, x=&quot;Year&quot;) +
+  scale_y_continuous(labels = unit_format(unit = &quot;M&quot;, scale = 1e-6)) +
+  facet_wrap(~ year) +
+  theme(axis.text.x=element_text(angle=90, hjust=1, size = 4))</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/ggplot-facetwrap-yaxis.png" alt="" />
+<p class="caption">ggplot-facetwrap-yaxis</p>
+</div>
+<p>You can play around with the y-axis even more…</p>
+<p>We can:
+* <code>scale_y_log10</code>: <a href="https://scales.r-lib.org/">rescale</a> the y-axis to “zoom in” more
+* this is when we take a log10 of the y values
+* many people handle expenditures in the millions
+* logarithms are an easier (and clearer) way to express large numbers</p>
+<ul>
+<li>we are using <code>facet_wrap</code> again but you may use <code>facet_grid(var1 ~ var2)</code> if you have data and want to split the graph into more categories (e.g., year ~ gender)</li>
+</ul>
+<pre><code>ggplot(power_cow2, aes(x=stateabb, y=milex, label=milex)) + 
+  geom_bar(stat=&#39;identity&#39;, width=.5) +
+  labs(title=&quot;Military Expenditures by Year&quot;, subtitle=&quot;Around the world&quot;, y=&quot;Expenditures ($)&quot;, x=&quot;Year&quot;) +
+  scale_y_log10(labels = scales::label_number_si()) +
+  facet_wrap(~ year) +
+  theme(axis.text.x=element_text(angle=90, hjust=1, size = 4))</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/ggplot-facetwrap-year.png" alt="" />
+<p class="caption">ggplot-facetwrap-year</p>
+</div>
+<p>The best way to learn ggplot2 is through experience. Trust me on this.</p>
+</div>
+<div id="extensions" class="section level4">
+<h4><span class="header-section-number">9.3.6.5</span> Extensions</h4>
+<p>You can do a bunch of other things with <code>ggplot2</code>, such as creating animated graphs, adding themes to graphs, making your graphs interactive, and so on! I recommend looking at the <a href="https://exts.ggplot2.tidyverse.org/">ggplot2 extensions</a> for a full suite of options.</p>
 
 </div>
 </div>
@@ -478,8 +614,8 @@ git config --global --list</code></pre>
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="workflow.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="data-manipulation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

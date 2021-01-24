@@ -20,7 +20,7 @@ here("data")
 here("code")
 ```
 
-# I am going to pay lip service to the comparativists...
+## I am going to pay lip service to the comparativists...
 
 By now, students of comparative politics students are probably familiar with the Correlates of War (CoW) and Polity IV datasets. These are extremely popular datasets that scholars tends to use separately or in tandem. If you ever do want to use them in tandem, you are in luck! Because they are so popular, there is already an R package that allows you to merge the two datasets painlessly.
 
@@ -62,11 +62,11 @@ View(coups_power)
 names(coups_power)
 ```
 
-# base R graphs
+## base R graphs
 
 Sometimes you want to look at the distribution of a particular variable or the correlation of two variables, so you want a quick and dirty function that allows you to do those things, without having to think too much about other stuff. That's where base R graphs can be useful.
 
-## Scatter plots
+### Scatter plots
 
 To learn more about scatterplots, review the [STHDA tutorial](http://www.sthda.com/english/wiki/scatter-plots-r-base-graphs).
 
@@ -102,7 +102,7 @@ abline(lm(y ~ x, data = coups_power), col = "blue")
 
 ![base-scatter](https://marcyshieh.github.io/ps811/lecture8-img/base-scatter.png)
 
-## Box plots
+### Box plots
 
 You want to create a boxplot of the variable the counts the number of successful coups.
 
@@ -113,7 +113,7 @@ boxplot(coups_power$success)
 
 ![base-boxplot](https://marcyshieh.github.io/ps811/lecture8-img/base-boxplot.png)
 
-## Bar plots
+### Bar plots
 
 Now we can create a simple barplot of the number of successful coups.
 
@@ -139,7 +139,7 @@ barplot(table(coups_power$success, coups_power$year))
 
 ![base-barplot-xtable](https://marcyshieh.github.io/ps811/lecture8-img/base-barplot-xtable.png)
 
-## Line plots
+### Line plots
 
 Instead of pre-defining the X and Y variables like we did for the scatterplots, we can directly plop the X and Y variables into the `plot()` function. Let's review the different components.
 
@@ -152,7 +152,7 @@ plot(coups_power$year, coups_power$success, type = "l", lty = 1)
 ![base-lineplot](https://marcyshieh.github.io/ps811/lecture8-img/base-lineplot.png)
 
 
-## Histogram and density plots
+### Histogram and density plots
 
 You can also create a histogram of the number of successful coups. You can also specify the `breaks` by [indicating the algorithm](https://rstudio-pubs-static.s3.amazonaws.com/291013_43f602f67dfa4e4e82c4410b17bdfb11.html) you prefer.
 
@@ -162,11 +162,11 @@ hist(coups_power$success, breaks = "Sturges")
 
 ![base-hist](https://marcyshieh.github.io/ps811/lecture8-img/base-hist.png)
 
-## Pie charts
+### Pie charts
 
 I'm not going to teach how to create a pie chart. There is extensive documentation on the Internet about why pie charts are evil. Look them up. In any case, social scientists are not fans of pie charts. Do not be surprised if you create a pie chart and someone tells you to change it into a bar plot. If you somehow learn how to create a pie chart in R, I just want it to be on the record that you did not learn it from me.
 
-# World of `ggplot2`
+## World of `ggplot2`
 
 The `gg` in `ggplot2` apparently stands for "grammar of graphics." This sounds way too hifaluten for me to actually explain, but essentially, it is a package that abides by a certain structure. *What structure?* you may ask. Well, there are components of a `ggplot2` graph that you will see all the time, not unlike prepositions or punctuations in the English language.
 
@@ -176,7 +176,7 @@ In general, I highly recommend looking at the [official ggplot2 website](https:/
 
 I am also indebted to [Selva Prabhakaran](http://r-statistics.co/Complete-Ggplot2-Tutorial-Part1-With-R-Code.html) and [Mike DeCrescenzo](https://mikedecr.github.io/courses/811/811-04-graphics/) for their excellent tutorials.
 
-## Load packages
+### Load packages
 
 ```
 library("magrittr")
@@ -185,11 +185,11 @@ library("ggplot2")
 library("scales")
 ```
 
-## Load dataset
+### Load dataset
 
 The truth is, you're probably not going to write a `ggplot2` graph from scratch because you're not a machine. You're probably going to copy and paste the code from the Internet or an old .R file. The goal of this lesson is to help you learn how to recycle the `ggplot2` structure so you can customize it to your intended use. In short, I just want you to understand what to do with a `ggplot2` structure and mold it into something you can use.
 
-## Components
+### Components
 
 Here are some `ggplot2` components that you need to know. We'll revisit them again and discuss how to use them, but here's a general overview.
 
@@ -207,7 +207,7 @@ Here are some `ggplot2` components that you need to know. We'll revisit them aga
 
 * `theme`: change font size, font color, etc.
 
-## Create plot
+### Create plot
 
 Create a plot with `ggplot2`.
 
@@ -226,11 +226,11 @@ ggplot(data = power_cow, aes(x = year, y = milex))
 
 You've created the plot. But it's not populated...
 
-## Populate plot
+### Populate plot
 
 You want to "color in the lines" and decide how to populate the graph.
 
-### Dot plot
+#### Dot plot
 
 * `geom_point`: create a dot plot
 
@@ -241,7 +241,7 @@ ggplot(data = power_cow, aes(x = milper, y = milex)) +
 
 ![ggplot-point](https://marcyshieh.github.io/ps811/lecture8-img/ggplot-point.png)
 
-### Fit a line
+#### Fit a line
 
 You can also fit a regression line on your plot. Notice that, instead of `lm`, you use `geom_smooth` and define the `method` to use to create your line. All options are on the [ggplot2 smoothed conditional means page](https://ggplot2.tidyverse.org/reference/geom_smooth.html), under the methods definition.
 
@@ -265,11 +265,11 @@ Then you can access the `ggplot` by just referring to the object `g`.
 g
 ```
 
-## Aesthetics
+### Aesthetics
 
 You can control how your plot looks in ggplot. Of course, you can do this with base R as well, but ggplot is much more versatile with what you can do with your graph.
 
-### Labels
+#### Labels
 
 ```
 g + labs(title="Military Personnel and Expenditures", subtitle="From power COW dataset", y="Expenditures", x="Personnel", caption="Military")
@@ -277,13 +277,13 @@ g + labs(title="Military Personnel and Expenditures", subtitle="From power COW d
 
 ![ggplot-scatter-labels](https://marcyshieh.github.io/ps811/lecture8-img/ggplot-scatter-labels.png)
 
-### Colors
+#### Colors
 
 Be careful. Color-blind people hate colors. People with colorblindness have a difficult time reading graphs with too many colors/too many similar colors. Please consider reading about [best practices](https://jfly.uni-koeln.de/color/) when it comes to using colors in a way that is accessible to all people.
 
 There are [some palettes](these palettes are supposedly colorblind-friendly) that are supposedly colorblind-friendly. I cannot attest to their effectiveness. In general, you should try to use black and white as much as possible just because your paper will likely bepublished in black and white. Colors can be fun for presentations, but not always useful otherwise.
 
-#### Change color and size of points
+##### Change color and size of points
 
 ```
 ggplot(power_cow, aes(x = milper, y = milex)) + 
@@ -353,7 +353,7 @@ gg2 + scale_colour_brewer(palette = "Set1")
 
 ![ggplot-year-colorbrewer](https://marcyshieh.github.io/ps811/lecture8-img/ggplot-year-colorbrewer.png)
 
-### Bar graphs
+#### Bar graphs
 
 * `geom_bar`: you want to create a bar graph this time so you are going to use `geom_bar`
 
@@ -370,7 +370,7 @@ ggplot(power_cow2, aes(x=factor(year), y=milex, label=milex)) +
 
 ![ggplot-bargraph](https://marcyshieh.github.io/ps811/lecture8-img/ggplot-bargraph.png)
 
-### Faceting
+#### Faceting
 
 What if I want to separate my graphs by states (i.e., countries)? You can use `facet_wrap`. You can use facets to put your graphs in a grid. Review the [ggplot2 guide on facets](https://ggplot2.tidyverse.org/reference/facet_grid.html) for more information.
 
@@ -442,6 +442,6 @@ ggplot(power_cow2, aes(x=stateabb, y=milex, label=milex)) +
 
 The best way to learn ggplot2 is through experience. Trust me on this.
 
-### Extensions
+#### Extensions
 
 You can do a bunch of other things with `ggplot2`, such as creating animated graphs, adding themes to graphs, making your graphs interactive, and so on! I recommend looking at the [ggplot2 extensions](https://exts.ggplot2.tidyverse.org/) for a full suite of options.

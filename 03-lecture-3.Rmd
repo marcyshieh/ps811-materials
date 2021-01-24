@@ -2,7 +2,7 @@
 
 In this lecture, you will learn how to organize a bibliography within your workflow.
 
-# Downloading Zotero {#download-zotero}
+## Downloading Zotero {#download-zotero}
 
 You are going to read a lot of things and cite a lot of things in graduate school. And not only that, you will need to organize all your documents so your prelim studying won't be a mess. 
 
@@ -10,7 +10,7 @@ I recommend using [Zotero](https://zotero.org) to organize your bibliography and
 
 Once you have your folders all set up, you can just drag in a PDF into Zotero. Zotero will generate metainfo from most PDFs that you download from JSTOR or another catalog from the UW-Madison library, but in cases that the metainfo does not show up, Zotero makes it easy for you to enter in the fields yourself.
 
-# Downloading Better Bibtex for Zotero {#download-bbt}
+## Downloading Better Bibtex for Zotero {#download-bbt}
 
 To make sure that you can translate the information from Zotero into information for the reference page in your R Markdown file, you will need to download [Better BibTeX for Zotero (BBT)](https://retorque.re/zotero-better-bibtex/). 
 
@@ -34,7 +34,7 @@ To make sure that you can translate the information from Zotero into information
 
 9. Just upload a PDF copy of a journal article from one of your classes to Zotero.
 
-# Loading the citr package {#load-citr}
+## Loading the citr package {#load-citr}
 
 1. Install the `citr` package in the console.
 

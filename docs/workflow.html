@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Setting Up | Introduction to Statistical Computing in Political Science</title>
+  <title>3 Workflow | Introduction to Statistical Computing in Political Science</title>
   <meta name="description" content="This bookdown book contains materials for PS811." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Setting Up | Introduction to Statistical Computing in Political Science" />
+  <meta property="og:title" content="3 Workflow | Introduction to Statistical Computing in Political Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Setting Up | Introduction to Statistical Computing in Political Science" />
+  <meta name="twitter:title" content="3 Workflow | Introduction to Statistical Computing in Political Science" />
   
   <meta name="twitter:description" content="This bookdown book contains materials for PS811." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="workflow.html"/>
+<link rel="prev" href="setting-up.html"/>
+<link rel="next" href="bibliography.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -243,234 +243,226 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="setting-up" class="section level1">
-<h1><span class="header-section-number">2</span> Setting Up</h1>
-<p>In this lecture, you will learn how to knit a document in R Markdown and use basic Git functions.</p>
-<div id="install-R" class="section level2">
-<h2><span class="header-section-number">2.1</span> Installing R</h2>
-<p>R is a statistical programming language that is widely used in the discipline. Go to the <a href="https://www.r-project.org/">R official website</a> to learn more about the software.</p>
-<p>These instructions will help you download R on to your operating system.</p>
-<ol style="list-style-type: decimal">
-<li><p>Go to list of <a href="https://cran.r-project.org/mirrors.html">CRAN mirrors</a>. A “mirror” is essentially a distribution site for the software.</p></li>
-<li><p>Select your preferred CRAN mirror. I recommend that you select the mirror closest to your current location. For example, if you are in Madison, WI, you should consider picking the mirror located at University of Michigan, though any of the midwestern universities will do.</p></li>
-<li><p>Select the download for your operating system.</p></li>
-</ol>
+<div id="workflow" class="section level1">
+<h1><span class="header-section-number">3</span> Workflow</h1>
+<p>In this lecture, you will learn how to do everything you already do as a scholar but in a more organized and efficient manner. More specifically, you will learn how to do all these things in RStudio.</p>
+<div id="why-create-a-project" class="section level2">
+<h2><span class="header-section-number">3.1</span> Why create a project?</h2>
+<p>You are probably used to storing all your project-related files in a project folder on your computer. And, you may tell yourself that if you wanted to send all the files to your collaborator, you can zip that folder up and upload everything on to your Box or Dropbox. Then your collaborator can unzip that folder, work on some files, and re-upload the files. But then you don’t know which parts she edited unless you read her email, which <em>might</em> be detailed, but also might not be! You want to be prepared for the latter.</p>
+<p>So this is why creating a project in RStudio and connecting it to GitHub is important. All project files will be in a central location and all collaborators will go to the same central location. There is no convoluted re-uploading and downloading of any sort where edits may get lost in the process.</p>
+<p>And, if you have no collaborators, you will be able to track your own work carefully so if you were ever to invite someone to review your project or bring on a collaborator, it wouldn’t be much of a hassle.</p>
+<p>You also want to think ahead: many of the top journals in the discipline require you to provide replication files. Instead of having to go back and retrace your steps, you can just provide your R Project directory. In essence, whoever has access to your R Project directory will be able to replicate every step that generated the final paper and results.</p>
+<p>So let’s get started.</p>
 </div>
-<div id="install-Rstudio" class="section level2">
-<h2><span class="header-section-number">2.2</span> Installing RStudio</h2>
-<p>RStudio is an integrated environment for R. If R is the engine, RStudio is the car. You can use the engine without the car, but you cannot drive the the car without the engine. In other words, you will not be able to use RStudio if you have not yet downloaded R. Always download R first. Go to the <a href="https://rstudio.com/">RStudio official website</a> to learn more about the software.</p>
-<p>These instructions will help you download RStudio on to your operating system.</p>
+<div id="create-proj" class="section level2">
+<h2><span class="header-section-number">3.2</span> Creating a project in RStudio</h2>
+<p>The goal of this section is for you to be able to create a project in RStudio that you can connect to Github. Some of these steps are a review of what we learned in the previous lesson.</p>
 <ol style="list-style-type: decimal">
-<li><p>Go to the <a href="https://rstudio.com/products/rstudio/download/">Download RStudio</a> page.</p></li>
-<li><p>Click on the “Download” button" for RStudio Desktop Open Source Licnse Free.</p></li>
-<li><p>Click on the “Download RStudio for [your OS]” button. The website should be detect which version of RStudio that you need to download.</p></li>
-</ol>
-</div>
-<div id="install-latex" class="section level2">
-<h2><span class="header-section-number">2.3</span> Installing LaTeX</h2>
-<p>LaTeX is a software system for document prepartion. While we will not focus on LaTeX functionalities in this class, you will need to download it to compile R Markdown documents. Go to the <a href="https://www.latex-project.org/">LaTeX official website</a> to learn more about the software.</p>
-<p>If, for any reason, you would like to learn LaTeX, I would recommend opening an <a href="https://www.overleaf.com">Overleaf</a> account and leveraging their <a href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes">step-by-step tutorial</a>. While this course will primarily focus on teaching you how to write and generate your documents in R Markdown, you may encounter collaborators who use LaTeX. The good news is that R Markdown is pretty similar to LaTeX, so the skills are definitely transferrable.</p>
-<p>These instructions will help you download LaTeX on to your operating system.</p>
-<ol style="list-style-type: decimal">
-<li><p>Scroll to the third section of the <a href="https://www.latex-project.org/get/">Get</a> page where you see download options for Linux, MacOS, Windows, and Online.</p></li>
-<li><p>Select your operating system.</p>
+<li><p>Log in to GitHub, if you are not already logged in.</p></li>
+<li><p>Click on the green “New” button to create a new repository.</p></li>
+<li><p>On the “Create a new repository” page, enter the following into the form:</p>
 <ul>
-<li><p>For MacOS users, you should download <a href="http://www.tug.org/mactex/">MacTeX</a>. You may access <a href="http://www.tug.org/mactex/mactex-download.html">step-by-step instructions here</a>.</p></li>
-<li><p>For Windows users, the website suggests that you download MikTeX, proTeXt, or TeX Live. There is a <a href="https://tex.stackexchange.com/questions/239199/latex-distributions-what-are-their-main-differences">StackExchange post</a> discussing these options and then some. It appears like most people recommend <a href="http://tug.org/texlive/">TeX Live</a>.</p></li>
+<li>Repository name: ps811-project</li>
+<li>Select “Public”</li>
+<li>Check “Add a README file”</li>
 </ul></li>
-</ol>
-</div>
-<div id="knit-RMarkdown" class="section level2">
-<h2><span class="header-section-number">2.4</span> Knitting R Markdown Files</h2>
-<ol style="list-style-type: decimal">
-<li><p>Open RStudio.</p></li>
-<li><p>Click on File &gt; New File.</p></li>
-<li><p>Select R Markdown.</p>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/new_r_markdown.png" alt="" />
-<p class="caption">new rmarkdown</p>
-</div>
-<p><em>When you set up a new R Markdown file.</em></p></li>
-<li><p>Make sure the sidebar is set to “Document.”</p></li>
-<li><p>Enter in the title of the document in the “Title” field and your name in the “Author” field.</p></li>
-<li><p>Select HTML as the “Default Output Format” option for now. We will discuss how to output your file in PDF as well later in the lesson.</p></li>
-<li><p>An R Markdown document (with the extension .Rmd) will appear. It will be called Untitled1.Rmd. R Markdown has a default template in place every time you create a new R Markdown document.</p>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/knit.png" alt="" />
-<p class="caption">the knit button</p>
-</div>
-<p><em>The Knit button.</em></p></li>
-<li><p>As you have selected HTML as the <em>default</em> output format, when you click the <strong>Knit</strong> button (it is the icon with a little ball of yarn and needle), it will automatically output the document as a HTML. Prior to outputing the HTML file, however, it will ask you to rename the file to something other than Untitled1.Rmd, which you should certainly do.</p>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/viewer.png" alt="" />
-<p class="caption">viewer tab</p>
-</div>
-<p><em>HTML file in the viewer tab.</em></p></li>
-<li><p>The HTML file will appear on the “Viewer” tab. To open the actual document, click on the button with the arrow pointing to the top right corner.</p></li>
-<li><p>To output the same document as a PDF, click on the small down arrow next to the <strong>Knit</strong> button. Select “Knit to PDF.”</p></li>
-</ol>
-<p>As you can see, you have the option to “Knit to Word” but the political science community has recently turned on Word. As such, you are discouraged from knitting to Word, unless otherwise noted.</p>
-</div>
-<div id="create-Github" class="section level2">
-<h2><span class="header-section-number">2.5</span> Creating a Github Account</h2>
-<p>Github is a website that hosts software development and version control via Git. While you are welcome to use Github alternatives to host your open-source projects in the future, this class will use Github.</p>
-<ol style="list-style-type: decimal">
-<li><p>Create an account on <a href="https://github.com/">Github</a>.</p></li>
-<li><p>With the <a href="https://education.github.com/pack">GitHub Student Developer Pack</a>, students get <a href="https://education.github.com/discount_requests/student_application">Github Pro</a> and many other computing tools for free. You will need to use your university email address to apply, but the application process only took me a few minutes. Review the full list of <a href="https://docs.github.com/en/github/getting-started-with-github/githubs-products#github-pro">Github Pro features here</a>.</p></li>
-</ol>
-</div>
-<div id="setup-Git" class="section level2">
-<h2><span class="header-section-number">2.6</span> Setting Up Git</h2>
-<p>Git is a version-control system for tracking changes. Initially, software developers were the main users of Git. But lately, people of all stripes have adopted Git into their workflow. Git is especially useful for collaborative work because you will be able to identify information about edits to a file, including what changed, who made the change, and when the perrson made the change. Git is useful for solo work as well because it beats saving your document as a new document whenever you make a change. Visit <a href="https://git-scm.com/">the official Git website</a> to learn more about Git.</p>
-<p>The official Git website has a helpful guide on <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">installing Git</a> for your operating system. I don’t think I can improve on their existing guidance other than the fact that I do <em>not</em> recommend that you download from the source.</p>
-</div>
-<div id="RStudio-Github" class="section level2">
-<h2><span class="header-section-number">2.7</span> Connecting RStudio to Git and Github</h2>
-<p>Much of this section is indebted to <a href="https://happygitwithr.com/rstudio-git-github.html">Happy Git and GitHub for the useR</a> page on integrating RStudio with Git and Github.</p>
-<p>Since I spend the better part of my life in RStudio, I want it to be able to connect to everything, including Git and Github. You are welcome to use <a href="https://www.sourcetreeapp.com/">SourceTree</a> and other Git clients, but I prefer to consolidate all my work into my trusty RStudio environment due to convenience/laziness. As such, my lectures will simply assume that you use Github and RStudio and not their alternatives. Of course, you are welcome to expore the alternatives in your free time. In fact, I highly recommend that you do so because I want you to end up with a workflow that works for you. The good news is, once you start familiarizing yourself with these basic building blocks, other tools will be easier to pick up.</p>
-<div id="say-hello-to-git-on-rstudio" class="section level3">
-<h3><span class="header-section-number">2.7.1</span> Say hello to git on RStudio</h3>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/terminal.png" alt="" />
-<p class="caption">terminal tab</p>
-</div>
-<p><em>Terminal tab in RStudio.</em></p>
-<ol style="list-style-type: decimal">
-<li><p>Click on the Terminal tab in RStudio.</p></li>
-<li><p>Enter the following commands into the Terminal (i.e., also known as “the shell”) and click “Enter.” You may copy and paste all three lines at once then click “Enter,” or type each line one by one, clicking “Enter” each time you need to start a new line.</p></li>
-</ol>
-<pre><code>git config --global user.name &#39;Your Name&#39;
-git config --global user.email &#39;yourgithub@email.com&#39;
-git config --global --list</code></pre>
-<p>You have “introduced” yourself to Git. Hopefully this is the beginning of a beautiful friendship.</p>
-</div>
-<div id="create-a-repository" class="section level3">
-<h3><span class="header-section-number">2.7.2</span> Create a repository</h3>
-<ol start="3" style="list-style-type: decimal">
-<li><p>Go to the main <a href="https://github.com">Github</a> site and make sure you are logged in. On the main page, click on the green “New” button on the right sidebar to create a new repository on Github.</p></li>
-<li><p>On the “Create a new repository” page, enter the following:</p>
-<ul>
-<li>Repository name: <code>ps811-exercises</code></li>
-<li>Description (optional): You can enter some description here about your folder, such as “assignments for ps811”</li>
-<li>Select “Public” for now, though you do have the option for “Private” for future repositories.</li>
-<li>Check “Add a README file.”</li>
-</ul></li>
-<li><p>Click on the “Create repository” button.</p></li>
-</ol>
-<p>Your repository has been created.</p>
-</div>
-<div id="connect-github-to-rstudio-the-fun-part" class="section level3">
-<h3><span class="header-section-number">2.7.3</span> Connect Github to RStudio (the fun part)</h3>
-<p>The process technically <em>clones</em> the Github repository to your computer, but so much of the magic happens in RStudio that it <em>feels</em> that I am connecting Github to RStudio.</p>
-<ol start="6" style="list-style-type: decimal">
-<li><p>Go to RStudio. Go to File &gt; New Project.</p></li>
+<li><p>Open RStudio. Go to File &gt; New Project.</p></li>
 <li><p>Select “Version Control.”</p></li>
 <li><p>Select “Git.”</p></li>
-<li><p>Go to Github. Find the Git repository that you created in Step 5.</p></li>
-<li><p>Click on the “Code” button (in green). Copy and paste the URL under “Clone with HTTPS.” The URL will end in .git, e.g., <code>https://github.com/marcyshieh/ps811.git</code>.</p>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/new_project.png" alt="" />
-<p class="caption">git pane</p>
-</div>
-<p><em>New project pop-up form.</em></p></li>
+<li><p>Go to GitHub. Find the Git repository that you created in Step 3.</p></li>
+<li><p>Click on the “Code” button (in green). Copy and paste the URL under “Clone with HTTPS.” The URL will end in .git, e.g., <code>https://github.com/marcyshieh/ps811.git</code>.</p></li>
 <li><p>Go back to RStudio and fill out the following:</p>
 <ul>
-<li>Repository URL: The .git URL you copied in Step 10.</li>
-<li>Project directory name: This will default to whatever you named your Github repository. You can change it, or you can keep it the same for consistency (or, so you won’t be confused).</li>
-<li>Create project as a subdirectory of: Find the directory on <em>your computer</em> that you want this copy of your Github repository to live in.</li>
+<li><p>Repository URL: The .git URL you copied in Step 8.</p></li>
+<li><p>Project directory name: This will default to whatever you named your Github repository. You can change it, or you can keep it the same for consistency (or, so you won’t be confused).</p></li>
+<li><p>Create project as a subdirectory of: Find the directory on your computer that you want this copy of your Github repository to live in.</p></li>
 </ul></li>
 <li><p>Check the “Open in New Session” box so you can have your projects (and misc non-project files) in different RStudio windows, but this is not necessary.</p></li>
-<li><p>Click “Create Project.”</p></li>
 </ol>
 </div>
-</div>
-<div id="work-git" class="section level2">
-<h2><span class="header-section-number">2.8</span> Working with Git on RStudio</h2>
-<p>You should see all the files from your Github repository in the RStudio file browser pane. This means that everything has been <em>cloned</em> from your Github repository to your computer or, in other words, downloaded.</p>
-<div id="how-does-this-all-work" class="section level3">
-<h3><span class="header-section-number">2.8.1</span> How does this all work?</h3>
-<ol start="2" style="list-style-type: decimal">
-<li><p>In the file browser pane, open <code>README.md</code>.</p></li>
-<li><p>Type in whatever you want in the file. A joke, the name of your celebrity crush, your favorite <em>Riverdale</em> character. Whatever you want, as long as it’s not rude and/or incendiary.</p></li>
-<li><p>Save the file.</p>
+<div id="push-git" class="section level2">
+<h2><span class="header-section-number">3.3</span> Pushing a R Markdown document to your Github repository</h2>
+<p>In the previous lesson, you took the README.md file from your Github repository, edited it, and pushed your changes back on to the repository. In this lesson, you will learn how to create a document on your computer in RStudio and push it to the repository.</p>
+<ol style="list-style-type: decimal">
+<li><p>Go to File &gt; New File &gt; R Markdown.</p></li>
+<li><p>Enter a sample title for “Title” and your name for “Author.”</p></li>
+<li><p>Select PDF as the default output format.</p>
+<p>This file should look familiar to you. It is the same default R Markdown template you knitted in the previous lesson.</p></li>
+<li><p>Go to File &gt; Save As and make sure you are in the <code>ps811-project</code> directory. Once you confirm that, you can save it as an .Rmd file, such as <code>example.Rmd</code>.</p></li>
+<li><p>Knit the file as a PDF.</p></li>
+<li><p>Push the directory onto your GitHub repository. Go to the “Git”" pane. Click “Commit.” Check “Staged” for the <code>.gitignore</code>, <code>ps811-project.Rproj</code>, <code>sample.Rmd</code>, and <code>sample.pdf</code> files. Type a commit message on what changes you made so you (or your collaborators) can note what happened.</p>
+<p>The <code>.gitignore</code> file contains files that Git should ignore. In this case, RStudio produces some metadata (e.g., logs) when you create and revise files, but Git defaults to ignoring those files, i.e., not pushing changes to their on to your GitHub repository. If, in any case, you want to tell Git to not ignore certain R-generated files, you can always open up the <code>.gitignore</code> file and edit it to <em>not</em> ignore those files.</p></li>
+<li><p>Click the green “Push” up arrow.</p>
 <div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/git_pane.png" alt="" />
-<p class="caption">the git pane</p>
+<img src="https://marcyshieh.github.io/ps811/lecture2-img/repository.png" alt="" />
+<p class="caption">repository</p>
 </div>
-<p><em>The Git pane.</em></p></li>
-<li><p>Click on the Git tab on the upper right pane.</p></li>
-</ol>
-<p>The Git tab only shows up once you create an RStudio Project.</p>
-<ol start="6" style="list-style-type: decimal">
-<li><p>You will see that the <code>README.md</code> filepath you just edited show up under the Git tab. The Status will be a “M,” which stands for “Modified.”</p></li>
-<li><p>Check the “Staged” box.</p></li>
-<li><p>Click Commit.</p></li>
-<li><p>The “RStudio: Review Changes” window will appear as a pop-up. Essentially, this allows you to validate whether or not you want to <em>push</em> the changes you made on your computer to your Github repository.</p></li>
-<li><p>Type a coherent commit message into the “Commit message” box.</p></li>
-<li><p>Click “Push.”</p></li>
-<li><p>A “Git Commit” pop-up will appear, with a message that kind of looks like this:</p></li>
-</ol>
-<pre><code>&gt;&gt; git commit -F blahblahblah.txt
-[master beded87] edit edit
-1 file changed, 49 insertions(+), 2 deletions(-)</code></pre>
-<div id="review-changes-deep-dive" class="section level4">
-<h4><span class="header-section-number">2.8.1.1</span> Review changes deep-dive</h4>
+<p><em>This is how your repository for ps811-project should look like.</em></p></li>
+<li><p>Go back to GitHub on your browser and click on your ps811-project repository. (Refresh if you never left the repository page.)</p></li>
+<li><p>You should be able to see your <code>.gitignore</code>, <code>ps811-project.Rproj</code>, <code>sample.Rmd</code>, and <code>sample.pdf</code> files in your GitHub repository.</p>
 <div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/commit_message.png" alt="" />
-<p class="caption">3 panes</p>
+<img src="https://marcyshieh.github.io/ps811/lecture2-img/files-pane.png" alt="" />
+<p class="caption">files-pane</p>
 </div>
-<p><em>The 3 panes of RStudio: Review Changes.</em></p>
-<p>There are 3 panes, which I will introduce in clockwork order:</p>
-<p><strong>Pane 1</strong> The files you changed.</p>
-<p><strong>Pane 2</strong> Commit messsage textbox. Here, you write some notes on what you changed. I am personally <em>horrible</em> at writing commit messages because I get impatient and lazy—I honestly just want to write, “I changed some stuff”—but that really negates the whole purpose, doesn’t it? So let’s make it our goal to get better at writing commit messages.</p>
-<p><strong>Pane 3</strong> The large pane on the bottom that show the changes you made. New additions are in gray, deletions are in red, and replacements are in green. You have the options of “stage chunk” or “discard chunk” for each gray, red, and green highlight.</p>
+<p><em>Delete files from your files pane.</em></p></li>
+<li><p>But you don’t really need <code>sample.Rmd</code> and <code>sample.pdf</code> in your repository. So you want to delete it from the directory on your computer and the repository on GitHub. Go ahead and check the boxes next to <code>sample.Rmd</code> and <code>sample.pdf</code> in the “File” pane. Then, click “Delete.”</p>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture2-img/git-pane-delete.png" alt="" />
+<p class="caption">git-pane-delete</p>
+</div>
+<p><em>Your Git pane should look like this once you delete your files from the directory in your computer.</em></p></li>
+<li><p>Your Git pane should show <code>sample.Rmd</code> and <code>sample.pdf</code> with little red “D” statuses next to them (D for Delete!). Go ahead and click commit, stage these changes, write a commit message, and push.</p></li>
+<li><p>Go back to GitHub on your browser and click on your ps811-project repository. (Refresh if you never left the repository page.)</p></li>
+<li><p>The two files you just deleted—<code>sample.Rmd</code> and <code>sample.pdf</code>—are now gone. Because you deleted them.</p>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture2-img/commits.png" alt="" />
+<p class="caption">commits</p>
+</div>
+<p><em>Click on the [#] commits link to see the history of your repository.</em></p></li>
+<li><p>Your files are gone but not forgotten. The great thing about Git is that you can go back and look at the files you deleted and retrieve them if necessary. Go to the counter-clockwise clock icon and click on the “[#] commits” link.</p>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture2-img/commits-page.png" alt="" />
+<p class="caption">commits-page</p>
+</div>
+<p><em>This is the commits page.</em></p></li>
+<li><p>There, you will see the record of your changes and can click on the icons (as discussed in the previous lesson) to review or retrieve anything you deleted.</p></li>
+</ol>
+</div>
+<div id="write-paper" class="section level2">
+<h2><span class="header-section-number">3.4</span> Writing a paper in R Markdown</h2>
+<p>Now you are hopefully more comfortable doing simple things with RStudio, R Markdown documents, Git, and GitHub. So now let’s move on to how to do stuff that you already do and figure out how the Git workflow (in conjunction with RStudio) can make it better.</p>
+<p>When you write papers for your classes, you want to write it with the hope that it will turn into a publishable paper. That is the goal, anyway, so let’s strive for it. Political science manuscripts use the <a href="https://ccconline.libguides.com/c.php?g=242121&amp;p=3409502">APA style</a> so you want to find a template that conforms to that style.</p>
+<p>There are many R Markdown templates out there, even specific templates for specific journals, and there are certainly ways you can customize templates to your heart’s desire. When you create a new R Markdown document, you can select “From Template” from the sidebar and see what has already been pre-loaded.</p>
+<p>For the sake of catering to everyone’s needs, we are going to work with the <a href="https://crsh.github.io/papaja_man/introduction.html">papaja</a> R package. papaja, as you may have easily guessed, stands for “preparing APA journal articles.” It’s a package that’s currently in the process of being developed so there might be some kinks here and there (though I haven’t encountered any in my own work). Ultimately, this lesson is to give you a sense of how R Markdown templates work so you go out and explore on your own.</p>
+<div id="prerequisites" class="section level3">
+<h3><span class="header-section-number">3.4.1</span> Prerequisites</h3>
+<p>Just so you know what is required to run the papaja R package, I’m going to do a breakdown for you. <strong>You should have fulfilled all the prequisites if you completed the previous lesson.</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>To install papaja, you need to install R, which you should have already done. If not, what have I been doing this whole time…?</p></li>
+<li><p>You also need to install <a href="https://pandoc.org/index.html">pandoc</a>, which you <em>should</em> have if you already installed RStudio. Pandoc is a document converter that is pretty versatile and can convert a file from one format to the other pretty easily. It’s worth checking out sometime. But for now, we just need it for papaja to work.</p></li>
+<li><p>You need a TeX distribution, which you already do, from installing LaTeX in the first lesson.</p></li>
+</ol>
+</div>
+<div id="installing-papaja" class="section level3">
+<h3><span class="header-section-number">3.4.2</span> Installing papaja</h3>
+<ol style="list-style-type: decimal">
+<li><p>papaja is not yet available on CRAN (the Comprehensive R Archive Network), so you need to install it from the creator’s GitHub. To do so, you need to install the <code>devtools</code> package by entering the following into your console.</p>
+<pre><code>install.packages(&quot;devtools&quot;)</code></pre>
+<p>Once you install a package to your computer, you do not have to install it again, unless you update to a new version of R. You can check your installed packages with the <code>installed.packages()</code> command.</p></li>
+<li><p>Access the package you just installed by entering the following into the console.</p>
+<pre><code>library(devtools)</code></pre>
+<p>Think of this as telling your computer to point and click on a program to “open” it. You need to do this every time you open a new R session and wish to use the package—in the same way that you need to click on the RStudio icon every time you want to use it.</p></li>
+<li><p>Enter the following command into the console. This installs the <em>stable</em> development version of the package from Github.</p>
+<pre><code>devtools::install_github(&quot;crsh/papaja&quot;)</code></pre></li>
+</ol>
+<p>The <code>devtools::</code> part of the command simply tells R where the <code>install_github</code> part of the command is coming from. There are cases where you may have loaded two packages and both packages have <code>install_github</code> as a command. Doing the double-colon simply ensures that you are specifying the package that the command is coming from. Since you have only loaded the devtools package so far, you don’t need to specify that <code>install_github</code> is coming from the devtools package, but I just wanted to demonstrate this point in case you ever end up in such a conundrum.</p>
+</div>
+<div id="opening-the-template" class="section level3">
+<h3><span class="header-section-number">3.4.3</span> Opening the template</h3>
+<ol style="list-style-type: decimal">
+<li><p>Go to File &gt; New File &gt; R Markdown.</p>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture2-img/addins.png" alt="" />
+<p class="caption">apa-article</p>
+</div>
+<p><em>Select APA article (6th edition) from the menu.</em></p></li>
+<li><p>Select “From Template” from the sidebar and select “APA article (6th edition)” on the list. As you can see, it tells you that this template is from papaja package.</p></li>
+<li><p>Click OK.</p>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture2-img/template.png" alt="" />
+<p class="caption">template</p>
+</div>
+<p><em>This is how the template should look like.</em></p></li>
+<li><p>The template appears.</p></li>
+</ol>
+</div>
+<div id="getting-to-know-your-apa-r-markdown-template" class="section level3">
+<h3><span class="header-section-number">3.4.4</span> Getting to know your APA R Markdown template</h3>
+<p><strong>Lines 1 to 64</strong> is a form-like feature that you can fill out with your own information. This is called a <a href="https://en.wikipedia.org/wiki/YAML">YAML front matter</a>, which you can read more about on your own time. Basically, it’s basically a form you can fill out to define what should be going on in the back end. Most of these fields should be pretty self-explanatory, but I’d like to point out a few things.</p>
 <ul>
-<li>Stage chunk: You will be confirming the change and pushing the change out to the Github repository.</li>
-<li>Discard chunk: You will NOT be confirming the change annd you will NOT be pushing the change out to the Github repository.</li>
-<li>You may also “Stage All” or “Discard All.”</li>
+<li><p><strong>Line 49</strong> To figure out word count, I recommend the <a href="https://github.com/benmarwick/wordcountaddin">wordcountaddin</a> package. Not only does it tell you how many words and characters are in your document, but provides some information on the readability of your statistical tables (e.g., regression tables) as well. I suggest not being too worried about this right now, but it is worth thinking about now.</p></li>
+<li><p><strong>Line 51</strong> papaja comes with a “r-reference.bib” file for all your R Markdown documents. You should see the file on your “Files” pane. Your bibliography will live in the .bib file. I’ll talk more about .bib files later.</p></li>
+<li><p><strong>Lines 53-59</strong> may sound ambiguous, but the official papaja page has definitions for each field on their <a href="https://crsh.github.io/papaja_man/r-markdown-components.html#rendering-options">Rendering Options</a> section.</p></li>
 </ul>
 </div>
 </div>
-<div id="check-if-things-happened-as-expected" class="section level3">
-<h3><span class="header-section-number">2.8.2</span> Check if things happened as expected</h3>
-<ol start="13" style="list-style-type: decimal">
-<li><p>Return to your browser, go to <a href="https://github.com">Github</a>, and find your repository. If you never left your repository, click “Refresh” on your browser.</p></li>
-<li><p>Click on the README.md file—though, to be honest, your Github repository defaults to the README file when you land on the repository. But click on it anyway.</p></li>
-<li><p>On this page, you can see who contributes to the file (it should be you for now) and when it was last udpated.</p>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/history.png" alt="" />
-<p class="caption">history</p>
-</div>
-<p><em>Github repository history</em></p></li>
-</ol>
-<p>The “History” button allows you to see who last updated the file, when, and which client they used to update the file. For each “commit,” there are three icons (from left to right): a clipboard, an ID number, angle brackets.</p>
+<div id="lets-talk-about-code-chunks" class="section level2">
+<h2><span class="header-section-number">3.5</span> Let’s talk about code chunks</h2>
+<p>Put your R commands in a <a href="https://rmarkdown.rstudio.com/lesson-3.html">code chunk</a>. With code chunks, you are basically telling RStudio, “hey, i need you to run this.” Code chunks look like the following.</p>
+<pre><code>```{r}
+# insert R code here
+```</code></pre>
+<p>Of course, you can customize what you do tell your code chunks to do. Here are some examples, but for the full list of options, check out the <a href="https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">R Markdown Cheat Sheet - Section 5: Embed Code</a>.</p>
 <ul>
-<li>Clipboard: This copies the <a href="https://en.wikipedia.org/wiki/SHA-1">SHA-1</a> and puts it on your clipboard. I wouldn’t worry too much about it.</li>
-<li>ID number: This takes you to the gray, red, and green highlights that indicated the changes at the time of the commit.</li>
-<li>Angle brackets: This takes you to the repository at the time of the commit. A time machine, basically.</li>
+<li><code>include = FALSE</code> tells R to run the code in the background but NOT show the results or the code on the R Markdown document. This is helpful if you want to show results in a chunk later in the file, but you want to run some commands in the current chunk.</li>
 </ul>
-<div id="viewing-history-in-rstudio" class="section level4">
-<h4><span class="header-section-number">2.8.2.1</span> Viewing history in RStudio</h4>
-<p>You may also view the history in RStudio.</p>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/git-history-rstudio.png" alt="" />
-<p class="caption">history-rstudio</p>
+<pre><code>```{r include = FALSE}
+# insert R code here
+```</code></pre>
+<ul>
+<li><code>echo = FALSE</code> tells R to run the code in the background and not show the code in the R Markdown document, but to show the results. This is helpful for tables and graphics.</li>
+</ul>
+<pre><code>```{r echo = FALSE}
+# insert R code here
+```</code></pre>
+<ul>
+<li><code>message = FALSE</code> tells R to not show messsages generated by the comamnds in the code chunk. For instance, some packages might provide some messages (e.g., citations) but you do not want it to show up in your R Markdown document.</li>
+</ul>
+<pre><code>```{r message = FALSE}
+# insert R code here
+```</code></pre>
+<ul>
+<li><code>fig.cap = "..."</code> tells R to add a caption to your figure. You simply replace <code>...</code> with the caption.</li>
+</ul>
+<pre><code>```{r fig.cap = &quot;This is a photo of all my favorite NYC brownstones.&quot;}
+# insert R code here
+```</code></pre>
+<ul>
+<li>You may combine these options by separating them with a comma.</li>
+</ul>
+<pre><code>```{r echo = FALSE, fig.cap = &quot;This is a photo of all my favorite NYC brownstones.}
+# insert R code here
+```</code></pre>
+<ul>
+<li>You may even name your chunks. In this example, the code chunk is named “chart.” Note that you do NOT separate the <code>r</code> and the name of your chunk with a comma.</li>
+</ul>
+<pre><code>```{r nycbrnst, echo = FALSE, fig.cap = &quot;This is a photo of all my favorite     brownstones.&quot;}
+# insert R code here
+```</code></pre>
+<p>Now that you have an understanding of code chunks, let’s explore the code chunks on the R Markdown template we downloaded.</p>
 </div>
-<p><em>How to access History in RStudio.</em></p>
-<div class="figure">
-<img src="https://marcyshieh.github.io/ps811/lecture1-img/git-history-rstudio-window.png" alt="" />
-<p class="caption">history-window</p>
+<div id="code-chunks-in-the-papaja-template" class="section level2">
+<h2><span class="header-section-number">3.6</span> Code chunks in the papaja template</h2>
+<p><strong>Lines 66-69</strong> is where you put your packages. As you grow into a proficient R user, you are going to use many packages (not just devtools!) and you should load them all in a section that looks like this. In other words…</p>
+<pre><code>```{r  setup, include = FALSE}
+# load your packages using the library() function
+# load your .bib file using the r_refs() function
+```</code></pre>
+<p><strong>Lines 71-75</strong> are where you can set your analysis preferences. The default appears to be code that sets a seed for a random number generator. You may need a seed when you run a say, k-means clustering algorithm, but I wouldn’t worry too much about it right now.</p>
 </div>
-<p><em>Window featuring Git History in RStudio.</em></p>
-</div>
-<div id="deleting-the-repository" class="section level4">
-<h4><span class="header-section-number">2.8.2.2</span> Deleting the Repository</h4>
-<p>If, for any reason, you would like to delete your repository, you should follow the steps below.</p>
-<p><strong>Local</strong> Find the directory on your computer and delete it like you would delete any normal folder.</p>
-<p><strong>Github</strong> Go to the browser, go to Github, find your repository, and click “Settings” on the top repository-specific menu. Scroll all the way to the bottom and click on the “Delete this repository” button, then follow the instructions.</p>
+<div id="body-of-the-papaja-template" class="section level2">
+<h2><span class="header-section-number">3.7</span> Body of the papaja template</h2>
+<p><strong>Lines 79-94</strong> shows headings for the document. This is how the headings will look like based on the number of hashes (#) they put. A good way to think about it is <code>#</code> is a the largest heading, and every <code>#</code> you add on makes the heading smaller. For a comprehensive list of headings, check out check out the <a href="https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">R Markdown Cheat Sheet - Section 3: Markdown</a>.</p>
+<p># Methods (one hash - #)</p>
+<p>## Participants (two hashes - ##)</p>
+<p>## Material (two hashes - ##)</p>
+<p>## Procedure (two hashes - ##)</p>
+<p>## Data analysis (two hashes - ##)</p>
+<p># Results (one hash - #)</p>
+<p># Discussion (one hash - #)</p>
+<p>Now, you can create headings and subheadings and subsubheadings, etc.</p>
+<p><strong>Lines 97-106</strong> is the last few pages of the document, which will be devoted to the bibliography. And much of the end of this template is some <a href="https://en.wikibooks.org/wiki/TeX">TeX markup language</a>, which dominates LaTeX but is only sometimes used in R Markdown documents. You don’t have to change any of this, but here is some background on the building blocks.</p>
+<ul>
+<li><code>\newpage</code> command just creates a new page and comes from the TeX language.</li>
+<li><code>\begingroup</code> begins a group and <code>\endgroup</code> ends a group. In essence, you’re putting stuff in a box.
+<ul>
+<li>So you’ve built your box. Within that box, you want your bibliography to indent a certain way. With <code>\parindent</code>, you are indenting the first line of a paragraph (i.e., each new line) and with <code>\leftskip</code>, you can reduce the paragraph size from the left.</li>
+</ul></li>
+<li>The grouping and the formatting are for the bibliography, which the template inserts with the following HTML code. This template handles the bibliography style using HTML/CSS, but this might not be the case with all templates.</li>
+</ul>
+<pre><code>&lt;div id=&quot;refs&quot; custom-style=&quot;Bibliography&quot;&gt;&lt;/div&gt;</code></pre>
+<p>In the next lesson, we will discuss how to customize your bibliography.</p>
 
-</div>
-</div>
 </div>
 </div>
             </section>
@@ -478,8 +470,8 @@ git config --global --list</code></pre>
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="workflow.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="setting-up.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bibliography.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

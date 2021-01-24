@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 8 Restoring the branch | Introduction to Statistical Computing in Political Science</title>
+  <meta name="description" content="This bookdown book contains materials for PS811." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 8 Restoring the branch | Introduction to Statistical Computing in Political Science" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This bookdown book contains materials for PS811." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 8 Restoring the branch | Introduction to Statistical Computing in Political Science" />
+  
+  <meta name="twitter:description" content="This bookdown book contains materials for PS811." />
+  
+
+<meta name="author" content="Marcy Shieh" />
+
+
+<meta name="date" content="2021-01-24" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="git-branches.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="3" data-path="setting-up.html"><a href="setting-up.html"><i class="fa fa-check"></i><b>3</b> Setting Up</a><ul>
+<li class="chapter" data-level="3.1" data-path="setting-up.html"><a href="setting-up.html#install-R"><i class="fa fa-check"></i><b>3.1</b> Installing R</a></li>
+<li class="chapter" data-level="3.2" data-path="setting-up.html"><a href="setting-up.html#install-Rstudio"><i class="fa fa-check"></i><b>3.2</b> Installing RStudio</a></li>
+<li class="chapter" data-level="3.3" data-path="setting-up.html"><a href="setting-up.html#install-latex"><i class="fa fa-check"></i><b>3.3</b> Installing LaTeX</a></li>
+<li class="chapter" data-level="3.4" data-path="setting-up.html"><a href="setting-up.html#knit-RMarkdown"><i class="fa fa-check"></i><b>3.4</b> Knitting R Markdown Files</a></li>
+<li class="chapter" data-level="3.5" data-path="setting-up.html"><a href="setting-up.html#create-Github"><i class="fa fa-check"></i><b>3.5</b> Creating a Github Account</a></li>
+<li class="chapter" data-level="3.6" data-path="setting-up.html"><a href="setting-up.html#setup-Git"><i class="fa fa-check"></i><b>3.6</b> Setting Up Git</a></li>
+<li class="chapter" data-level="3.7" data-path="setting-up.html"><a href="setting-up.html#RStudio-Github"><i class="fa fa-check"></i><b>3.7</b> Connecting RStudio to Git and Github</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="setting-up.html"><a href="setting-up.html#say-hello-to-git-on-rstudio"><i class="fa fa-check"></i><b>3.7.1</b> Say hello to git on RStudio</a></li>
+<li class="chapter" data-level="3.7.2" data-path="setting-up.html"><a href="setting-up.html#create-a-repository"><i class="fa fa-check"></i><b>3.7.2</b> Create a repository</a></li>
+<li class="chapter" data-level="3.7.3" data-path="setting-up.html"><a href="setting-up.html#connect-github-to-rstudio-the-fun-part"><i class="fa fa-check"></i><b>3.7.3</b> Connect Github to RStudio (the fun part)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="setting-up.html"><a href="setting-up.html#work-git"><i class="fa fa-check"></i><b>3.8</b> Working with Git on RStudio</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="setting-up.html"><a href="setting-up.html#how-does-this-all-work"><i class="fa fa-check"></i><b>3.8.1</b> How does this all work?</a></li>
+<li class="chapter" data-level="3.8.2" data-path="setting-up.html"><a href="setting-up.html#check-if-things-happened-as-expected"><i class="fa fa-check"></i><b>3.8.2</b> Check if things happened as expected</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="workflow.html"><a href="workflow.html"><i class="fa fa-check"></i><b>4</b> Workflow</a><ul>
+<li class="chapter" data-level="4.1" data-path="workflow.html"><a href="workflow.html#why-create-a-project"><i class="fa fa-check"></i><b>4.1</b> Why create a project?</a></li>
+<li class="chapter" data-level="4.2" data-path="workflow.html"><a href="workflow.html#create-proj"><i class="fa fa-check"></i><b>4.2</b> Creating a project in RStudio</a></li>
+<li class="chapter" data-level="4.3" data-path="workflow.html"><a href="workflow.html#push-git"><i class="fa fa-check"></i><b>4.3</b> Pushing a R Markdown document to your Github repository</a></li>
+<li class="chapter" data-level="4.4" data-path="workflow.html"><a href="workflow.html#write-paper"><i class="fa fa-check"></i><b>4.4</b> Writing a paper in R Markdown</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="workflow.html"><a href="workflow.html#prerequisites"><i class="fa fa-check"></i><b>4.4.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="4.4.2" data-path="workflow.html"><a href="workflow.html#installing-papaja"><i class="fa fa-check"></i><b>4.4.2</b> Installing papaja</a></li>
+<li class="chapter" data-level="4.4.3" data-path="workflow.html"><a href="workflow.html#opening-the-template"><i class="fa fa-check"></i><b>4.4.3</b> Opening the template</a></li>
+<li class="chapter" data-level="4.4.4" data-path="workflow.html"><a href="workflow.html#getting-to-know-your-apa-r-markdown-template"><i class="fa fa-check"></i><b>4.4.4</b> Getting to know your APA R Markdown template</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="workflow.html"><a href="workflow.html#lets-talk-about-code-chunks"><i class="fa fa-check"></i><b>4.5</b> Let’s talk about code chunks</a></li>
+<li class="chapter" data-level="4.6" data-path="workflow.html"><a href="workflow.html#code-chunks-in-the-papaja-template"><i class="fa fa-check"></i><b>4.6</b> Code chunks in the papaja template</a></li>
+<li class="chapter" data-level="4.7" data-path="workflow.html"><a href="workflow.html#body-of-the-papaja-template"><i class="fa fa-check"></i><b>4.7</b> Body of the papaja template</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i><b>5</b> Bibliography</a><ul>
+<li class="chapter" data-level="5.1" data-path="bibliography.html"><a href="bibliography.html#download-zotero"><i class="fa fa-check"></i><b>5.1</b> Downloading Zotero</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="download-bbt.html"><a href="download-bbt.html"><i class="fa fa-check"></i><b>6</b> Downloading Better Bibtex for Zotero</a><ul>
+<li class="chapter" data-level="6.1" data-path="download-bbt.html"><a href="download-bbt.html#load-citr"><i class="fa fa-check"></i><b>6.1</b> Loading the citr package</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="git-branches.html"><a href="git-branches.html"><i class="fa fa-check"></i><b>7</b> Git Branches</a><ul>
+<li class="chapter" data-level="7.1" data-path="git-branches.html"><a href="git-branches.html#create-branch"><i class="fa fa-check"></i><b>7.1</b> Creating a branch</a></li>
+<li class="chapter" data-level="7.2" data-path="git-branches.html"><a href="git-branches.html#working-in-the-branch"><i class="fa fa-check"></i><b>7.2</b> Working in the branch</a></li>
+<li class="chapter" data-level="7.3" data-path="git-branches.html"><a href="git-branches.html#delete-branch"><i class="fa fa-check"></i><b>7.3</b> Deleting the branch</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="restore-branch.html"><a href="restore-branch.html"><i class="fa fa-check"></i><b>8</b> Restoring the branch</a><ul>
+<li class="chapter" data-level="8.1" data-path="restore-branch.html"><a href="restore-branch.html#use-cmd"><i class="fa fa-check"></i><b>8.1</b> Using Git on the command line</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Statistical Computing in Political Science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="restore-branch" class="section level1">
+<h1><span class="header-section-number">Chapter 8</span> Restoring the branch</h1>
+<p>The great thing about Git is that, even if you accidentally delete a branch, you can always restore it.</p>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture4-img/pull-requests.png" alt="" />
+<p class="caption">create merge</p>
+</div>
+<p><em>Pull requests link.</em></p>
+<ol style="list-style-type: decimal">
+<li><p>Click on “Pull Requests.”</p>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture4-img/2-closed.png" alt="" />
+<p class="caption">2 closed</p>
+</div>
+<p><em>There are 2 closed branches within your repository.</em></p></li>
+<li><p>Click on “# closed.”</p></li>
+<li><p>Select the “Test” repository.</p></li>
+<li><p>Click on the “Test” repository.</p>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture4-img/restore-branch.png" alt="" />
+<p class="caption">restore branch</p>
+</div>
+<p><em>Restore branch.</em></p></li>
+<li><p>Scroll near the bottom of the page and click on the “Restore branch” button.</p></li>
+<li><p>Go back to the ps811-project main page. You should see “test” restored as a branch.</p></li>
+</ol>
+<div id="use-cmd" class="section level2">
+<h2><span class="header-section-number">8.1</span> Using Git on the command line</h2>
+<p>There are a wealth of other things Git can do, and you will find a wealth of resources about Git online. Many of the resources you encounter will pertain to using Git with the command line, which is how software developers have traditionally used it. You may want to familiarize yourself with that, as many of the help resources tend to be specific to Git command line functions, not RStudio functions.</p>
+<p>RStudio provides a good jumping off point, though. The Git pane in RStudio opens a shell that takes you to your exact project. In essence, the shell is a tool that allows you to type in commands that tell the computer what to do. In this case, you can type in all the Git commands you need to do without having to go back and forth in the RStudio and GitHub environments. The <a href="https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet">Git Cheat Sheet</a> provides pretty good guidance on Git commands.</p>
+<p>I will walk through a command line example with you that shows you how to commit and push a file into your repository using the command line. You should already be pretty familiar with the process at this point, so none of the inputs and outputs should not be a surprise to you.</p>
+<ol style="list-style-type: decimal">
+<li><p>Go to RStudio.</p></li>
+<li><p>Open the <code>document.Rmd</code> file.</p></li>
+<li><p>Make some edits to the file. Whatever you want!!</p></li>
+<li><p>Knit the file to a PDF. See the edits you made in the .Rmd file show up in the PDF.</p>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture4-img/shell.png" alt="" />
+<p class="caption">git-shell</p>
+</div>
+<p><em>Open the Shell through the Git pane on RStudio.</em></p>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture4-img/shell-open.png" alt="" />
+<p class="caption">git-shell-open</p>
+</div>
+<p><em>The shell opened. In MacOS, it’s called a “Terminal” (featured here). In Windows, it’s called a Command Prompt. They’re equivalent.</em></p></li>
+<li><p>Now open up the Shell.</p>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture4-img/git-status.png" alt="" />
+<p class="caption">git-status</p>
+</div>
+<p><em>Check out the Git status on the shell.</em></p></li>
+<li><p>Type <code>git status</code> into the command line. You should see information in the shell that mirrors the information in the Git pane.</p>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture4-img/git-add.png" alt="" />
+<p class="caption">git-add</p>
+</div>
+<p><em>Add, i.e., stage all the files.</em></p></li>
+<li><p>Type <code>git add .</code> into the command line. This tells the computer that you want to stage all the changes (<code>git add</code>) in the ps811-project directory (<code>.</code> represents the directory you are currently in). The Git pane reflects this change without you having to check all the boxes.</p>
+<p>If you do not see the expected changes on your RStudio Git pane, just click on the RStudio window to make it active again and you will see the changes.</p>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture4-img/git-reset.png" alt="" />
+<p class="caption">git-reset</p>
+</div>
+<p><em>Reset, i.e., unstage all the files.</em></p></li>
+<li><p>Type <code>git reset .</code> into the command line. This tells the computer that you want to unstage all the changes in the ps811-project directory. The Git pane reflects this change without you having to uncheck all the boxes.</p>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture4-img/git-add-doc.png" alt="" />
+<p class="caption">git-add-doc</p>
+</div>
+<p><em>Stage the document.pdf file.</em></p></li>
+<li><p>Type <code>git add document.pdf</code> into the command line. This only stages the <code>document.pdf</code> file.</p>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture4-img/git-commit.png" alt="" />
+<p class="caption">git-commit</p>
+</div>
+<p><em>Commit document.pdf and see what happens to the Git pane on RStudio. This means that the test branch (the branch you are working in) has one more commit than the master branch. Which makes sense, because you just made a commit on the test branch.</em></p></li>
+<li><p>Type <code>git commit -m "&lt;your message&gt;"</code>. This allows you to commit the file and type a commit message. From my example, my commit message is, <code>pdf changes only</code>, but you are welcome to write what you want.</p>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture4-img/git-push.png" alt="" />
+<p class="caption">git-push</p>
+</div>
+<p><em>Push the document.pdf file.</em></p></li>
+<li><p>Type <code>git push</code>. This is akin to pushing the green push arrow icon in RStudio.</p></li>
+<li><p>Go to the ps811-project repository on GitHub. Go to your test branch. You will see that your <code>document.pdf</code> has just been updated a few seconds ago.</p>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture4-img/git-commit-others.png" alt="" />
+<p class="caption">git-commit-others</p>
+</div>
+<p><em>Commit the document.Rmd and document.tex files.</em></p></li>
+<li><p>Go back to the Shell. You still have <code>document.Rmd</code> and <code>document.tex</code> in limbo. Commit both files and push.</p>
+<pre><code>git add .
+git commit -m &quot;i am committing both document.Rmd and document.tex right now&quot;
+git push</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture4-img/git-branch-2.png" alt="" />
+<p class="caption">git-branch-repo</p>
+</div>
+<p><em>View all the branches in the repository.</em></p></li>
+<li><p>Go back to the Shell. Type in <code>git branch</code>. It will show all the branches in your ps811-project repository and the branch you are currently in—the test branch—will be denoted by an asterisk (*). In my operating system, it’s showing up as neon green text.</p>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture4-img/git-checkout-master.png" alt="" />
+<p class="caption">git-checkout-master</p>
+</div>
+<p><em>Go to the master branch.</em></p></li>
+<li><p>Type in <code>git checkout master</code>.</p>
+<p><code>git checkout master</code> is the equivalent of switching from the test branch to the master branch on the GitHub repository.</p>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture4-img/git-merge-test.png" alt="" />
+<p class="caption">git-merge-test</p>
+</div>
+<p><em>Merge the test branch with the master branch.</em></p></li>
+<li><p>Type in <code>git merge test</code>. This merges everything from the test branch to the master branch.</p>
+<p><code>git merge test</code> is <em>kinda</em> equivalent to opening a pull request and creating a merge on the GitHub repository.</p>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture4-img/git-push-final.png" alt="" />
+<p class="caption">git-push-final</p>
+</div>
+<p><em>The final push.</em></p></li>
+<li><p>Type in <code>git push</code>. This pushes the merge out into the master branch of your GitHub repository.</p>
+<p><code>git push</code> at this point is <em>kinda</em> equivalent to confirming the merge on the GitHub repository. This is to make sure the two branches (test and master) are even, or the same.</p></li>
+</ol>
+<p>Most of you might not be comfortable with the command line yet and would prefer the point-and-click ease of RStudio, and that’s okay! This is <em>your</em> workflow and you should choose to work in a way that makes you the most comfortable. You may want to expedite your workflow someday, and this option is here for you if you want it!</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="git-branches.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ps811-materials.pdf", "ps811-materials.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

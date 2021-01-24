@@ -4,7 +4,7 @@ In this lecture, you will learn how to manipulate data. This is probably the mos
 
 Much of this lesson is indebted to my favorite data manipulation page on the internet: [Mike DeCrescenzo's data manipulation tutorial](https://mikedecr.github.io/courses/811/811-03-data/) from his 2018 PS811 course. It is the R tutorial I keep returning to again and again.
 
-# Install packages
+## Install packages
 
 ```
 # packages
@@ -16,7 +16,7 @@ library("tidyr")
 library("dplyr")
 ```
 
-# Read data
+## Read data
 
 Here, I am going to introduce you to the `here` package. To read more about `here`, I recommend that you check out this [helpful love letter to the `here` package](https://github.com/jennybc/here_here).
 
@@ -60,7 +60,7 @@ as.data.frame(scotus)
 ?as.data.frame
 ```
 
-# Understand data frames
+## Understand data frames
 
 You might get tired from referencing both the dataset and the variable every time you want to refer to a variable. I know, typing is exhausting! You might be tempted to use the `attach(dataset)` function. Don't use it. It's not worth the headaches down the road. You will likely use multiple datasets with the same variable names and it is always less confusing for yourself and future reviewers/collaborators if you refer to both the dataset and the variable.
 
@@ -87,7 +87,7 @@ I recommend that you download or reference the codebook whenever possible. Somet
 
 You can access the [online codebook for the SCOTUS database](http://scdb.wustl.edu/documentation.php). Many codebooks for other datasets may be in PDF or Word format.
 
-## Data frame exercise
+### Data frame exercise
 
 Creating your own data frame from scratch may help you understand data frames a bit better.
 
@@ -112,7 +112,7 @@ streaming
 streaming_df <- as.data.frame(streaming_dataframe)
 ```
 
-# Use tidyverse for data manipulation
+## Use tidyverse for data manipulation
 
 You can use base R to manipulate data if you want. You should learn and know base R because many replication materials use base R. But, I gotta tell you, [tidyverse](https://www.tidyverse.org/) is the grand suite for manipulating data. Think of it as the Adobe for data manipulation. So, for your own data manipulation endeavors, I'm going to advocate that you use the tidyverse suite of packages.
 
@@ -133,7 +133,7 @@ With `tidyr`, you can do the following:
 * `gather()`: collate column names and turn them into values of a single variable (opposite of `spread()`)
 * `spread()`: untangles a variable with multiple repeating values and turns them into their own columns (opposite of `gather()`)
 
-## Rename data variables
+### Rename data variables
 
 ```
 # rename(dataset, 
@@ -147,7 +147,7 @@ scotus <- rename(scotus,
                vote.id = voteId)
 ```
 
-### Remember piping?
+#### Remember piping?
 
 Remember [Lesson 6](https://marcyshieh.github.io/ps811/ps811-lecture-6-r-vs-tidy) where we talked about piping? You can also do this using the piping technique.
 
@@ -165,7 +165,7 @@ The problem with the `rename()` function is that it overwrites everything. This 
 
 But what if you don't want to overwrite anything?
 
-## Create new data variables
+### Create new data variables
 
 Instead of overwriting variables, you may simply want to keep your old variables and create new ones.
 
@@ -251,7 +251,7 @@ scotus <- mutate(scotus,
                  time_trends = 2020 - year)
 ```
 
-## Logical operators
+### Logical operators
 
 You can access a complete list of logical operators on the [Data Mentor page](https://www.datamentor.io/r-programming/operator/), but I've highlighted a few that you will likely encounter.
 
@@ -270,7 +270,7 @@ You can access a complete list of logical operators on the [Data Mentor page](ht
 * `is.na(x)`: test if x is NA
 * `!is.na(x)`: test if x is NOT NA
 
-## Same function, multiple conditions
+### Same function, multiple conditions
 
 What if we want to check multiple conditions within the same function? You use the `case_when()` function.
 
@@ -282,7 +282,7 @@ scotus <- mutate(scotus,
                  decisionDirection == 3 ~ unspecified))
 ```
 
-## Select columns
+### Select columns
 
 Say your question is whether the decade a case was decided influences whether it is liberal or not, so you might only care about two variables.
 
@@ -323,7 +323,7 @@ select(scotus, -docketId, matches("."))
 # though not having also keeps all remaining variables
 ```
 
-# Filter data
+## Filter data
 
 You know how you can filter data in Excel? You can do this in R as well. Why would you want to know how to do it in R when you already know how to do it in Excel? Well, if you have a dataset that has hundreds of thousands of observations, it will take forever to load and filter in Excel. It will be way faster if you do it in R.
 
@@ -345,7 +345,7 @@ Say you want to filter to decisions from Ruth Bader Ginsburg in 2000
 filter(scotus, year == 2000, justiceName == "RBGinsburg")
 ```
 
-## Summarize data
+### Summarize data
 
 Think of this as a more advanced `summary()` command where you can specify what you want to summarize.
 
@@ -365,7 +365,7 @@ scotus %>%
   summarise(qs = quantile(liberal, na.rm = TRUE, c(0.25, 0.75)), prob = c(0.25, 0.75))
 ```
 
-## Sort data
+### Sort data
 
 Remember this object we created earlier in the `select()` section?
 
@@ -385,7 +385,7 @@ Sort decade by descending order.
 arrange(scotus_select, desc(decade), liberal)
 ```
 
-### Identify what to sort
+#### Identify what to sort
 
 Here's a mini exercise to help you understand sorting.
 
@@ -402,7 +402,7 @@ arrange(sort_ex_df, x, y)
 arrange(sort_ex_df, y, x)
 ```
 
-## Merge datasets
+### Merge datasets
 
 You might have two datasets that you would like to merge.
 
@@ -447,7 +447,7 @@ anti_join(english, math, by = "studentID")
 anti_join(math, english, by = "studentID")
 ```
 
-## View tables
+### View tables
 
 If you want to just take a look at a variable, the `table()` function is extremely helpful.
 
@@ -511,7 +511,7 @@ You can turn this data frame into an object!
 ```
 scotus_count <- count(scotus, decade, decisionDirection)
 ```
-## Group variables
+### Group variables
 
 You may want to create descriptive counts per group.
 
@@ -526,7 +526,7 @@ mutate(group_by(scotus_count, decade),
        p = round(p, 3))
 ```
 
-## Reshape data
+### Reshape data
 
 I can demonstrate this better if we create a new dataset.
 

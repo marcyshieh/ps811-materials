@@ -1,0 +1,101 @@
+# Bookdown
+
+Many people use Bookdown. In fact, many tutorials I've linked to for my lessons use Bookdown. Bookdown is great for writing lessons and replication materials. You can also publish RMarkdown documents right on to the web! [Some would even suggest](https://www.eddjberry.com/post/writing-your-thesis-with-bookdown/) writing your papers/theses in Bookdown.
+
+Here are some examples of Bookdown pages:
+
+- [Bookdown official documentation](https://bookdown.org/yihui/bookdown/)
+- [Happy Git and GitHub for the useR](https://happygitwithr.com/)
+- [R Markdown Features: A Compact Reference](https://yongfu.name/Rmd_ref/)
+
+You may one day want to create tutorials or step-by-step replication materials for collaborators and/or people interested in your work. Bookdown is a great place to do it. To do this, you need to create a GitHub Project Pages.
+
+I am convinced that [Julie Lowndes' Bookdown tutorial](https://jules32.github.io/bookdown-tutorial/setup.html) is the best Bookdown tutorial out there. And I say this as someone who has scoured the web for Bookdown tutorials like a maniac.
+
+But I still had to make a few edits to her tutorial to "dumb it down" for myself. If it's dumb enough for me, it's hopefully dumb enough for all of us (lol).
+
+So here are some *simple instructions* for publishing your Bookdown site to GitHub Pages.
+
+1. Open R Studio.
+
+2. Go to File > New Project.
+
+![new-project](https://marcyshieh.github.io/ps811/lecture11-img/new-project.png)
+
+3. Click on New Directory.
+
+![project-type](https://marcyshieh.github.io/ps811/lecture11-img/project-type.png)
+
+4. Select Book Project using bookdown.
+
+![new-project-wizard](https://marcyshieh.github.io/ps811/lecture11-img/new-project-wizard.png)
+
+5. Name the directory "book," check "Open in New Session," then click "Create Project."
+
+6. Click on the "Build" pane.
+
+![build-book](https://marcyshieh.github.io/ps811/lecture11-img/build-book.png)
+
+7. Click on the "Build Book" button.
+
+8. Go to GitHub. Create a repository named "book." Do not initiate a README file.
+
+9. Enter the following code into the Terminal pane in R Studio. This code shows up on the GitHub site if you don't initiate a README file. It is helpful because you can just copy + paste to create the repository via the command line.
+
+```
+echo "# book" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/[your-username]/book.git
+git push -u origin main
+```
+
+7. Refresh GitHub. You should see an empty repository with the README.md file.
+
+8. Go back to R Studio.
+
+9. Click on the Git pane. You will see a bunch of files.
+
+10. Close RStudio.
+
+11. Reopen the `book.Rproj` file from your `book` directory.
+
+![git-pane](https://marcyshieh.github.io/ps811/lecture11-img/git-pane.png)
+
+12. Go to the Git pane.
+
+13. Click on the "Commit" button, write a message in the textbox, and push.
+
+14. Then create a hidden `.nojekyll` file because you will not be using Jekyll. If you don't do this step, you will not be able to access `index.html`. Type the following into the terminal:
+
+```
+touch .nojekyll
+git add .nojekyll
+```
+
+15. Commit, add commit message, then push.
+
+16. Go back to your repository on GitHub. You should see a bunch of files.
+
+17. Go to Settings.
+
+![git-pages](https://marcyshieh.github.io/ps811/lecture11-img/git-pages.png)
+
+18. Go to GitHub Pages. Under Source, select "main." Change "root" to "/docs." Then click the "Save" button.
+
+![files-pane](https://marcyshieh.github.io/ps811/lecture11-img/files-pane.png)
+
+19. Now go back to RStudio. Go to the Files pane. Rename the "_book" folder to "docs."
+
+20. Commit the change, add a commit message, and push.
+
+21. Now go to `https://[your-username].github.io/book`. Everything should be there.
+
+22. You can go back to RStudio and edit the .Rmd files like you would any other R Markdown file. And, every time you make an edit, just:
+
+    + Go to the Build pane > click Build Book
+    + Go to the Git pane > stage files, commit, add commit message, and push.
+    
+The cool thing about Bookdown is that you will be able to load everything on to a website, which could be helpful for collaboration and teaching.

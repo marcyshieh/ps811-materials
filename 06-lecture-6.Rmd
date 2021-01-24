@@ -12,7 +12,7 @@ However, there are commands that are faster to write and easier to remember in b
 
 In general, processing time is dependent on the amount of data you have, so if you only have a few thousand observations, it might not make much of a difference, but it will probably make a difference if you have tens or hundreds of thousands of observations.
 
-# R basics {#r-basics}
+## R basics {#r-basics}
 
 Some of these exercises were inspired by [Mike DeCrescenzo's R basics materials](https://github.com/mikedecr/PS811-computing/blob/master/code/01_basics.R) and [Kosuke Imai's supplementary materials for his book](https://github.com/kosukeimai/qss).
 
@@ -24,7 +24,7 @@ Some of these exercises were inspired by [Mike DeCrescenzo's R basics materials]
 
 3. A new Untitled1 R Script tab will open. Go to File > Save As. Name it `lecture5-exercise-basic.R`.
 
-## Use R as a calculator
+### Use R as a calculator
 
 4. Use R to add/subtract/multiply/divide. You don't *need* the spaces between each command, but it is easier to read if you do.
 
@@ -67,7 +67,7 @@ Some of these exercises were inspired by [Mike DeCrescenzo's R basics materials]
 
 If you ever want to figure out how to calculate something in R, just Google it or check out this short [Quick-R Operators](https://www.statmethods.net/management/operators.html) list for commonly used arithmetic and logical operators.
 
-## Creating objects
+### Creating objects
 
 9. You want to put `8 + 1` into an object called `nine`.
 
@@ -98,7 +98,7 @@ If you ever want to figure out how to calculate something in R, just Google it o
     ```
     Output should be "hi, nice to meet you, what is your name," 9, and 54, respectively.
     
-## Creating vectors
+### Creating vectors
 
 14. Vectors can be a bunch of different values.
 
@@ -138,7 +138,7 @@ If you ever want to figure out how to calculate something in R, just Google it o
     ```
     Ouptut should be 20.71429, 8, "numeric" (there is no mode), 25.0034, 145, respectively.
     
-# Loading data into R {#load-data}
+## Loading data into R {#load-data}
 
 1. When you first start with R, most tutorials will suggest that you use `setwd()` to call in your directory. And sure, that's fine. But since this course emphasizes replication, what if someone opens your .Rproj in hopes of replicating your work and get an error when they try to run `setwd("/Users/marcyshieh/marcyshieh.github.io/_ps811")`? They are not you, they do not work on your computer, so they need to go through the extra step of changing that line.
 
@@ -175,7 +175,7 @@ If you ever want to figure out how to calculate something in R, just Google it o
     ```
     You are calling here() inside the read.csv() command because you are using the here() package. 
     
-# Comparing base R vs. Tidyverse
+## Comparing base R vs. Tidyverse
 
 Much of the lesson here is indebted to [Hugo Taraves](https://tavareshugo.github.io/data_carpentry_extras/base-r_Tidyverse_equivalents/base-r_Tidyverse_equivalents.html), who wrote a nifty guide to syntax equivalents of base R vs. Tidyverse.
 
@@ -187,7 +187,7 @@ Take a look at the variables in the dataset using `names(movie_metadata)`.
 
 We are going to first go through everything in base R, then repeat everything in Tidyverse. Hopefully this gives you a sense of how base R and Tidyverse work.
 
-## Base R {#base-r}
+### Base R {#base-r}
 
 This is how these commands work in base R.
 
@@ -266,7 +266,7 @@ This is how these commands work in base R.
           })
      ```
 
-## Tidyverse {#tidy}
+### Tidyverse {#tidy}
 
 You know how to do it in base R, so now you can see how it works in Tidyverse! Tidyverse is a suite of packages that are extremely useful for data manipulation. We will have a longer discussion of using tidyverse package for data manipulation next week but hopefully this introduction shows how tidyverse tools deviate from base R tools.
 

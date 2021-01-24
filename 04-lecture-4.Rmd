@@ -14,7 +14,7 @@ With branches, each of your advisors could have worked in a branch, and you coul
 
 In this lecture, I will go through how to work with branches in the RStudio environment.
 
-# Creating a branch {#create-branch}
+## Creating a branch {#create-branch}
 
 1. Open your ps811-project in RStudio.
 
@@ -44,7 +44,7 @@ In this lecture, I will go through how to work with branches in the RStudio envi
     
 6. Go to the GitHub of your ps811-project repository. You should be able to see a branch called `test` in the branch dropdown menu. Next to it, GitHub should tell you that there are 2 branches within your project.
 
-# Working in the branch
+## Working in the branch
 
 1. You are now in the "test" branch.
 
@@ -110,7 +110,7 @@ In this lecture, I will go through how to work with branches in the RStudio envi
 
 15. You should be able to see your recent commits from the test branch transferred to the master branch.
 
-# Deleting the branch {#delete-branch}
+## Deleting the branch {#delete-branch}
 
 There may come a time where you might want to delete your branch. How would you go about it?
 
@@ -122,7 +122,7 @@ There may come a time where you might want to delete your branch. How would you 
 
 2. Click on the red trash on the far right to "test" under "your branches."
 
-# Restoring the branch {#restore-branch}
+## Restoring the branch {#restore-branch}
 
 The great thing about Git is that, even if you accidentally delete a branch, you can always restore it.
 
@@ -150,7 +150,7 @@ The great thing about Git is that, even if you accidentally delete a branch, you
 
 6. Go back to the ps811-project main page. You should see "test" restored as a branch.
 
-# Using Git on the command line {#use-cmd}
+## Using Git on the command line {#use-cmd}
 
 There are a wealth of other things Git can do, and you will find a wealth of resources about Git online. Many of the resources you encounter will pertain to using Git with the command line, which is how software developers have traditionally used it. You may want to familiarize yourself with that, as many of the help resources tend to be specific to Git command line functions, not RStudio functions.
 

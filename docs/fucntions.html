@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Fucntions | Introduction to Statistical Computing in Political Science</title>
+  <meta name="description" content="This bookdown book contains materials for PS811." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Fucntions | Introduction to Statistical Computing in Political Science" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This bookdown book contains materials for PS811." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Fucntions | Introduction to Statistical Computing in Political Science" />
+  
+  <meta name="twitter:description" content="This bookdown book contains materials for PS811." />
+  
+
+<meta name="author" content="Marcy Shieh" />
+
+
+<meta name="date" content="2021-01-24" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="git-branches.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="3" data-path="setting-up.html"><a href="setting-up.html"><i class="fa fa-check"></i><b>3</b> Setting Up</a><ul>
+<li class="chapter" data-level="3.1" data-path="setting-up.html"><a href="setting-up.html#install-R"><i class="fa fa-check"></i><b>3.1</b> Installing R</a></li>
+<li class="chapter" data-level="3.2" data-path="setting-up.html"><a href="setting-up.html#install-Rstudio"><i class="fa fa-check"></i><b>3.2</b> Installing RStudio</a></li>
+<li class="chapter" data-level="3.3" data-path="setting-up.html"><a href="setting-up.html#install-latex"><i class="fa fa-check"></i><b>3.3</b> Installing LaTeX</a></li>
+<li class="chapter" data-level="3.4" data-path="setting-up.html"><a href="setting-up.html#knit-RMarkdown"><i class="fa fa-check"></i><b>3.4</b> Knitting R Markdown Files</a></li>
+<li class="chapter" data-level="3.5" data-path="setting-up.html"><a href="setting-up.html#create-Github"><i class="fa fa-check"></i><b>3.5</b> Creating a Github Account</a></li>
+<li class="chapter" data-level="3.6" data-path="setting-up.html"><a href="setting-up.html#setup-Git"><i class="fa fa-check"></i><b>3.6</b> Setting Up Git</a></li>
+<li class="chapter" data-level="3.7" data-path="setting-up.html"><a href="setting-up.html#RStudio-Github"><i class="fa fa-check"></i><b>3.7</b> Connecting RStudio to Git and Github</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="setting-up.html"><a href="setting-up.html#say-hello-to-git-on-rstudio"><i class="fa fa-check"></i><b>3.7.1</b> Say hello to git on RStudio</a></li>
+<li class="chapter" data-level="3.7.2" data-path="setting-up.html"><a href="setting-up.html#create-a-repository"><i class="fa fa-check"></i><b>3.7.2</b> Create a repository</a></li>
+<li class="chapter" data-level="3.7.3" data-path="setting-up.html"><a href="setting-up.html#connect-github-to-rstudio-the-fun-part"><i class="fa fa-check"></i><b>3.7.3</b> Connect Github to RStudio (the fun part)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="setting-up.html"><a href="setting-up.html#work-git"><i class="fa fa-check"></i><b>3.8</b> Working with Git on RStudio</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="setting-up.html"><a href="setting-up.html#how-does-this-all-work"><i class="fa fa-check"></i><b>3.8.1</b> How does this all work?</a></li>
+<li class="chapter" data-level="3.8.2" data-path="setting-up.html"><a href="setting-up.html#check-if-things-happened-as-expected"><i class="fa fa-check"></i><b>3.8.2</b> Check if things happened as expected</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="workflow.html"><a href="workflow.html"><i class="fa fa-check"></i><b>4</b> Workflow</a><ul>
+<li class="chapter" data-level="4.1" data-path="workflow.html"><a href="workflow.html#why-create-a-project"><i class="fa fa-check"></i><b>4.1</b> Why create a project?</a></li>
+<li class="chapter" data-level="4.2" data-path="workflow.html"><a href="workflow.html#create-proj"><i class="fa fa-check"></i><b>4.2</b> Creating a project in RStudio</a></li>
+<li class="chapter" data-level="4.3" data-path="workflow.html"><a href="workflow.html#push-git"><i class="fa fa-check"></i><b>4.3</b> Pushing a R Markdown document to your Github repository</a></li>
+<li class="chapter" data-level="4.4" data-path="workflow.html"><a href="workflow.html#write-paper"><i class="fa fa-check"></i><b>4.4</b> Writing a paper in R Markdown</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="workflow.html"><a href="workflow.html#prerequisites"><i class="fa fa-check"></i><b>4.4.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="4.4.2" data-path="workflow.html"><a href="workflow.html#installing-papaja"><i class="fa fa-check"></i><b>4.4.2</b> Installing papaja</a></li>
+<li class="chapter" data-level="4.4.3" data-path="workflow.html"><a href="workflow.html#opening-the-template"><i class="fa fa-check"></i><b>4.4.3</b> Opening the template</a></li>
+<li class="chapter" data-level="4.4.4" data-path="workflow.html"><a href="workflow.html#getting-to-know-your-apa-r-markdown-template"><i class="fa fa-check"></i><b>4.4.4</b> Getting to know your APA R Markdown template</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="workflow.html"><a href="workflow.html#lets-talk-about-code-chunks"><i class="fa fa-check"></i><b>4.5</b> Let’s talk about code chunks</a></li>
+<li class="chapter" data-level="4.6" data-path="workflow.html"><a href="workflow.html#code-chunks-in-the-papaja-template"><i class="fa fa-check"></i><b>4.6</b> Code chunks in the papaja template</a></li>
+<li class="chapter" data-level="4.7" data-path="workflow.html"><a href="workflow.html#body-of-the-papaja-template"><i class="fa fa-check"></i><b>4.7</b> Body of the papaja template</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i><b>5</b> Bibliography</a><ul>
+<li class="chapter" data-level="5.1" data-path="bibliography.html"><a href="bibliography.html#download-zotero"><i class="fa fa-check"></i><b>5.1</b> Downloading Zotero</a></li>
+<li class="chapter" data-level="5.2" data-path="bibliography.html"><a href="bibliography.html#download-bbt"><i class="fa fa-check"></i><b>5.2</b> Downloading Better Bibtex for Zotero</a></li>
+<li class="chapter" data-level="5.3" data-path="bibliography.html"><a href="bibliography.html#load-citr"><i class="fa fa-check"></i><b>5.3</b> Loading the citr package</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="git-branches.html"><a href="git-branches.html"><i class="fa fa-check"></i><b>6</b> Git Branches</a><ul>
+<li class="chapter" data-level="6.1" data-path="git-branches.html"><a href="git-branches.html#create-branch"><i class="fa fa-check"></i><b>6.1</b> Creating a branch</a></li>
+<li class="chapter" data-level="6.2" data-path="git-branches.html"><a href="git-branches.html#working-in-the-branch"><i class="fa fa-check"></i><b>6.2</b> Working in the branch</a></li>
+<li class="chapter" data-level="6.3" data-path="git-branches.html"><a href="git-branches.html#delete-branch"><i class="fa fa-check"></i><b>6.3</b> Deleting the branch</a></li>
+<li class="chapter" data-level="6.4" data-path="git-branches.html"><a href="git-branches.html#restore-branch"><i class="fa fa-check"></i><b>6.4</b> Restoring the branch</a></li>
+<li class="chapter" data-level="6.5" data-path="git-branches.html"><a href="git-branches.html#use-cmd"><i class="fa fa-check"></i><b>6.5</b> Using Git on the command line</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="fucntions.html"><a href="fucntions.html"><i class="fa fa-check"></i><b>7</b> Fucntions</a><ul>
+<li class="chapter" data-level="7.1" data-path="fucntions.html"><a href="fucntions.html#loops"><i class="fa fa-check"></i><b>7.1</b> Loops</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="fucntions.html"><a href="fucntions.html#using-loops-in-a-dataset"><i class="fa fa-check"></i><b>7.1.1</b> Using loops in a dataset</a></li>
+<li class="chapter" data-level="7.1.2" data-path="fucntions.html"><a href="fucntions.html#vectorizing-the-process"><i class="fa fa-check"></i><b>7.1.2</b> Vectorizing the process</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="fucntions.html"><a href="fucntions.html#applying-lapply"><i class="fa fa-check"></i><b>7.2</b> Applying lapply()</a></li>
+<li class="chapter" data-level="7.3" data-path="fucntions.html"><a href="fucntions.html#indexing-your-list"><i class="fa fa-check"></i><b>7.3</b> Indexing your list</a></li>
+<li class="chapter" data-level="7.4" data-path="fucntions.html"><a href="fucntions.html#scoped-verbs"><i class="fa fa-check"></i><b>7.4</b> Scoped verbs</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="fucntions.html"><a href="fucntions.html#using-if"><i class="fa fa-check"></i><b>7.4.1</b> Using if()</a></li>
+<li class="chapter" data-level="7.4.2" data-path="fucntions.html"><a href="fucntions.html#using-at"><i class="fa fa-check"></i><b>7.4.2</b> Using at()</a></li>
+<li class="chapter" data-level="7.4.3" data-path="fucntions.html"><a href="fucntions.html#defining-your-own-functions"><i class="fa fa-check"></i><b>7.4.3</b> Defining your own functions</a></li>
+<li class="chapter" data-level="7.4.4" data-path="fucntions.html"><a href="fucntions.html#applying-more-than-one-function"><i class="fa fa-check"></i><b>7.4.4</b> Applying more than one function</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="fucntions.html"><a href="fucntions.html#nesting"><i class="fa fa-check"></i><b>7.5</b> Nesting data frames</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Statistical Computing in Political Science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="fucntions" class="section level1">
+<h1><span class="header-section-number">Chapter 7</span> Fucntions</h1>
+<p>In this lecture, you will learn how to use R functions, such as loops, apply, lists, scoped verbs, nesting, and mapping.</p>
+<p>These R functions are often a neglected part of contemporary R education, but they can be useful and you will encounter them in PS 812 and the machine learning course. As more R users begin to rely on packages, the need to write their own functions may seem irrelevant. However, it’s good to know what <em>kinda</em> happens within the black box of a package.</p>
+<p>Much of the material here is inspired by <a href="http://www.rebeccabarter.com/blog/2019-08-19_purrr/">Rebecca Barter’s purrr tutorial</a>, <a href="https://github.com/mikedecr/PS811-computing/blob/master/code/07_functional-programming.R">Mike DeCrescenzo’s Functional Programming in R lesson</a>, and the <a href="https://r4ds.had.co.nz/iteration.html">R for Data Science section on iteration</a>.</p>
+<div id="loops" class="section level2">
+<h2><span class="header-section-number">7.1</span> Loops</h2>
+<p>Say you want to repeat the same thing multiple times for <code>n</code> observations. Most specialized R packages do this for you without you having to design the loop, but we are just going over loops so you can get an idea of how they work. Loops can be kind of slow, and usually a loop in R is way faster in Python and other programming languages.</p>
+<p>I do want to say that you will use loops in PS 812 and the machine learning class.</p>
+<p>Here is a simple loop so you can get the basic idea of what a loop does.</p>
+<pre><code>for (i in 1:10) {
+  print(i)
+}</code></pre>
+<p>You should end up with an output that shows 10 vectors with one number in each vector. Each number is a number from 1 to 10. What you are doing here is:</p>
+<ul>
+<li><code>for (i...)</code> you are calling the element <code>i</code></li>
+<li><code>for (i in 1:10)</code> vector 1:10 is contained in the element <code>i</code></li>
+<li><code>print(i)</code> you want to do an operation that uses <code>i</code>, in this case, you are just printing everything in <code>i</code></li>
+</ul>
+<div id="using-loops-in-a-dataset" class="section level3">
+<h3><span class="header-section-number">7.1.1</span> Using loops in a dataset</h3>
+<p>Say you want to use loops with your dataset.</p>
+<p>We are going to do some loop examples with the datasets native to R. You can access them by typing in <code>data()</code>. We are going to use the <code>iris</code> dataset. You can take a look at the <code>iris</code> dataset by typing <code>View(iris)</code>.</p>
+<blockquote>
+<p>Knowing that R has native datasets can be helpful if you want to ask a question on an online forum and need to provide replication data. Your dataset might be proprietary or you may not want to upload your dataset onto the forum post. In these cases, you may simply refer to the datasets native to R.</p>
+</blockquote>
+<p>The following loop tells R to count the number of columns per row.</p>
+<pre><code># create a container
+# your results will be numeric but you want to make sure R knows that
+columns_loop &lt;- numeric()
+
+for (row in 1:nrow(iris)) {
+  columns_loop[row] &lt;- length(iris[row, ])
+  }
+  
+# you will find that for every row, there are 5 columns, which checks out</code></pre>
+</div>
+<div id="vectorizing-the-process" class="section level3">
+<h3><span class="header-section-number">7.1.2</span> Vectorizing the process</h3>
+<p>You can speed up this process by <em>vectorizing</em> it.</p>
+<pre><code>columns &lt;- apply(X = iris, MARGIN = 2, FUN = length)</code></pre>
+<ul>
+<li><code>apply()</code> is a function that <em>applies</em>a function over rows or columns of a grid/array and makes it really helpful when you are working with matrices</li>
+<li><code>X = iris</code> refers to the dataset</li>
+<li><code>MARGIN = 1</code> refers to the number of columns in every row (<code>MARGIN = 2</code> refers to the number of rows in every column)
+<ul>
+<li>1 = rows, 2 = columns</li>
+</ul></li>
+<li><code>FUN = length</code> refers to the function that is being applied. In this case, we are applying the <code>length</code> function, which simply tells you how wide (columns) or long (rows) the dataset is.</li>
+</ul>
+<p>You can learn more about the <code>apply</code> function (and many others) by typing in <code>?apply</code>.</p>
+</div>
+</div>
+<div id="applying-lapply" class="section level2">
+<h2><span class="header-section-number">7.2</span> Applying lapply()</h2>
+<p>You can just turn a data frame into a list.</p>
+<p>The <code>iris</code> dataset is a dataframe. You can turn it into a list.</p>
+<pre><code>iris_list &lt;- as.list(iris)
+
+# check out the list
+iris_list
+
+# check out the first five observations of the list
+lapply(iris_list, head)</code></pre>
+<p>You can also create your own lists.</p>
+<pre><code>list(colors = c(&quot;red&quot;, &quot;green&quot;, &quot;blue&quot;),
+     food = c(&quot;pizza&quot;, &quot;sushi&quot;, &quot;burger&quot;),
+     drink = c(&quot;coffee&quot;, &quot;tea&quot;, &quot;juice&quot;))</code></pre>
+</div>
+<div id="indexing-your-list" class="section level2">
+<h2><span class="header-section-number">7.3</span> Indexing your list</h2>
+<pre><code>str(iris_list)</code></pre>
+<p><code>str</code> allows you to display the structure of R objects, including information on the type, the number of columns, the number of rows per column, the number of factors per column, etc.</p>
+<pre><code>str(iris_list[1])</code></pre>
+<p>The <code>[1]</code> allows you to specify the first column. In this case, that first column is <code>Sepal.Length</code>.</p>
+<p>You may also double index. Each time you index, you get to a deeper level of the object, whatever it might be. Of course, the <code>iris</code> data may not be the best example, but here is a <a href="https://twitter.com/hadleywickham/status/643381054758363136?lang=en">nifty tweet</a> for you to understand indexing better.</p>
+<p>There is also <code>tapply()</code>, which allows you to apply functions to groups of data. In this case, you will be applying the mean function to each species. As such, in base R…</p>
+<pre><code>tapply(
+  X = iris$Sepal.Length, 
+  INDEX = list(iris$Species), 
+  FUN = mean, 
+  na.rm = TRUE  
+)</code></pre>
+<p>You can do <code>tapply()</code> using Tidyverse in a way that is a <em>bit</em> more intuitive.</p>
+<pre><code>iris %&gt;%
+  group_by(Species) %&gt;%
+  summarize(
+    mean_nom = mean(Sepal.Length, na.rm = TRUE)
+  ) </code></pre>
+</div>
+<div id="scoped-verbs" class="section level2">
+<h2><span class="header-section-number">7.4</span> Scoped verbs</h2>
+<p>There are functions you can use with the dplyr and purrr packages, which you should install and load.</p>
+<p>You want to familiarize yourself with these “scoped verbs”, or “apply functions.”</p>
+<ul>
+<li><code>if</code>: apply functions to variables that fulfills certain conditions (i.e., appy this function <code>if</code> this is true)</li>
+<li><code>at</code>: apply functions to specific variables (i.e., apply this function <code>at</code> this variable)</li>
+<li><code>all</code>: apply functions to every variable (i.e., apply this function at <code>all</code> variables)</li>
+</ul>
+<div id="using-if" class="section level3">
+<h3><span class="header-section-number">7.4.1</span> Using if()</h3>
+<p>If the column contains numeric values, replace each cell with the length of the data frame.</p>
+<ul>
+<li>I am using <code>length</code> because it is a function you are already familiar.</li>
+</ul>
+<pre><code>iris %&gt;%
+  mutate_if(
+    .predicate = is.numeric,
+    .funs = length
+  )</code></pre>
+<p>You can select variables that have numeric values. You can replace <code>is.numeric</code> with other R data types. Here is a <a href="http://www.r-tutor.com/r-introduction/basic-data-types">list of basic data types in R</a>.</p>
+<pre><code>select_if(iris, is.numeric)</code></pre>
+</div>
+<div id="using-at" class="section level3">
+<h3><span class="header-section-number">7.4.2</span> Using at()</h3>
+<p>The following command allows you to:</p>
+<ul>
+<li>only use the function on variables that start with “Sepal”</li>
+<li>divide each number in that variable by 100</li>
+<li>select the variables that start with “Sepal”</li>
+</ul>
+<pre><code>iris %&gt;%
+  mutate_at(
+    .vars = vars(starts_with(&quot;Sepal&quot;)),
+    .funs = function(x) x / 100
+  ) %&gt;% 
+  select(starts_with(&quot;Sepal&quot;))</code></pre>
+</div>
+<div id="defining-your-own-functions" class="section level3">
+<h3><span class="header-section-number">7.4.3</span> Defining your own functions</h3>
+<p>You can create your own functions! Below, I create a function where I divide a number by 2, or split it in half.</p>
+<pre><code>make_half &lt;- function(x) {
+  return(x / 2)
+}
+
+make_half(88)</code></pre>
+<p>Output should be 44.</p>
+<div id="anonymous-function" class="section level4">
+<h4><span class="header-section-number">7.4.3.1</span> Anonymous Function</h4>
+<p>You can also create a function using <code>sapply</code> and not name it. This is called an <em>anonymous function</em>. You just use it once and move on.</p>
+<pre><code>sapply(88, function(x) x / 2)</code></pre>
+</div>
+<div id="simple-lambda-function" class="section level4">
+<h4><span class="header-section-number">7.4.3.2</span> Simple lambda function</h4>
+<p>You can create a “lambda function,” which also goes by the names of a “quosure-style” function or a “purrr-style” function. It is similar to an anonymous function.</p>
+<pre><code>select_if(
+  iris,
+  .predicate = ~ sum(is.numeric(.)) &gt; 0
+)</code></pre>
+<p>In this case, you are:</p>
+<ul>
+<li>selecting from the <code>iris</code> dataset if the variable is numeric</li>
+<li>variable(s) will only selected if the number of <code>is.numeric</code> variables is larger than 0</li>
+</ul>
+</div>
+<div id="more-complex-lambda-function" class="section level4">
+<h4><span class="header-section-number">7.4.3.3</span> More complex lambda function</h4>
+<pre><code>iris %&gt;%
+  mutate_at(
+    .vars = vars(Sepal.Length, Sepal.Width),
+    .funs = ~ . / 100
+  )</code></pre>
+<p>Here, you are replacing <code>function(z)</code> with <code>~</code> and call <code>z</code> with <code>.</code>.</p>
+</div>
+</div>
+<div id="applying-more-than-one-function" class="section level3">
+<h3><span class="header-section-number">7.4.4</span> Applying more than one function</h3>
+<pre><code>summarize_all(
+  iris, 
+  .funs = list(uniques = ~ n_distinct(.), 
+               obj_type = class)
+)</code></pre>
+<p>Here, you are looking at the <code>iris</code> dataset and applying the following two functions:</p>
+<ul>
+<li>the number of distinct numbers per variable <code>n_distinct(.)</code> in the dataset and denoting the output as <code>uniques</code></li>
+<li>the data class (i.e., type) for each variable in the dataset and denoting that output as <code>obj_type</code></li>
+</ul>
+</div>
+</div>
+<div id="nesting" class="section level2">
+<h2><span class="header-section-number">7.5</span> Nesting data frames</h2>
+<p>You need to install the <code>purrr</code> package and load it. <code>purrr</code> is party of the Tidyverse universe, so the following commands will be written in Tidyverse. This also means you can’t use <code>purrr</code> without loading <code>tidyverse</code> first.</p>
+<p>Nesting generates one row for each group from the non-nested columns. This is useful for models.</p>
+<p>Probably the best way to understand nesting is through a grouping variable.</p>
+<pre><code>iris %&gt;%
+  group_by(Species) %&gt;%
+  nest() </code></pre>
+<p>The output should show that there are 3 different groups in the Species variable. For each Species, there are 50 rows (observations) and 4 columns (variables).</p>
+<p>Essentially, these are data frames within a data frame. Each data column is a <em>list</em>, which is called a list-column.</p>
+<p>This is helpful when you want to estimate a model within each species.</p>
+<p>To illustrate this, go ahead and create an object that groups your data set by Species.</p>
+<pre><code>nested_iris &lt;- iris %&gt;%
+  group_by(Species) %&gt;%
+  nest() %&gt;%
+  print()</code></pre>
+<p>Then, you want to know, “Does the width of the petal affect the length of the petal?” (I don’t know anything about irises, so hopefully this question isn’t too dumb.) To do this, you can run a regression.</p>
+<pre><code>nested_models &lt;- nested_iris %&gt;%
+  mutate(
+    model = map(
+      .x = data, 
+      .f = ~ lm(Petal.Length ~ Petal.Width, data = .x)
+    )
+  ) %&gt;%
+  print()</code></pre>
+<p>The output should show a new column: the “model” column.</p>
+<p>What you just did is, you grouped all the Species together, called the data, and ran the <code>lm</code> function, which is the function for an ordinary least squares regression. Then, you printed the results.</p>
+<p>If you want to look at each variable in the nested data frame, you can crack it open the same way you look at variables in a regular data frame.</p>
+<pre><code>nested_models$Species
+nested_models$data
+nested_models$model</code></pre>
+<p>If you want to extract coefficients into a new column called “coefs,” you can just call the <code>model</code> function you created.</p>
+<pre><code>nested_coefs &lt;- nested_models %&gt;%
+  mutate(coefs = map(model, coefficients)) %&gt;%
+  print()
+  
+nested_tidy</code></pre>
+<p>Output should show a new variable called <code>coefs</code>.</p>
+<pre><code>nested_coefs$coefs</code></pre>
+<p>output should list all the coefficients for each Species group.</p>
+<p>When you are done, you can unnest columns.</p>
+<pre><code>coefs &lt;- nested_coefs %&gt;%
+  unnest(coefs) %&gt;%
+  print()</code></pre>
+<p>As you can see, the coefs column is no longer grouped together. Once they are unnested, it expands: there’s a row for the intercept and the coefficient for each group.</p>
+<p>You will be unable to unnest non-data frame objects (try <code>nested_coefs %&gt;% unnest(model)</code>—it doesn’t work!!), but, as you recall, you can pull them out by doing <code>nested_tidy$model</code>. Or, if you want to write this in a tidy way…</p>
+<pre><code>nested_coefs %&gt;% pull(model)</code></pre>
+<p>If you want to work more with purrr, I highly recommend that you check out the <a href="https://github.com/rstudio/cheatsheets/blob/master/purrr.pdf">purrr cheat sheet</a>.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="git-branches.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ps811-materials.pdf", "ps811-materials.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
