@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>9 Graphics | Introduction to Statistical Computing in Political Science</title>
+  <meta name="description" content="This bookdown book contains materials for PS811." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="9 Graphics | Introduction to Statistical Computing in Political Science" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This bookdown book contains materials for PS811." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="9 Graphics | Introduction to Statistical Computing in Political Science" />
+  
+  <meta name="twitter:description" content="This bookdown book contains materials for PS811." />
+  
+
+<meta name="author" content="Marcy Shieh" />
+
+
+<meta name="date" content="2021-01-24" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data-manipulation.html"/>
+<link rel="next" href="analysis.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">POLISCI 811</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="setting-up.html"><a href="setting-up.html"><i class="fa fa-check"></i><b>2</b> Setting Up</a><ul>
+<li class="chapter" data-level="2.1" data-path="setting-up.html"><a href="setting-up.html#install-R"><i class="fa fa-check"></i><b>2.1</b> Installing R</a></li>
+<li class="chapter" data-level="2.2" data-path="setting-up.html"><a href="setting-up.html#install-Rstudio"><i class="fa fa-check"></i><b>2.2</b> Installing RStudio</a></li>
+<li class="chapter" data-level="2.3" data-path="setting-up.html"><a href="setting-up.html#install-latex"><i class="fa fa-check"></i><b>2.3</b> Installing LaTeX</a></li>
+<li class="chapter" data-level="2.4" data-path="setting-up.html"><a href="setting-up.html#knit-RMarkdown"><i class="fa fa-check"></i><b>2.4</b> Knitting R Markdown Files</a></li>
+<li class="chapter" data-level="2.5" data-path="setting-up.html"><a href="setting-up.html#create-Github"><i class="fa fa-check"></i><b>2.5</b> Creating a Github Account</a></li>
+<li class="chapter" data-level="2.6" data-path="setting-up.html"><a href="setting-up.html#setup-Git"><i class="fa fa-check"></i><b>2.6</b> Setting Up Git</a></li>
+<li class="chapter" data-level="2.7" data-path="setting-up.html"><a href="setting-up.html#RStudio-Github"><i class="fa fa-check"></i><b>2.7</b> Connecting RStudio to Git and Github</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="setting-up.html"><a href="setting-up.html#say-hello-to-git-on-rstudio"><i class="fa fa-check"></i><b>2.7.1</b> Say hello to git on RStudio</a></li>
+<li class="chapter" data-level="2.7.2" data-path="setting-up.html"><a href="setting-up.html#create-a-repository"><i class="fa fa-check"></i><b>2.7.2</b> Create a repository</a></li>
+<li class="chapter" data-level="2.7.3" data-path="setting-up.html"><a href="setting-up.html#connect-github-to-rstudio-the-fun-part"><i class="fa fa-check"></i><b>2.7.3</b> Connect Github to RStudio (the fun part)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="setting-up.html"><a href="setting-up.html#work-git"><i class="fa fa-check"></i><b>2.8</b> Working with Git on RStudio</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="setting-up.html"><a href="setting-up.html#how-does-this-all-work"><i class="fa fa-check"></i><b>2.8.1</b> How does this all work?</a></li>
+<li class="chapter" data-level="2.8.2" data-path="setting-up.html"><a href="setting-up.html#check-if-things-happened-as-expected"><i class="fa fa-check"></i><b>2.8.2</b> Check if things happened as expected</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="workflow.html"><a href="workflow.html"><i class="fa fa-check"></i><b>3</b> Workflow</a><ul>
+<li class="chapter" data-level="3.1" data-path="workflow.html"><a href="workflow.html#why-create-a-project"><i class="fa fa-check"></i><b>3.1</b> Why create a project?</a></li>
+<li class="chapter" data-level="3.2" data-path="workflow.html"><a href="workflow.html#create-proj"><i class="fa fa-check"></i><b>3.2</b> Creating a project in RStudio</a></li>
+<li class="chapter" data-level="3.3" data-path="workflow.html"><a href="workflow.html#push-git"><i class="fa fa-check"></i><b>3.3</b> Pushing a R Markdown document to your Github repository</a></li>
+<li class="chapter" data-level="3.4" data-path="workflow.html"><a href="workflow.html#write-paper"><i class="fa fa-check"></i><b>3.4</b> Writing a paper in R Markdown</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="workflow.html"><a href="workflow.html#prerequisites"><i class="fa fa-check"></i><b>3.4.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="3.4.2" data-path="workflow.html"><a href="workflow.html#installing-papaja"><i class="fa fa-check"></i><b>3.4.2</b> Installing papaja</a></li>
+<li class="chapter" data-level="3.4.3" data-path="workflow.html"><a href="workflow.html#opening-the-template"><i class="fa fa-check"></i><b>3.4.3</b> Opening the template</a></li>
+<li class="chapter" data-level="3.4.4" data-path="workflow.html"><a href="workflow.html#getting-to-know-your-apa-r-markdown-template"><i class="fa fa-check"></i><b>3.4.4</b> Getting to know your APA R Markdown template</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="workflow.html"><a href="workflow.html#lets-talk-about-code-chunks"><i class="fa fa-check"></i><b>3.5</b> Let’s talk about code chunks</a></li>
+<li class="chapter" data-level="3.6" data-path="workflow.html"><a href="workflow.html#code-chunks-in-the-papaja-template"><i class="fa fa-check"></i><b>3.6</b> Code chunks in the papaja template</a></li>
+<li class="chapter" data-level="3.7" data-path="workflow.html"><a href="workflow.html#body-of-the-papaja-template"><i class="fa fa-check"></i><b>3.7</b> Body of the papaja template</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i><b>4</b> Bibliography</a><ul>
+<li class="chapter" data-level="4.1" data-path="bibliography.html"><a href="bibliography.html#download-zotero"><i class="fa fa-check"></i><b>4.1</b> Downloading Zotero</a></li>
+<li class="chapter" data-level="4.2" data-path="bibliography.html"><a href="bibliography.html#download-bbt"><i class="fa fa-check"></i><b>4.2</b> Downloading Better Bibtex for Zotero</a></li>
+<li class="chapter" data-level="4.3" data-path="bibliography.html"><a href="bibliography.html#load-citr"><i class="fa fa-check"></i><b>4.3</b> Loading the citr package</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="git-branches.html"><a href="git-branches.html"><i class="fa fa-check"></i><b>5</b> Git Branches</a><ul>
+<li class="chapter" data-level="5.1" data-path="git-branches.html"><a href="git-branches.html#create-branch"><i class="fa fa-check"></i><b>5.1</b> Creating a branch</a></li>
+<li class="chapter" data-level="5.2" data-path="git-branches.html"><a href="git-branches.html#working-in-the-branch"><i class="fa fa-check"></i><b>5.2</b> Working in the branch</a></li>
+<li class="chapter" data-level="5.3" data-path="git-branches.html"><a href="git-branches.html#delete-branch"><i class="fa fa-check"></i><b>5.3</b> Deleting the branch</a></li>
+<li class="chapter" data-level="5.4" data-path="git-branches.html"><a href="git-branches.html#restore-branch"><i class="fa fa-check"></i><b>5.4</b> Restoring the branch</a></li>
+<li class="chapter" data-level="5.5" data-path="git-branches.html"><a href="git-branches.html#use-cmd"><i class="fa fa-check"></i><b>5.5</b> Using Git on the command line</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>6</b> Functions</a><ul>
+<li class="chapter" data-level="6.1" data-path="functions.html"><a href="functions.html#loops"><i class="fa fa-check"></i><b>6.1</b> Loops</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="functions.html"><a href="functions.html#using-loops-in-a-dataset"><i class="fa fa-check"></i><b>6.1.1</b> Using loops in a dataset</a></li>
+<li class="chapter" data-level="6.1.2" data-path="functions.html"><a href="functions.html#vectorizing-the-process"><i class="fa fa-check"></i><b>6.1.2</b> Vectorizing the process</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="functions.html"><a href="functions.html#applying-lapply"><i class="fa fa-check"></i><b>6.2</b> Applying lapply()</a></li>
+<li class="chapter" data-level="6.3" data-path="functions.html"><a href="functions.html#indexing-your-list"><i class="fa fa-check"></i><b>6.3</b> Indexing your list</a></li>
+<li class="chapter" data-level="6.4" data-path="functions.html"><a href="functions.html#scoped-verbs"><i class="fa fa-check"></i><b>6.4</b> Scoped verbs</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="functions.html"><a href="functions.html#using-if"><i class="fa fa-check"></i><b>6.4.1</b> Using if()</a></li>
+<li class="chapter" data-level="6.4.2" data-path="functions.html"><a href="functions.html#using-at"><i class="fa fa-check"></i><b>6.4.2</b> Using at()</a></li>
+<li class="chapter" data-level="6.4.3" data-path="functions.html"><a href="functions.html#defining-your-own-functions"><i class="fa fa-check"></i><b>6.4.3</b> Defining your own functions</a></li>
+<li class="chapter" data-level="6.4.4" data-path="functions.html"><a href="functions.html#applying-more-than-one-function"><i class="fa fa-check"></i><b>6.4.4</b> Applying more than one function</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="functions.html"><a href="functions.html#nesting"><i class="fa fa-check"></i><b>6.5</b> Nesting data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="base-r-vs-tidyverse.html"><a href="base-r-vs-tidyverse.html"><i class="fa fa-check"></i><b>7</b> Base R vs. Tidyverse</a><ul>
+<li class="chapter" data-level="7.1" data-path="base-r-vs-tidyverse.html"><a href="base-r-vs-tidyverse.html#but-first-whats-tidyverse"><i class="fa fa-check"></i><b>7.1</b> But first, what’s Tidyverse?</a></li>
+<li class="chapter" data-level="7.2" data-path="base-r-vs-tidyverse.html"><a href="base-r-vs-tidyverse.html#r-basics"><i class="fa fa-check"></i><b>7.2</b> R basics</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="base-r-vs-tidyverse.html"><a href="base-r-vs-tidyverse.html#use-r-as-a-calculator"><i class="fa fa-check"></i><b>7.2.1</b> Use R as a calculator</a></li>
+<li class="chapter" data-level="7.2.2" data-path="base-r-vs-tidyverse.html"><a href="base-r-vs-tidyverse.html#creating-objects"><i class="fa fa-check"></i><b>7.2.2</b> Creating objects</a></li>
+<li class="chapter" data-level="7.2.3" data-path="base-r-vs-tidyverse.html"><a href="base-r-vs-tidyverse.html#creating-vectors"><i class="fa fa-check"></i><b>7.2.3</b> Creating vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="base-r-vs-tidyverse.html"><a href="base-r-vs-tidyverse.html#load-data"><i class="fa fa-check"></i><b>7.3</b> Loading data into R</a></li>
+<li class="chapter" data-level="7.4" data-path="base-r-vs-tidyverse.html"><a href="base-r-vs-tidyverse.html#comparing-base-r-vs.-tidyverse"><i class="fa fa-check"></i><b>7.4</b> Comparing base R vs. Tidyverse</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="base-r-vs-tidyverse.html"><a href="base-r-vs-tidyverse.html#base-r"><i class="fa fa-check"></i><b>7.4.1</b> Base R</a></li>
+<li class="chapter" data-level="7.4.2" data-path="base-r-vs-tidyverse.html"><a href="base-r-vs-tidyverse.html#tidy"><i class="fa fa-check"></i><b>7.4.2</b> Tidyverse</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="data-manipulation.html"><a href="data-manipulation.html"><i class="fa fa-check"></i><b>8</b> Data Manipulation</a><ul>
+<li class="chapter" data-level="8.1" data-path="data-manipulation.html"><a href="data-manipulation.html#install-packages"><i class="fa fa-check"></i><b>8.1</b> Install packages</a></li>
+<li class="chapter" data-level="8.2" data-path="data-manipulation.html"><a href="data-manipulation.html#read-data"><i class="fa fa-check"></i><b>8.2</b> Read data</a></li>
+<li class="chapter" data-level="8.3" data-path="data-manipulation.html"><a href="data-manipulation.html#understand-data-frames"><i class="fa fa-check"></i><b>8.3</b> Understand data frames</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="data-manipulation.html"><a href="data-manipulation.html#data-frame-exercise"><i class="fa fa-check"></i><b>8.3.1</b> Data frame exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="data-manipulation.html"><a href="data-manipulation.html#use-tidyverse-for-data-manipulation"><i class="fa fa-check"></i><b>8.4</b> Use tidyverse for data manipulation</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="data-manipulation.html"><a href="data-manipulation.html#rename-data-variables"><i class="fa fa-check"></i><b>8.4.1</b> Rename data variables</a></li>
+<li class="chapter" data-level="8.4.2" data-path="data-manipulation.html"><a href="data-manipulation.html#create-new-data-variables"><i class="fa fa-check"></i><b>8.4.2</b> Create new data variables</a></li>
+<li class="chapter" data-level="8.4.3" data-path="data-manipulation.html"><a href="data-manipulation.html#logical-operators"><i class="fa fa-check"></i><b>8.4.3</b> Logical operators</a></li>
+<li class="chapter" data-level="8.4.4" data-path="data-manipulation.html"><a href="data-manipulation.html#same-function-multiple-conditions"><i class="fa fa-check"></i><b>8.4.4</b> Same function, multiple conditions</a></li>
+<li class="chapter" data-level="8.4.5" data-path="data-manipulation.html"><a href="data-manipulation.html#select-columns"><i class="fa fa-check"></i><b>8.4.5</b> Select columns</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="data-manipulation.html"><a href="data-manipulation.html#filter-data"><i class="fa fa-check"></i><b>8.5</b> Filter data</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="data-manipulation.html"><a href="data-manipulation.html#summarize-data"><i class="fa fa-check"></i><b>8.5.1</b> Summarize data</a></li>
+<li class="chapter" data-level="8.5.2" data-path="data-manipulation.html"><a href="data-manipulation.html#sort-data"><i class="fa fa-check"></i><b>8.5.2</b> Sort data</a></li>
+<li class="chapter" data-level="8.5.3" data-path="data-manipulation.html"><a href="data-manipulation.html#merge-datasets"><i class="fa fa-check"></i><b>8.5.3</b> Merge datasets</a></li>
+<li class="chapter" data-level="8.5.4" data-path="data-manipulation.html"><a href="data-manipulation.html#view-tables"><i class="fa fa-check"></i><b>8.5.4</b> View tables</a></li>
+<li class="chapter" data-level="8.5.5" data-path="data-manipulation.html"><a href="data-manipulation.html#group-variables"><i class="fa fa-check"></i><b>8.5.5</b> Group variables</a></li>
+<li class="chapter" data-level="8.5.6" data-path="data-manipulation.html"><a href="data-manipulation.html#reshape-data"><i class="fa fa-check"></i><b>8.5.6</b> Reshape data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="graphics.html"><a href="graphics.html"><i class="fa fa-check"></i><b>9</b> Graphics</a><ul>
+<li class="chapter" data-level="9.1" data-path="graphics.html"><a href="graphics.html#i-am-going-to-pay-lip-service-to-the-comparativists"><i class="fa fa-check"></i><b>9.1</b> I am going to pay lip service to the comparativists…</a></li>
+<li class="chapter" data-level="9.2" data-path="graphics.html"><a href="graphics.html#base-r-graphs"><i class="fa fa-check"></i><b>9.2</b> base R graphs</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="graphics.html"><a href="graphics.html#scatter-plots"><i class="fa fa-check"></i><b>9.2.1</b> Scatter plots</a></li>
+<li class="chapter" data-level="9.2.2" data-path="graphics.html"><a href="graphics.html#box-plots"><i class="fa fa-check"></i><b>9.2.2</b> Box plots</a></li>
+<li class="chapter" data-level="9.2.3" data-path="graphics.html"><a href="graphics.html#bar-plots"><i class="fa fa-check"></i><b>9.2.3</b> Bar plots</a></li>
+<li class="chapter" data-level="9.2.4" data-path="graphics.html"><a href="graphics.html#line-plots"><i class="fa fa-check"></i><b>9.2.4</b> Line plots</a></li>
+<li class="chapter" data-level="9.2.5" data-path="graphics.html"><a href="graphics.html#histogram-and-density-plots"><i class="fa fa-check"></i><b>9.2.5</b> Histogram and density plots</a></li>
+<li class="chapter" data-level="9.2.6" data-path="graphics.html"><a href="graphics.html#pie-charts"><i class="fa fa-check"></i><b>9.2.6</b> Pie charts</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="graphics.html"><a href="graphics.html#world-of-ggplot2"><i class="fa fa-check"></i><b>9.3</b> World of <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="9.3.1" data-path="graphics.html"><a href="graphics.html#load-packages"><i class="fa fa-check"></i><b>9.3.1</b> Load packages</a></li>
+<li class="chapter" data-level="9.3.2" data-path="graphics.html"><a href="graphics.html#load-dataset"><i class="fa fa-check"></i><b>9.3.2</b> Load dataset</a></li>
+<li class="chapter" data-level="9.3.3" data-path="graphics.html"><a href="graphics.html#components"><i class="fa fa-check"></i><b>9.3.3</b> Components</a></li>
+<li class="chapter" data-level="9.3.4" data-path="graphics.html"><a href="graphics.html#create-plot"><i class="fa fa-check"></i><b>9.3.4</b> Create plot</a></li>
+<li class="chapter" data-level="9.3.5" data-path="graphics.html"><a href="graphics.html#populate-plot"><i class="fa fa-check"></i><b>9.3.5</b> Populate plot</a></li>
+<li class="chapter" data-level="9.3.6" data-path="graphics.html"><a href="graphics.html#aesthetics"><i class="fa fa-check"></i><b>9.3.6</b> Aesthetics</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>10</b> Analysis</a><ul>
+<li class="chapter" data-level="10.1" data-path="graphics.html"><a href="graphics.html#load-packages"><i class="fa fa-check"></i><b>10.1</b> Load packages</a></li>
+<li class="chapter" data-level="10.2" data-path="base-r-vs-tidyverse.html"><a href="base-r-vs-tidyverse.html#load-data"><i class="fa fa-check"></i><b>10.2</b> Load data</a></li>
+<li class="chapter" data-level="10.3" data-path="analysis.html"><a href="analysis.html#rename-variables"><i class="fa fa-check"></i><b>10.3</b> Rename variables</a></li>
+<li class="chapter" data-level="10.4" data-path="analysis.html"><a href="analysis.html#descriptive-analysis"><i class="fa fa-check"></i><b>10.4</b> Descriptive analysis</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="analysis.html"><a href="analysis.html#descriptive-graph"><i class="fa fa-check"></i><b>10.4.1</b> Descriptive graph</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="analysis.html"><a href="analysis.html#data-summary"><i class="fa fa-check"></i><b>10.5</b> Data summary</a></li>
+<li class="chapter" data-level="10.6" data-path="analysis.html"><a href="analysis.html#regression-analysis"><i class="fa fa-check"></i><b>10.6</b> Regression analysis</a><ul>
+<li class="chapter" data-level="10.6.1" data-path="analysis.html"><a href="analysis.html#linear-regression"><i class="fa fa-check"></i><b>10.6.1</b> Linear regression</a></li>
+<li class="chapter" data-level="10.6.2" data-path="analysis.html"><a href="analysis.html#diagnostic-plots"><i class="fa fa-check"></i><b>10.6.2</b> Diagnostic plots</a></li>
+<li class="chapter" data-level="10.6.3" data-path="analysis.html"><a href="analysis.html#linear-regression-with-standard-errors"><i class="fa fa-check"></i><b>10.6.3</b> Linear regression with standard errors</a></li>
+<li class="chapter" data-level="10.6.4" data-path="analysis.html"><a href="analysis.html#logit-regression"><i class="fa fa-check"></i><b>10.6.4</b> Logit regression</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="tools.html"><a href="tools.html"><i class="fa fa-check"></i><b>11</b> Tools</a></li>
+<li class="chapter" data-level="12" data-path="replication.html"><a href="replication.html"><i class="fa fa-check"></i><b>12</b> Replication</a></li>
+<li class="chapter" data-level="13" data-path="github-pages.html"><a href="github-pages.html"><i class="fa fa-check"></i><b>13</b> GitHub Pages</a><ul>
+<li class="chapter" data-level="13.1" data-path="github-pages.html"><a href="github-pages.html#whats-so-great-about-github-pages"><i class="fa fa-check"></i><b>13.1</b> What’s so great about GitHub Pages?</a></li>
+<li class="chapter" data-level="13.2" data-path="github-pages.html"><a href="github-pages.html#who-uses-github-pages"><i class="fa fa-check"></i><b>13.2</b> Who uses GitHub Pages?</a></li>
+<li class="chapter" data-level="13.3" data-path="github-pages.html"><a href="github-pages.html#steps-to-get-your-github-pages-up-running"><i class="fa fa-check"></i><b>13.3</b> Steps to get your GitHub Pages up &amp; running</a><ul>
+<li class="chapter" data-level="13.3.1" data-path="workflow.html"><a href="workflow.html#prerequisites"><i class="fa fa-check"></i><b>13.3.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="13.3.2" data-path="github-pages.html"><a href="github-pages.html#step-1-install-hugo"><i class="fa fa-check"></i><b>13.3.2</b> Step 1: Install Hugo</a></li>
+<li class="chapter" data-level="13.3.3" data-path="github-pages.html"><a href="github-pages.html#mac-users"><i class="fa fa-check"></i><b>13.3.3</b> Mac Users</a></li>
+<li class="chapter" data-level="13.3.4" data-path="github-pages.html"><a href="github-pages.html#step-2-create-site"><i class="fa fa-check"></i><b>13.3.4</b> Step 2: Create site</a></li>
+<li class="chapter" data-level="13.3.5" data-path="github-pages.html"><a href="github-pages.html#step-3-add-theme"><i class="fa fa-check"></i><b>13.3.5</b> Step 3: Add theme</a></li>
+<li class="chapter" data-level="13.3.6" data-path="github-pages.html"><a href="github-pages.html#step-4-add-content"><i class="fa fa-check"></i><b>13.3.6</b> Step 4: Add content</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="github-pages.html"><a href="github-pages.html#step-5-fire-up-the-hugo-server"><i class="fa fa-check"></i><b>13.4</b> Step 5: Fire up the Hugo server</a><ul>
+<li class="chapter" data-level="13.4.1" data-path="github-pages.html"><a href="github-pages.html#step-6-configure-your-site"><i class="fa fa-check"></i><b>13.4.1</b> Step 6: Configure your site</a></li>
+<li class="chapter" data-level="13.4.2" data-path="github-pages.html"><a href="github-pages.html#step-7-build-pages"><i class="fa fa-check"></i><b>13.4.2</b> Step 7: Build pages</a></li>
+<li class="chapter" data-level="13.4.3" data-path="github-pages.html"><a href="github-pages.html#step-8-create-repositories-on-github"><i class="fa fa-check"></i><b>13.4.3</b> Step 8: Create repositories on GitHub</a></li>
+<li class="chapter" data-level="13.4.4" data-path="github-pages.html"><a href="github-pages.html#step-9-pull-git-repository-on-to-your-computer"><i class="fa fa-check"></i><b>13.4.4</b> Step 9: Pull git repository on to your computer</a></li>
+<li class="chapter" data-level="13.4.5" data-path="github-pages.html"><a href="github-pages.html#step-10-change-public-facing-location"><i class="fa fa-check"></i><b>13.4.5</b> Step 10: Change public-facing location</a></li>
+<li class="chapter" data-level="13.4.6" data-path="github-pages.html"><a href="github-pages.html#step-11-create-public-facing-location"><i class="fa fa-check"></i><b>13.4.6</b> Step 11: Create public-facing location</a></li>
+<li class="chapter" data-level="13.4.7" data-path="github-pages.html"><a href="github-pages.html#step-12-execute-changes"><i class="fa fa-check"></i><b>13.4.7</b> Step 12: Execute changes</a></li>
+<li class="chapter" data-level="13.4.8" data-path="github-pages.html"><a href="github-pages.html#step-13-check-out-your-site"><i class="fa fa-check"></i><b>13.4.8</b> Step 13: Check out your site</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>14</b> Bookdown</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Statistical Computing in Political Science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="graphics" class="section level1">
+<h1><span class="header-section-number">9</span> Graphics</h1>
+<p>In this lecture, you will learn how to create graphics in R.</p>
+<p>You can create graphics using both base R functions or the <code>ggplot2</code> R package. Personally, I like to use base R functions to preview my graphs, but I use <code>ggplot2</code> for graphs I want to show to the masses.</p>
+<p>Here are some packages that we will use for this lesson.</p>
+<pre><code>library(&quot;here&quot;)
+library(&quot;readxl&quot;) # read excel data in R
+library(&quot;countrycode&quot;)</code></pre>
+<p>And let’s refer to some files and folders.</p>
+<pre><code># setup folders and directories
+here(&quot;data&quot;)
+here(&quot;code&quot;)</code></pre>
+<div id="i-am-going-to-pay-lip-service-to-the-comparativists" class="section level2">
+<h2><span class="header-section-number">9.1</span> I am going to pay lip service to the comparativists…</h2>
+<p>By now, students of comparative politics students are probably familiar with the Correlates of War (CoW) and Polity IV datasets. These are extremely popular datasets that scholars tends to use separately or in tandem. If you ever do want to use them in tandem, you are in luck! Because they are so popular, there is already an R package that allows you to merge the two datasets painlessly.</p>
+<p>And Americanists: it’s good to know about the flagship datasets in other subfields. It makes you a well-rounded scholar.</p>
+<p>First, download the CoW <a href="https://correlatesofwar.org/data-sets/national-material-capabilities">national mateiral capabilities dataset</a> and Polity IV <a href="http://www.systemicpeace.org/inscrdata.html">coup d’etat dataset</a>. Then, load them into R.</p>
+<p>Please download the codebooks as well. You should always download the codebooks or bookmark an online version if they’re available.</p>
+<pre><code># read excel data in R: coup data
+# http://www.systemicpeace.org/inscrdata.html
+coups_polity &lt;- read_excel(here(&quot;data&quot;, &quot;CSPCoupsListv2018.xls&quot;))
+
+# read csv file in R: national trade data
+# https://correlatesofwar.org/data-sets/bilateral-trade
+power_cow &lt;- read.csv(here(&quot;data&quot;, &quot;NMC_v4_0.csv&quot;))</code></pre>
+<p>You have installed the <code>countrycode</code> R package earlier in the lesson. Now it is time to use it. Here, you basically want to make sure the country IDs fo reach dataset “link” together. Many datasets label their countries differently–some with numbers, some with abbreviations, some with different abbreviations. Think of this linking exercise in this logical sequence: A = B, B = B, B = C.</p>
+<p>In the example below, we can see that the Polity <code>scode</code> variable is equal to the <code>p4c</code> variable in the <code>countrycode</code> package. We want to link Polity data to CoW numeric data, which is in the CoW dataset we downloaded. Once we merge the Polity ID to the CoW ID, we can merge the coup and trade datasets and use that common ID to link to a country name.</p>
+<pre><code>coups_polity$p4c &lt;- countrycode(coups_polity$scode, origin = &quot;p4c&quot;, destination = &quot;cown&quot;)
+
+power_cow$cown &lt;- countrycode(power_cow$ccode, origin = &quot;cown&quot;, destination = &quot;cown&quot;)
+
+coups_power &lt;- merge(coups_polity, power_cow, id=&quot;cown&quot;)
+
+coups_power$country &lt;- countrycode(coups_power$cown, origin = &quot;cown&quot;, destination = &quot;country.name&quot;)</code></pre>
+<p>As a sanity check—and because these datasets aren’t that big anyway—I’d like to <code>View()</code> my dataset in R and look at their variable <code>names()</code>.</p>
+<pre><code># view the dataset
+View(coups_power)
+
+# look at the variable names
+names(coups_power)</code></pre>
+</div>
+<div id="base-r-graphs" class="section level2">
+<h2><span class="header-section-number">9.2</span> base R graphs</h2>
+<p>Sometimes you want to look at the distribution of a particular variable or the correlation of two variables, so you want a quick and dirty function that allows you to do those things, without having to think too much about other stuff. That’s where base R graphs can be useful.</p>
+<div id="scatter-plots" class="section level3">
+<h3><span class="header-section-number">9.2.1</span> Scatter plots</h3>
+<p>To learn more about scatterplots, review the <a href="http://www.sthda.com/english/wiki/scatter-plots-r-base-graphs">STHDA tutorial</a>.</p>
+<p>So say for some reason, we want to answer the question: Does a higher urban population lead to a higher total population? (This is a random question with no theoretical backing. I don’t know anything about these datasets.)</p>
+<p>We want to define our X (urban population) and Y (total population).</p>
+<pre><code>x &lt;- coups_power$upop
+y &lt;- coups_power$tpop</code></pre>
+<p>You want to use the <code>plot()</code> command to create a scatterplot. Let’s break it down.</p>
+<ol style="list-style-type: decimal">
+<li><p>You have already defined <code>x</code> and <code>y</code> in the previous two lines of code.</p></li>
+<li><p><code>main</code> defines the title of the graph.</p></li>
+<li><p><code>xlab</code> and <code>ylab</code> are the labels for the x and y axes.</p></li>
+<li><p><code>pch</code> are plot symbols. You can obtain the full list of plot symbols at <a href="http://www.sthda.com/english/wiki/r-plot-pch-symbols-the-different-point-shapes-available-in-r">STHDA</a>.</p></li>
+<li><p><code>frame = TRUE</code> creates a box around the graph. If <code>frame = FALSE</code>, the box disappears.</p></li>
+<li><p><code>abline(lm(y ~ x, data = coups_power), col = "blue")</code> adds a blue regression line.</p></li>
+</ol>
+<pre><code>plot(x, y, main = &quot;Effect of urban population on total population&quot;,
+     xlab = &quot;urban population&quot;, ylab = &quot;total population&quot;,
+     pch = 19, frame = TRUE)
+abline(lm(y ~ x, data = coups_power), col = &quot;blue&quot;)</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/base-scatter.png" alt="" />
+<p class="caption">base-scatter</p>
+</div>
+</div>
+<div id="box-plots" class="section level3">
+<h3><span class="header-section-number">9.2.2</span> Box plots</h3>
+<p>You want to create a boxplot of the variable the counts the number of successful coups.</p>
+<pre><code># Box plot of one variable: success of coups
+boxplot(coups_power$success)</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/base-boxplot.png" alt="" />
+<p class="caption">base-boxplot</p>
+</div>
+</div>
+<div id="bar-plots" class="section level3">
+<h3><span class="header-section-number">9.2.3</span> Bar plots</h3>
+<p>Now we can create a simple barplot of the number of successful coups.</p>
+<pre><code>barplot(coups_power$success)</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/base-barplot.png" alt="" />
+<p class="caption">base-barplot</p>
+</div>
+<p>Well, that doesn’t look too great. Why don’t you plop the counts into a table instead?</p>
+<pre><code>barplot(table(coups_power$success))</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/base-barplot-table.png" alt="" />
+<p class="caption">base-barplot-table</p>
+</div>
+<p>You can even consider looking at the number of successful coups per year.</p>
+<pre><code>barplot(table(coups_power$success, coups_power$year))</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/base-barplot-xtable.png" alt="" />
+<p class="caption">base-barplot-xtable</p>
+</div>
+</div>
+<div id="line-plots" class="section level3">
+<h3><span class="header-section-number">9.2.4</span> Line plots</h3>
+<p>Instead of pre-defining the X and Y variables like we did for the scatterplots, we can directly plop the X and Y variables into the <code>plot()</code> function. Let’s review the different components.</p>
+<ol style="list-style-type: decimal">
+<li><code>type</code> indicates the type of line. So <code>type = l</code> indicates a <em>line</em>, and <code>type = p</code> indicates <em>points</em>. Quick-R has a <a href="https://www.statmethods.net/graphs/line.html">list of type values</a>.</li>
+</ol>
+<pre><code>plot(coups_power$year, coups_power$success, type = &quot;l&quot;, lty = 1)</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/base-lineplot.png" alt="" />
+<p class="caption">base-lineplot</p>
+</div>
+</div>
+<div id="histogram-and-density-plots" class="section level3">
+<h3><span class="header-section-number">9.2.5</span> Histogram and density plots</h3>
+<p>You can also create a histogram of the number of successful coups. You can also specify the <code>breaks</code> by <a href="https://rstudio-pubs-static.s3.amazonaws.com/291013_43f602f67dfa4e4e82c4410b17bdfb11.html">indicating the algorithm</a> you prefer.</p>
+<pre><code>hist(coups_power$success, breaks = &quot;Sturges&quot;)</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/base-hist.png" alt="" />
+<p class="caption">base-hist</p>
+</div>
+</div>
+<div id="pie-charts" class="section level3">
+<h3><span class="header-section-number">9.2.6</span> Pie charts</h3>
+<p>I’m not going to teach how to create a pie chart. There is extensive documentation on the Internet about why pie charts are evil. Look them up. In any case, social scientists are not fans of pie charts. Do not be surprised if you create a pie chart and someone tells you to change it into a bar plot. If you somehow learn how to create a pie chart in R, I just want it to be on the record that you did not learn it from me.</p>
+</div>
+</div>
+<div id="world-of-ggplot2" class="section level2">
+<h2><span class="header-section-number">9.3</span> World of <code>ggplot2</code></h2>
+<p>The <code>gg</code> in <code>ggplot2</code> apparently stands for “grammar of graphics.” This sounds way too hifaluten for me to actually explain, but essentially, it is a package that abides by a certain structure. <em>What structure?</em> you may ask. Well, there are components of a <code>ggplot2</code> graph that you will see all the time, not unlike prepositions or punctuations in the English language.</p>
+<p>If you are curious about the nitty gritty theory of graphic-building, Hadley Wickham’s <a href="http://byrneslab.net/classes/biol607/readings/wickham_layered-grammar.pdf">“A Layered Grammar of Graphics”</a> (Wickham created <code>ggplot2</code>) might make a good nightcap.</p>
+<p>In general, I highly recommend looking at the <a href="https://ggplot2.tidyverse.org/index.html">official ggplot2 website</a> because they do a pretty good job explaining everything. If you care about making things look pretty, I would point you to <a href="https://www.r-graph-gallery.com/">the R Gallery</a> for some <code>ggplot2</code> inspo.</p>
+<p>I am also indebted to <a href="http://r-statistics.co/Complete-Ggplot2-Tutorial-Part1-With-R-Code.html">Selva Prabhakaran</a> and <a href="https://mikedecr.github.io/courses/811/811-04-graphics/">Mike DeCrescenzo</a> for their excellent tutorials.</p>
+<div id="load-packages" class="section level3">
+<h3><span class="header-section-number">9.3.1</span> Load packages</h3>
+<pre><code>library(&quot;magrittr&quot;)
+library(&quot;tidyverse&quot;)
+library(&quot;ggplot2&quot;)
+library(&quot;scales&quot;)</code></pre>
+</div>
+<div id="load-dataset" class="section level3">
+<h3><span class="header-section-number">9.3.2</span> Load dataset</h3>
+<p>The truth is, you’re probably not going to write a <code>ggplot2</code> graph from scratch because you’re not a machine. You’re probably going to copy and paste the code from the Internet or an old .R file. The goal of this lesson is to help you learn how to recycle the <code>ggplot2</code> structure so you can customize it to your intended use. In short, I just want you to understand what to do with a <code>ggplot2</code> structure and mold it into something you can use.</p>
+</div>
+<div id="components" class="section level3">
+<h3><span class="header-section-number">9.3.3</span> Components</h3>
+<p>Here are some <code>ggplot2</code> components that you need to know. We’ll revisit them again and discuss how to use them, but here’s a general overview.</p>
+<ul>
+<li><p><code>data</code>: the data source that you are using to grab variables from to put on the graph</p></li>
+<li><p><code>aesthetics</code>: how your graph should look like (e.g., colors)</p></li>
+<li><p><code>geoms</code>: how you want to plot your graph (e.g, line, points, bargraph)</p></li>
+<li><p><code>scale</code>: how you want to present your graph (e.g., by color, which axes)</p></li>
+<li><p><code>coordinates</code>: what kind of plane you are plotting (for the purpose of not being confusing, we are going to use the x and y coordinates)</p></li>
+<li><p><code>facets</code>: split up your graph into different categories</p></li>
+<li><p><code>theme</code>: change font size, font color, etc.</p></li>
+</ul>
+</div>
+<div id="create-plot" class="section level3">
+<h3><span class="header-section-number">9.3.4</span> Create plot</h3>
+<p>Create a plot with <code>ggplot2</code>.</p>
+<ol style="list-style-type: decimal">
+<li><p>You put everything in the command <code>ggplot()</code>.</p></li>
+<li><p><code>data</code> allows you to refer to your dataset and in this case, it is <code>power_cow</code>.</p></li>
+<li><p>Within the <code>aes</code> command, you put in your X and Y variables. In this case, the x-axis is <code>year</code> and the y-axis is <code>milex</code> (military expenditures).</p></li>
+</ol>
+<pre><code># milex: military expenditures
+ggplot(data = power_cow, aes(x = year, y = milex))</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/ggplot-create.png" alt="" />
+<p class="caption">ggplot-create</p>
+</div>
+<p>You’ve created the plot. But it’s not populated…</p>
+</div>
+<div id="populate-plot" class="section level3">
+<h3><span class="header-section-number">9.3.5</span> Populate plot</h3>
+<p>You want to “color in the lines” and decide how to populate the graph.</p>
+<div id="dot-plot" class="section level4">
+<h4><span class="header-section-number">9.3.5.1</span> Dot plot</h4>
+<ul>
+<li><code>geom_point</code>: create a dot plot</li>
+</ul>
+<pre><code>ggplot(data = power_cow, aes(x = milper, y = milex)) +
+  geom_point()</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/ggplot-point.png" alt="" />
+<p class="caption">ggplot-point</p>
+</div>
+</div>
+<div id="fit-a-line" class="section level4">
+<h4><span class="header-section-number">9.3.5.2</span> Fit a line</h4>
+<p>You can also fit a regression line on your plot. Notice that, instead of <code>lm</code>, you use <code>geom_smooth</code> and define the <code>method</code> to use to create your line. All options are on the <a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">ggplot2 smoothed conditional means page</a>, under the methods definition.</p>
+<pre><code>ggplot(data = power_cow, aes(x = milper, y = milex)) +
+  geom_point() +
+  geom_smooth(method=&quot;lm&quot;)</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/ggplot-point-lm.png" alt="" />
+<p class="caption">ggplot-point-lm</p>
+</div>
+<p>You can also turn your <code>ggplot</code> into an object.</p>
+<pre><code>g &lt;- ggplot(power_cow, aes(x = milper, y = milex)) + geom_point() + geom_smooth(method=&quot;lm&quot;)</code></pre>
+<p>Then you can access the <code>ggplot</code> by just referring to the object <code>g</code>.</p>
+<pre><code>g</code></pre>
+</div>
+</div>
+<div id="aesthetics" class="section level3">
+<h3><span class="header-section-number">9.3.6</span> Aesthetics</h3>
+<p>You can control how your plot looks in ggplot. Of course, you can do this with base R as well, but ggplot is much more versatile with what you can do with your graph.</p>
+<div id="labels" class="section level4">
+<h4><span class="header-section-number">9.3.6.1</span> Labels</h4>
+<pre><code>g + labs(title=&quot;Military Personnel and Expenditures&quot;, subtitle=&quot;From power COW dataset&quot;, y=&quot;Expenditures&quot;, x=&quot;Personnel&quot;, caption=&quot;Military&quot;)</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/ggplot-scatter-labels.png" alt="" />
+<p class="caption">ggplot-scatter-labels</p>
+</div>
+</div>
+<div id="colors" class="section level4">
+<h4><span class="header-section-number">9.3.6.2</span> Colors</h4>
+<p>Be careful. Color-blind people hate colors. People with colorblindness have a difficult time reading graphs with too many colors/too many similar colors. Please consider reading about <a href="https://jfly.uni-koeln.de/color/">best practices</a> when it comes to using colors in a way that is accessible to all people.</p>
+<p>There are <a href="these%20palettes%20are%20supposedly%20colorblind-friendly">some palettes</a> that are supposedly colorblind-friendly. I cannot attest to their effectiveness. In general, you should try to use black and white as much as possible just because your paper will likely bepublished in black and white. Colors can be fun for presentations, but not always useful otherwise.</p>
+<div id="change-color-and-size-of-points" class="section level5">
+<h5><span class="header-section-number">9.3.6.2.1</span> Change color and size of points</h5>
+<pre><code>ggplot(power_cow, aes(x = milper, y = milex)) + 
+  # Set color and size for points
+  # here are some colors (starts from page 2): http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf
+  geom_point(col=&quot;steelblue&quot;, size=3) + 
+  geom_smooth(method=&quot;lm&quot;, col=&quot;firebrick&quot;) +  # change the color of line
+  labs(title=&quot;Military Personnel and Expenditures&quot;, subtitle=&quot;From power COW dataset&quot;, y=&quot;Expenditures&quot;, x=&quot;Personnel&quot;, caption=&quot;Military&quot;)</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/ggplot-point-size-color.png" alt="" />
+<p class="caption">ggplot-point-size-color</p>
+</div>
+<p>You may also change colors to reflect the category in another variable.</p>
+<pre><code>ggplot(power_cow, aes(x = milper, y = milex)) + 
+  geom_point(aes(col=year), size=3) + 
+  # Set color to vary based on state categories.
+  geom_smooth(method=&quot;lm&quot;, col=&quot;firebrick&quot;, size=2) +
+  labs(title=&quot;Military Personnel and Expenditures&quot;, subtitle=&quot;From power COW dataset&quot;, y=&quot;Expenditures&quot;, x=&quot;Personnel&quot;, caption=&quot;Military&quot;)</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/ggplot-point-year-gradient.png" alt="" />
+<p class="caption">ggplot-point-year-gradient</p>
+</div>
+<p>Notice how the year is a gradient. You may want to change it into factors…</p>
+<pre><code>ggplot(power_cow, aes(x = milper, y = milex)) + 
+  geom_point(aes(col=factor(year)), size=3) + 
+  # Set color to vary based on state categories.
+  geom_smooth(method=&quot;lm&quot;, col=&quot;firebrick&quot;, size=2) +
+  labs(title=&quot;Military Personnel and Expenditures&quot;, subtitle=&quot;From power COW dataset&quot;, y=&quot;Expenditures&quot;, x=&quot;Personnel&quot;, caption=&quot;Military&quot;)</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/ggplot-point-toomanyyears.png" alt="" />
+<p class="caption">ggplot-point-toomanyyears</p>
+</div>
+<p>You may notice that there are just too many years. Instead, you may want to filter to the last five years in the dataset. You can do this by leveraging your data manipulation skills.</p>
+<pre><code>power_cow2 &lt;- dplyr::filter(power_cow, year == 1995:2000)
+power_cow2</code></pre>
+<p>Now you can plot a slightly less annoying graph.</p>
+<ul>
+<li>by doing <code>factor(year)</code>, I am grouping the points together by year.</li>
+</ul>
+<pre><code># I turned it into an object so we can play around with it later...
+gg2 &lt;- ggplot(power_cow2, aes(x = milper, y = milex)) + 
+  geom_point(aes(col=factor(year)), size=3) + 
+  geom_smooth(method=&quot;lm&quot;, col=&quot;firebrick&quot;, size=2) +
+  labs(title=&quot;Military Personnel and Expenditures&quot;, subtitle=&quot;From power COW dataset&quot;, y=&quot;Expenditures&quot;, x=&quot;Personnel&quot;, caption=&quot;Military&quot;)
+  
+# check out the graph-object
+gg2</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/ggplot-factor-years.png" alt="" />
+<p class="caption">ggplot-factor-years</p>
+</div>
+<p>You may also change the color schemes if you’re not happy with it. You can use the <code>RColorBrewer</code> package. All the palettes in the library are <a href="http://applied-r.com/rcolorbrewer-palettes/#:~:text=RColorBrewer%20is%20an%20R%20packages,data%2C%20dark%20for%20high%20data">available here</a>. There are also many other palette packages you can find on the web.</p>
+<pre><code>library(RColorBrewer)
+gg2 + scale_colour_brewer(palette = &quot;Set1&quot;)</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/ggplot-year-colorbrewer.png" alt="" />
+<p class="caption">ggplot-year-colorbrewer</p>
+</div>
+</div>
+</div>
+<div id="bar-graphs" class="section level4">
+<h4><span class="header-section-number">9.3.6.3</span> Bar graphs</h4>
+<ul>
+<li><p><code>geom_bar</code>: you want to create a bar graph this time so you are going to use <code>geom_bar</code></p></li>
+<li><p><code>stat = 'identity'</code>: sums the number of military expenditures per year</p></li>
+<li><p><code>scale_y_continuous(labels = scales::comma)</code>: tells the graph to create a y-axis that has labels separated by commas. For more options. review <a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">ggplot2’s guide on position scales for continuous data</a>.</p></li>
+</ul>
+<pre><code>ggplot(power_cow2, aes(x=factor(year), y=milex, label=milex)) + 
+  geom_bar(stat=&#39;identity&#39;, width=.5) +
+  labs(title=&quot;Military Expenditures by Year&quot;, subtitle=&quot;Around the world&quot;, y=&quot;Expenditures ($)&quot;, x=&quot;Year&quot;) +
+  scale_y_continuous(labels = scales::comma)</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/ggplot-bargraph.png" alt="" />
+<p class="caption">ggplot-bargraph</p>
+</div>
+</div>
+<div id="faceting" class="section level4">
+<h4><span class="header-section-number">9.3.6.4</span> Faceting</h4>
+<p>What if I want to separate my graphs by states (i.e., countries)? You can use <code>facet_wrap</code>. You can use facets to put your graphs in a grid. Review the <a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">ggplot2 guide on facets</a> for more information.</p>
+<pre><code>ggplot(power_cow2, aes(x=factor(year), y=milex, label=milex)) + 
+  geom_bar(stat=&#39;identity&#39;, width=.5) +
+  labs(title=&quot;Military Expenditures by Year&quot;, subtitle=&quot;Around the world&quot;, y=&quot;Expenditures ($)&quot;, x=&quot;Year&quot;) +
+  scale_y_continuous(labels = scales::comma) +
+  facet_wrap(~ stateabb)</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/ggplot-facetwrap.png" alt="" />
+<p class="caption">ggplot-facetwrap</p>
+</div>
+<p>Sigh, but the x-axis looks ugly and I can’t read it. Why don’t we rotate it?</p>
+<ul>
+<li><code>angle = 90</code>: rotate it by 90 degrees</li>
+<li><code>hjust</code>: horizontal justification (right-justified) if 1; left-justified if hjust = 0</li>
+</ul>
+<pre><code>ggplot(power_cow2, aes(x=factor(year), y=milex, label=milex)) + 
+  geom_bar(stat=&#39;identity&#39;, width=.5) +
+  labs(title=&quot;Military Expenditures by Year&quot;, subtitle=&quot;Around the world&quot;, y=&quot;Expenditures ($)&quot;, x=&quot;Year&quot;) +
+  scale_y_continuous(labels = scales::comma) +
+  facet_wrap(~ stateabb) +
+  theme(axis.text.x=element_text(angle=90, hjust=1))</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/ggplot-facetwrap-rotate.png" alt="" />
+<p class="caption">ggplot-facetwrap-rotate</p>
+</div>
+<p>This is a lot to digest…</p>
+<p>We can do some more tweaking…</p>
+<ul>
+<li><p><code>scale_y_continuous</code>: you can <a href="https://stackoverflow.com/questions/52602503/display-an-axis-value-in-millions-in-ggplot">change the scale</a> to 0, 10, 20, 30 M</p></li>
+<li><p><code>theme(axis.text.x=element_text(angle=90, hjust=1, size = 4))</code>: <code>size = 4</code> is the size of the font in the x-axis</p></li>
+</ul>
+<pre><code>ggplot(power_cow2, aes(x=stateabb, y=milex, label=milex)) + 
+  geom_bar(stat=&#39;identity&#39;, width=.5) +
+  labs(title=&quot;Military Expenditures by Year&quot;, subtitle=&quot;Around the world&quot;, y=&quot;Expenditures ($)&quot;, x=&quot;Year&quot;) +
+  scale_y_continuous(labels = unit_format(unit = &quot;M&quot;, scale = 1e-6)) +
+  facet_wrap(~ year) +
+  theme(axis.text.x=element_text(angle=90, hjust=1, size = 4))</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/ggplot-facetwrap-yaxis.png" alt="" />
+<p class="caption">ggplot-facetwrap-yaxis</p>
+</div>
+<p>You can play around with the y-axis even more…</p>
+<p>We can:
+* <code>scale_y_log10</code>: <a href="https://scales.r-lib.org/">rescale</a> the y-axis to “zoom in” more
+* this is when we take a log10 of the y values
+* many people handle expenditures in the millions
+* logarithms are an easier (and clearer) way to express large numbers</p>
+<ul>
+<li>we are using <code>facet_wrap</code> again but you may use <code>facet_grid(var1 ~ var2)</code> if you have data and want to split the graph into more categories (e.g., year ~ gender)</li>
+</ul>
+<pre><code>ggplot(power_cow2, aes(x=stateabb, y=milex, label=milex)) + 
+  geom_bar(stat=&#39;identity&#39;, width=.5) +
+  labs(title=&quot;Military Expenditures by Year&quot;, subtitle=&quot;Around the world&quot;, y=&quot;Expenditures ($)&quot;, x=&quot;Year&quot;) +
+  scale_y_log10(labels = scales::label_number_si()) +
+  facet_wrap(~ year) +
+  theme(axis.text.x=element_text(angle=90, hjust=1, size = 4))</code></pre>
+<div class="figure">
+<img src="https://marcyshieh.github.io/ps811/lecture8-img/ggplot-facetwrap-year.png" alt="" />
+<p class="caption">ggplot-facetwrap-year</p>
+</div>
+<p>The best way to learn ggplot2 is through experience. Trust me on this.</p>
+</div>
+<div id="extensions" class="section level4">
+<h4><span class="header-section-number">9.3.6.5</span> Extensions</h4>
+<p>You can do a bunch of other things with <code>ggplot2</code>, such as creating animated graphs, adding themes to graphs, making your graphs interactive, and so on! I recommend looking at the <a href="https://exts.ggplot2.tidyverse.org/">ggplot2 extensions</a> for a full suite of options.</p>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-manipulation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ps811-materials.pdf", "ps811-materials.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

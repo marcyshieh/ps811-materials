@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7 Base R vs. Tidyverse | Introduction to Statistical Computing in Political Science</title>
+  <meta name="description" content="This bookdown book contains materials for PS811." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7 Base R vs. Tidyverse | Introduction to Statistical Computing in Political Science" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This bookdown book contains materials for PS811." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7 Base R vs. Tidyverse | Introduction to Statistical Computing in Political Science" />
+  
+  <meta name="twitter:description" content="This bookdown book contains materials for PS811." />
+  
+
+<meta name="author" content="Marcy Shieh" />
+
+
+<meta name="date" content="2021-01-24" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="functions.html"/>
+<link rel="next" href="data-manipulation.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">POLISCI 811</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="setting-up.html"><a href="setting-up.html"><i class="fa fa-check"></i><b>2</b> Setting Up</a><ul>
+<li class="chapter" data-level="2.1" data-path="setting-up.html"><a href="setting-up.html#install-R"><i class="fa fa-check"></i><b>2.1</b> Installing R</a></li>
+<li class="chapter" data-level="2.2" data-path="setting-up.html"><a href="setting-up.html#install-Rstudio"><i class="fa fa-check"></i><b>2.2</b> Installing RStudio</a></li>
+<li class="chapter" data-level="2.3" data-path="setting-up.html"><a href="setting-up.html#install-latex"><i class="fa fa-check"></i><b>2.3</b> Installing LaTeX</a></li>
+<li class="chapter" data-level="2.4" data-path="setting-up.html"><a href="setting-up.html#knit-RMarkdown"><i class="fa fa-check"></i><b>2.4</b> Knitting R Markdown Files</a></li>
+<li class="chapter" data-level="2.5" data-path="setting-up.html"><a href="setting-up.html#create-Github"><i class="fa fa-check"></i><b>2.5</b> Creating a Github Account</a></li>
+<li class="chapter" data-level="2.6" data-path="setting-up.html"><a href="setting-up.html#setup-Git"><i class="fa fa-check"></i><b>2.6</b> Setting Up Git</a></li>
+<li class="chapter" data-level="2.7" data-path="setting-up.html"><a href="setting-up.html#RStudio-Github"><i class="fa fa-check"></i><b>2.7</b> Connecting RStudio to Git and Github</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="setting-up.html"><a href="setting-up.html#say-hello-to-git-on-rstudio"><i class="fa fa-check"></i><b>2.7.1</b> Say hello to git on RStudio</a></li>
+<li class="chapter" data-level="2.7.2" data-path="setting-up.html"><a href="setting-up.html#create-a-repository"><i class="fa fa-check"></i><b>2.7.2</b> Create a repository</a></li>
+<li class="chapter" data-level="2.7.3" data-path="setting-up.html"><a href="setting-up.html#connect-github-to-rstudio-the-fun-part"><i class="fa fa-check"></i><b>2.7.3</b> Connect Github to RStudio (the fun part)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="setting-up.html"><a href="setting-up.html#work-git"><i class="fa fa-check"></i><b>2.8</b> Working with Git on RStudio</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="setting-up.html"><a href="setting-up.html#how-does-this-all-work"><i class="fa fa-check"></i><b>2.8.1</b> How does this all work?</a></li>
+<li class="chapter" data-level="2.8.2" data-path="setting-up.html"><a href="setting-up.html#check-if-things-happened-as-expected"><i class="fa fa-check"></i><b>2.8.2</b> Check if things happened as expected</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="workflow.html"><a href="workflow.html"><i class="fa fa-check"></i><b>3</b> Workflow</a><ul>
+<li class="chapter" data-level="3.1" data-path="workflow.html"><a href="workflow.html#why-create-a-project"><i class="fa fa-check"></i><b>3.1</b> Why create a project?</a></li>
+<li class="chapter" data-level="3.2" data-path="workflow.html"><a href="workflow.html#create-proj"><i class="fa fa-check"></i><b>3.2</b> Creating a project in RStudio</a></li>
+<li class="chapter" data-level="3.3" data-path="workflow.html"><a href="workflow.html#push-git"><i class="fa fa-check"></i><b>3.3</b> Pushing a R Markdown document to your Github repository</a></li>
+<li class="chapter" data-level="3.4" data-path="workflow.html"><a href="workflow.html#write-paper"><i class="fa fa-check"></i><b>3.4</b> Writing a paper in R Markdown</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="workflow.html"><a href="workflow.html#prerequisites"><i class="fa fa-check"></i><b>3.4.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="3.4.2" data-path="workflow.html"><a href="workflow.html#installing-papaja"><i class="fa fa-check"></i><b>3.4.2</b> Installing papaja</a></li>
+<li class="chapter" data-level="3.4.3" data-path="workflow.html"><a href="workflow.html#opening-the-template"><i class="fa fa-check"></i><b>3.4.3</b> Opening the template</a></li>
+<li class="chapter" data-level="3.4.4" data-path="workflow.html"><a href="workflow.html#getting-to-know-your-apa-r-markdown-template"><i class="fa fa-check"></i><b>3.4.4</b> Getting to know your APA R Markdown template</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="workflow.html"><a href="workflow.html#lets-talk-about-code-chunks"><i class="fa fa-check"></i><b>3.5</b> Let’s talk about code chunks</a></li>
+<li class="chapter" data-level="3.6" data-path="workflow.html"><a href="workflow.html#code-chunks-in-the-papaja-template"><i class="fa fa-check"></i><b>3.6</b> Code chunks in the papaja template</a></li>
+<li class="chapter" data-level="3.7" data-path="workflow.html"><a href="workflow.html#body-of-the-papaja-template"><i class="fa fa-check"></i><b>3.7</b> Body of the papaja template</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i><b>4</b> Bibliography</a><ul>
+<li class="chapter" data-level="4.1" data-path="bibliography.html"><a href="bibliography.html#download-zotero"><i class="fa fa-check"></i><b>4.1</b> Downloading Zotero</a></li>
+<li class="chapter" data-level="4.2" data-path="bibliography.html"><a href="bibliography.html#download-bbt"><i class="fa fa-check"></i><b>4.2</b> Downloading Better Bibtex for Zotero</a></li>
+<li class="chapter" data-level="4.3" data-path="bibliography.html"><a href="bibliography.html#load-citr"><i class="fa fa-check"></i><b>4.3</b> Loading the citr package</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="git-branches.html"><a href="git-branches.html"><i class="fa fa-check"></i><b>5</b> Git Branches</a><ul>
+<li class="chapter" data-level="5.1" data-path="git-branches.html"><a href="git-branches.html#create-branch"><i class="fa fa-check"></i><b>5.1</b> Creating a branch</a></li>
+<li class="chapter" data-level="5.2" data-path="git-branches.html"><a href="git-branches.html#working-in-the-branch"><i class="fa fa-check"></i><b>5.2</b> Working in the branch</a></li>
+<li class="chapter" data-level="5.3" data-path="git-branches.html"><a href="git-branches.html#delete-branch"><i class="fa fa-check"></i><b>5.3</b> Deleting the branch</a></li>
+<li class="chapter" data-level="5.4" data-path="git-branches.html"><a href="git-branches.html#restore-branch"><i class="fa fa-check"></i><b>5.4</b> Restoring the branch</a></li>
+<li class="chapter" data-level="5.5" data-path="git-branches.html"><a href="git-branches.html#use-cmd"><i class="fa fa-check"></i><b>5.5</b> Using Git on the command line</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>6</b> Functions</a><ul>
+<li class="chapter" data-level="6.1" data-path="functions.html"><a href="functions.html#loops"><i class="fa fa-check"></i><b>6.1</b> Loops</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="functions.html"><a href="functions.html#using-loops-in-a-dataset"><i class="fa fa-check"></i><b>6.1.1</b> Using loops in a dataset</a></li>
+<li class="chapter" data-level="6.1.2" data-path="functions.html"><a href="functions.html#vectorizing-the-process"><i class="fa fa-check"></i><b>6.1.2</b> Vectorizing the process</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="functions.html"><a href="functions.html#applying-lapply"><i class="fa fa-check"></i><b>6.2</b> Applying lapply()</a></li>
+<li class="chapter" data-level="6.3" data-path="functions.html"><a href="functions.html#indexing-your-list"><i class="fa fa-check"></i><b>6.3</b> Indexing your list</a></li>
+<li class="chapter" data-level="6.4" data-path="functions.html"><a href="functions.html#scoped-verbs"><i class="fa fa-check"></i><b>6.4</b> Scoped verbs</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="functions.html"><a href="functions.html#using-if"><i class="fa fa-check"></i><b>6.4.1</b> Using if()</a></li>
+<li class="chapter" data-level="6.4.2" data-path="functions.html"><a href="functions.html#using-at"><i class="fa fa-check"></i><b>6.4.2</b> Using at()</a></li>
+<li class="chapter" data-level="6.4.3" data-path="functions.html"><a href="functions.html#defining-your-own-functions"><i class="fa fa-check"></i><b>6.4.3</b> Defining your own functions</a></li>
+<li class="chapter" data-level="6.4.4" data-path="functions.html"><a href="functions.html#applying-more-than-one-function"><i class="fa fa-check"></i><b>6.4.4</b> Applying more than one function</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="functions.html"><a href="functions.html#nesting"><i class="fa fa-check"></i><b>6.5</b> Nesting data frames</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="base-r-vs-tidyverse.html"><a href="base-r-vs-tidyverse.html"><i class="fa fa-check"></i><b>7</b> Base R vs. Tidyverse</a><ul>
+<li class="chapter" data-level="7.1" data-path="base-r-vs-tidyverse.html"><a href="base-r-vs-tidyverse.html#but-first-whats-tidyverse"><i class="fa fa-check"></i><b>7.1</b> But first, what’s Tidyverse?</a></li>
+<li class="chapter" data-level="7.2" data-path="base-r-vs-tidyverse.html"><a href="base-r-vs-tidyverse.html#r-basics"><i class="fa fa-check"></i><b>7.2</b> R basics</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="base-r-vs-tidyverse.html"><a href="base-r-vs-tidyverse.html#use-r-as-a-calculator"><i class="fa fa-check"></i><b>7.2.1</b> Use R as a calculator</a></li>
+<li class="chapter" data-level="7.2.2" data-path="base-r-vs-tidyverse.html"><a href="base-r-vs-tidyverse.html#creating-objects"><i class="fa fa-check"></i><b>7.2.2</b> Creating objects</a></li>
+<li class="chapter" data-level="7.2.3" data-path="base-r-vs-tidyverse.html"><a href="base-r-vs-tidyverse.html#creating-vectors"><i class="fa fa-check"></i><b>7.2.3</b> Creating vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="base-r-vs-tidyverse.html"><a href="base-r-vs-tidyverse.html#load-data"><i class="fa fa-check"></i><b>7.3</b> Loading data into R</a></li>
+<li class="chapter" data-level="7.4" data-path="base-r-vs-tidyverse.html"><a href="base-r-vs-tidyverse.html#comparing-base-r-vs.-tidyverse"><i class="fa fa-check"></i><b>7.4</b> Comparing base R vs. Tidyverse</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="base-r-vs-tidyverse.html"><a href="base-r-vs-tidyverse.html#base-r"><i class="fa fa-check"></i><b>7.4.1</b> Base R</a></li>
+<li class="chapter" data-level="7.4.2" data-path="base-r-vs-tidyverse.html"><a href="base-r-vs-tidyverse.html#tidy"><i class="fa fa-check"></i><b>7.4.2</b> Tidyverse</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="data-manipulation.html"><a href="data-manipulation.html"><i class="fa fa-check"></i><b>8</b> Data Manipulation</a><ul>
+<li class="chapter" data-level="8.1" data-path="data-manipulation.html"><a href="data-manipulation.html#install-packages"><i class="fa fa-check"></i><b>8.1</b> Install packages</a></li>
+<li class="chapter" data-level="8.2" data-path="data-manipulation.html"><a href="data-manipulation.html#read-data"><i class="fa fa-check"></i><b>8.2</b> Read data</a></li>
+<li class="chapter" data-level="8.3" data-path="data-manipulation.html"><a href="data-manipulation.html#understand-data-frames"><i class="fa fa-check"></i><b>8.3</b> Understand data frames</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="data-manipulation.html"><a href="data-manipulation.html#data-frame-exercise"><i class="fa fa-check"></i><b>8.3.1</b> Data frame exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="data-manipulation.html"><a href="data-manipulation.html#use-tidyverse-for-data-manipulation"><i class="fa fa-check"></i><b>8.4</b> Use tidyverse for data manipulation</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="data-manipulation.html"><a href="data-manipulation.html#rename-data-variables"><i class="fa fa-check"></i><b>8.4.1</b> Rename data variables</a></li>
+<li class="chapter" data-level="8.4.2" data-path="data-manipulation.html"><a href="data-manipulation.html#create-new-data-variables"><i class="fa fa-check"></i><b>8.4.2</b> Create new data variables</a></li>
+<li class="chapter" data-level="8.4.3" data-path="data-manipulation.html"><a href="data-manipulation.html#logical-operators"><i class="fa fa-check"></i><b>8.4.3</b> Logical operators</a></li>
+<li class="chapter" data-level="8.4.4" data-path="data-manipulation.html"><a href="data-manipulation.html#same-function-multiple-conditions"><i class="fa fa-check"></i><b>8.4.4</b> Same function, multiple conditions</a></li>
+<li class="chapter" data-level="8.4.5" data-path="data-manipulation.html"><a href="data-manipulation.html#select-columns"><i class="fa fa-check"></i><b>8.4.5</b> Select columns</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="data-manipulation.html"><a href="data-manipulation.html#filter-data"><i class="fa fa-check"></i><b>8.5</b> Filter data</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="data-manipulation.html"><a href="data-manipulation.html#summarize-data"><i class="fa fa-check"></i><b>8.5.1</b> Summarize data</a></li>
+<li class="chapter" data-level="8.5.2" data-path="data-manipulation.html"><a href="data-manipulation.html#sort-data"><i class="fa fa-check"></i><b>8.5.2</b> Sort data</a></li>
+<li class="chapter" data-level="8.5.3" data-path="data-manipulation.html"><a href="data-manipulation.html#merge-datasets"><i class="fa fa-check"></i><b>8.5.3</b> Merge datasets</a></li>
+<li class="chapter" data-level="8.5.4" data-path="data-manipulation.html"><a href="data-manipulation.html#view-tables"><i class="fa fa-check"></i><b>8.5.4</b> View tables</a></li>
+<li class="chapter" data-level="8.5.5" data-path="data-manipulation.html"><a href="data-manipulation.html#group-variables"><i class="fa fa-check"></i><b>8.5.5</b> Group variables</a></li>
+<li class="chapter" data-level="8.5.6" data-path="data-manipulation.html"><a href="data-manipulation.html#reshape-data"><i class="fa fa-check"></i><b>8.5.6</b> Reshape data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="graphics.html"><a href="graphics.html"><i class="fa fa-check"></i><b>9</b> Graphics</a><ul>
+<li class="chapter" data-level="9.1" data-path="graphics.html"><a href="graphics.html#i-am-going-to-pay-lip-service-to-the-comparativists"><i class="fa fa-check"></i><b>9.1</b> I am going to pay lip service to the comparativists…</a></li>
+<li class="chapter" data-level="9.2" data-path="graphics.html"><a href="graphics.html#base-r-graphs"><i class="fa fa-check"></i><b>9.2</b> base R graphs</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="graphics.html"><a href="graphics.html#scatter-plots"><i class="fa fa-check"></i><b>9.2.1</b> Scatter plots</a></li>
+<li class="chapter" data-level="9.2.2" data-path="graphics.html"><a href="graphics.html#box-plots"><i class="fa fa-check"></i><b>9.2.2</b> Box plots</a></li>
+<li class="chapter" data-level="9.2.3" data-path="graphics.html"><a href="graphics.html#bar-plots"><i class="fa fa-check"></i><b>9.2.3</b> Bar plots</a></li>
+<li class="chapter" data-level="9.2.4" data-path="graphics.html"><a href="graphics.html#line-plots"><i class="fa fa-check"></i><b>9.2.4</b> Line plots</a></li>
+<li class="chapter" data-level="9.2.5" data-path="graphics.html"><a href="graphics.html#histogram-and-density-plots"><i class="fa fa-check"></i><b>9.2.5</b> Histogram and density plots</a></li>
+<li class="chapter" data-level="9.2.6" data-path="graphics.html"><a href="graphics.html#pie-charts"><i class="fa fa-check"></i><b>9.2.6</b> Pie charts</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="graphics.html"><a href="graphics.html#world-of-ggplot2"><i class="fa fa-check"></i><b>9.3</b> World of <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="9.3.1" data-path="graphics.html"><a href="graphics.html#load-packages"><i class="fa fa-check"></i><b>9.3.1</b> Load packages</a></li>
+<li class="chapter" data-level="9.3.2" data-path="graphics.html"><a href="graphics.html#load-dataset"><i class="fa fa-check"></i><b>9.3.2</b> Load dataset</a></li>
+<li class="chapter" data-level="9.3.3" data-path="graphics.html"><a href="graphics.html#components"><i class="fa fa-check"></i><b>9.3.3</b> Components</a></li>
+<li class="chapter" data-level="9.3.4" data-path="graphics.html"><a href="graphics.html#create-plot"><i class="fa fa-check"></i><b>9.3.4</b> Create plot</a></li>
+<li class="chapter" data-level="9.3.5" data-path="graphics.html"><a href="graphics.html#populate-plot"><i class="fa fa-check"></i><b>9.3.5</b> Populate plot</a></li>
+<li class="chapter" data-level="9.3.6" data-path="graphics.html"><a href="graphics.html#aesthetics"><i class="fa fa-check"></i><b>9.3.6</b> Aesthetics</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>10</b> Analysis</a><ul>
+<li class="chapter" data-level="10.1" data-path="graphics.html"><a href="graphics.html#load-packages"><i class="fa fa-check"></i><b>10.1</b> Load packages</a></li>
+<li class="chapter" data-level="10.2" data-path="base-r-vs-tidyverse.html"><a href="base-r-vs-tidyverse.html#load-data"><i class="fa fa-check"></i><b>10.2</b> Load data</a></li>
+<li class="chapter" data-level="10.3" data-path="analysis.html"><a href="analysis.html#rename-variables"><i class="fa fa-check"></i><b>10.3</b> Rename variables</a></li>
+<li class="chapter" data-level="10.4" data-path="analysis.html"><a href="analysis.html#descriptive-analysis"><i class="fa fa-check"></i><b>10.4</b> Descriptive analysis</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="analysis.html"><a href="analysis.html#descriptive-graph"><i class="fa fa-check"></i><b>10.4.1</b> Descriptive graph</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="analysis.html"><a href="analysis.html#data-summary"><i class="fa fa-check"></i><b>10.5</b> Data summary</a></li>
+<li class="chapter" data-level="10.6" data-path="analysis.html"><a href="analysis.html#regression-analysis"><i class="fa fa-check"></i><b>10.6</b> Regression analysis</a><ul>
+<li class="chapter" data-level="10.6.1" data-path="analysis.html"><a href="analysis.html#linear-regression"><i class="fa fa-check"></i><b>10.6.1</b> Linear regression</a></li>
+<li class="chapter" data-level="10.6.2" data-path="analysis.html"><a href="analysis.html#diagnostic-plots"><i class="fa fa-check"></i><b>10.6.2</b> Diagnostic plots</a></li>
+<li class="chapter" data-level="10.6.3" data-path="analysis.html"><a href="analysis.html#linear-regression-with-standard-errors"><i class="fa fa-check"></i><b>10.6.3</b> Linear regression with standard errors</a></li>
+<li class="chapter" data-level="10.6.4" data-path="analysis.html"><a href="analysis.html#logit-regression"><i class="fa fa-check"></i><b>10.6.4</b> Logit regression</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="tools.html"><a href="tools.html"><i class="fa fa-check"></i><b>11</b> Tools</a></li>
+<li class="chapter" data-level="12" data-path="replication.html"><a href="replication.html"><i class="fa fa-check"></i><b>12</b> Replication</a></li>
+<li class="chapter" data-level="13" data-path="github-pages.html"><a href="github-pages.html"><i class="fa fa-check"></i><b>13</b> GitHub Pages</a><ul>
+<li class="chapter" data-level="13.1" data-path="github-pages.html"><a href="github-pages.html#whats-so-great-about-github-pages"><i class="fa fa-check"></i><b>13.1</b> What’s so great about GitHub Pages?</a></li>
+<li class="chapter" data-level="13.2" data-path="github-pages.html"><a href="github-pages.html#who-uses-github-pages"><i class="fa fa-check"></i><b>13.2</b> Who uses GitHub Pages?</a></li>
+<li class="chapter" data-level="13.3" data-path="github-pages.html"><a href="github-pages.html#steps-to-get-your-github-pages-up-running"><i class="fa fa-check"></i><b>13.3</b> Steps to get your GitHub Pages up &amp; running</a><ul>
+<li class="chapter" data-level="13.3.1" data-path="workflow.html"><a href="workflow.html#prerequisites"><i class="fa fa-check"></i><b>13.3.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="13.3.2" data-path="github-pages.html"><a href="github-pages.html#step-1-install-hugo"><i class="fa fa-check"></i><b>13.3.2</b> Step 1: Install Hugo</a></li>
+<li class="chapter" data-level="13.3.3" data-path="github-pages.html"><a href="github-pages.html#mac-users"><i class="fa fa-check"></i><b>13.3.3</b> Mac Users</a></li>
+<li class="chapter" data-level="13.3.4" data-path="github-pages.html"><a href="github-pages.html#step-2-create-site"><i class="fa fa-check"></i><b>13.3.4</b> Step 2: Create site</a></li>
+<li class="chapter" data-level="13.3.5" data-path="github-pages.html"><a href="github-pages.html#step-3-add-theme"><i class="fa fa-check"></i><b>13.3.5</b> Step 3: Add theme</a></li>
+<li class="chapter" data-level="13.3.6" data-path="github-pages.html"><a href="github-pages.html#step-4-add-content"><i class="fa fa-check"></i><b>13.3.6</b> Step 4: Add content</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="github-pages.html"><a href="github-pages.html#step-5-fire-up-the-hugo-server"><i class="fa fa-check"></i><b>13.4</b> Step 5: Fire up the Hugo server</a><ul>
+<li class="chapter" data-level="13.4.1" data-path="github-pages.html"><a href="github-pages.html#step-6-configure-your-site"><i class="fa fa-check"></i><b>13.4.1</b> Step 6: Configure your site</a></li>
+<li class="chapter" data-level="13.4.2" data-path="github-pages.html"><a href="github-pages.html#step-7-build-pages"><i class="fa fa-check"></i><b>13.4.2</b> Step 7: Build pages</a></li>
+<li class="chapter" data-level="13.4.3" data-path="github-pages.html"><a href="github-pages.html#step-8-create-repositories-on-github"><i class="fa fa-check"></i><b>13.4.3</b> Step 8: Create repositories on GitHub</a></li>
+<li class="chapter" data-level="13.4.4" data-path="github-pages.html"><a href="github-pages.html#step-9-pull-git-repository-on-to-your-computer"><i class="fa fa-check"></i><b>13.4.4</b> Step 9: Pull git repository on to your computer</a></li>
+<li class="chapter" data-level="13.4.5" data-path="github-pages.html"><a href="github-pages.html#step-10-change-public-facing-location"><i class="fa fa-check"></i><b>13.4.5</b> Step 10: Change public-facing location</a></li>
+<li class="chapter" data-level="13.4.6" data-path="github-pages.html"><a href="github-pages.html#step-11-create-public-facing-location"><i class="fa fa-check"></i><b>13.4.6</b> Step 11: Create public-facing location</a></li>
+<li class="chapter" data-level="13.4.7" data-path="github-pages.html"><a href="github-pages.html#step-12-execute-changes"><i class="fa fa-check"></i><b>13.4.7</b> Step 12: Execute changes</a></li>
+<li class="chapter" data-level="13.4.8" data-path="github-pages.html"><a href="github-pages.html#step-13-check-out-your-site"><i class="fa fa-check"></i><b>13.4.8</b> Step 13: Check out your site</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>14</b> Bookdown</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to Statistical Computing in Political Science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="base-r-vs.-tidyverse" class="section level1">
+<h1><span class="header-section-number">7</span> Base R vs. Tidyverse</h1>
+<p>While my predecessors are Tidyverse zealots, I am not. When it comes to learning R, I don’t feel the need to force anyone into learning it one way or the other. People may disagree with this philosophy! Ultimately, I want you to feel comfortable whenever you encounter R. And, the fact is, many people use both base R and Tidyverse so it is best to know both. In PS 812, for example, you will be using primarily base R functions. So forcing you to learn only Tidyverse at this point feels impractical and incompatible with your broader learning goals.</p>
+<p>Throughout this course, I will try to specify when I am using base R and when I am using Tidyverse. There are some functions that I find much easier (and more intuitive) in base R, and others that I prefer written in Tidyverse. But just know this: if there’s a way to write it in Tidyverse, there’s a way to write in base R, and vice versa.</p>
+<div id="but-first-whats-tidyverse" class="section level2">
+<h2><span class="header-section-number">7.1</span> But first, what’s Tidyverse?</h2>
+<p><a href="https://www.Tidyverse.org/">Tidyverse</a> is a R package designed to clean and manipulate data. Compared to base R, Tidyverse can clean and manipulate data much faster with code that is more compact and practical.</p>
+<p>However, there are commands that are faster to write and easier to remember in base R, even if it doesn’t process faster than its Tidyverse equivalent. You will figure out which commands those turn out to be.</p>
+<p>In general, processing time is dependent on the amount of data you have, so if you only have a few thousand observations, it might not make much of a difference, but it will probably make a difference if you have tens or hundreds of thousands of observations.</p>
+</div>
+<div id="r-basics" class="section level2">
+<h2><span class="header-section-number">7.2</span> R basics</h2>
+<p>Some of these exercises were inspired by <a href="https://github.com/mikedecr/PS811-computing/blob/master/code/01_basics.R">Mike DeCrescenzo’s R basics materials</a> and <a href="https://github.com/kosukeimai/qss">Kosuke Imai’s supplementary materials for his book</a>.</p>
+<ol style="list-style-type: decimal">
+<li><p>Go to RStudio.</p></li>
+<li><p>Go to File &gt; Open Project in New Session. Find your <code>ps811-exercises</code> folder.</p></li>
+<li><p>Go to File &gt; New File &gt; R Script.</p></li>
+<li><p>A new Untitled1 R Script tab will open. Go to File &gt; Save As. Name it <code>lecture5-exercise-basic.R</code>.</p></li>
+</ol>
+<div id="use-r-as-a-calculator" class="section level3">
+<h3><span class="header-section-number">7.2.1</span> Use R as a calculator</h3>
+<ol start="4" style="list-style-type: decimal">
+<li><p>Use R to add/subtract/multiply/divide. You don’t <em>need</em> the spaces between each command, but it is easier to read if you do.</p>
+<pre><code>2 + 3
+3 - 1
+12 * 12
+50 / 2</code></pre>
+<p>Outputs should be 5, 2, 144, and 25, respectively.</p></li>
+<li><p>R searches the next line if the inital line is incomplete.</p>
+<pre><code>50 /
+2</code></pre>
+<p>Output should be 25.</p></li>
+<li><p>Use R to conduct order of operations.</p>
+<pre><code>5^(10/5)</code></pre>
+<p>Output should be 25.</p></li>
+<li><p>You may also use commands for Euler’s constant and the natural log in R.</p>
+<pre><code>exp(1)
+log(1)</code></pre></li>
+<li><p>R recognizes pi and cosines.</p>
+<pre><code>pi
+cos(pi)</code></pre></li>
+</ol>
+<p>If you ever want to figure out how to calculate something in R, just Google it or check out this short <a href="https://www.statmethods.net/management/operators.html">Quick-R Operators</a> list for commonly used arithmetic and logical operators.</p>
+</div>
+<div id="creating-objects" class="section level3">
+<h3><span class="header-section-number">7.2.2</span> Creating objects</h3>
+<ol start="9" style="list-style-type: decimal">
+<li><p>You want to put <code>8 + 1</code> into an object called <code>nine</code>.</p>
+<pre><code>nine &lt;- 8 + 1</code></pre></li>
+<li><p>See what happens when you type the name of the object, <code>nine</code>. You get an output of <code>9</code>.</p></li>
+<li><p>You can also do math with the object. Type in <code>sqrt(nine)</code>. You get an output of <code>3</code>.</p></li>
+<li><p>Everything can be an object. You can store text in some other text.</p>
+<pre><code>hello &lt;- &quot;hi&quot;
+hello</code></pre>
+<p>Output should be hi.</p></li>
+<li><p>If you would like to put something else in the object, you can simply overwrite it.</p>
+<pre><code>hello &lt;- &quot;hi, nice to meet you, what is your name&quot;
+hello
+the_answer &lt;- 8 + 1
+the_answer
+nine &lt;- 50 + 4
+nine # the numeric value does not have to be nine</code></pre>
+<p>Output should be “hi, nice to meet you, what is your name,” 9, and 54, respectively.</p></li>
+</ol>
+</div>
+<div id="creating-vectors" class="section level3">
+<h3><span class="header-section-number">7.2.3</span> Creating vectors</h3>
+<ol start="14" style="list-style-type: decimal">
+<li><p>Vectors can be a bunch of different values.</p>
+<pre><code>vector_example &lt;- c(5, 6, 7, 8, 9, 10, 100)</code></pre></li>
+<li><p>You can multiple the vector with an equation, such as <code>2x</code>.</p>
+<pre><code>results &lt;- 2 * vector_example
+results</code></pre>
+<p>Output should be 10, 12, 14, 16, 18, 20, 200.</p></li>
+<li><p>You can multiply vectors.</p>
+<pre><code>vector_example * results</code></pre>
+<p>Output should be 50, 72, 98, 128, 162, 200, 20000.</p></li>
+<li><p>You can do a matrix multiplication using <code>%*%</code>.</p>
+<pre><code>vector_example %*% results</code></pre>
+<p>Output should be 20710.</p></li>
+<li><p>You can plug in the vectors into various functions.</p>
+<pre><code>mean(vector_example)
+median(vector_example)
+mode(vector_example)
+sd(vector_example) # standard deviation
+sum(vector_example)</code></pre>
+<p>Ouptut should be 20.71429, 8, “numeric” (there is no mode), 25.0034, 145, respectively.</p></li>
+</ol>
+</div>
+</div>
+<div id="load-data" class="section level2">
+<h2><span class="header-section-number">7.3</span> Loading data into R</h2>
+<ol style="list-style-type: decimal">
+<li><p>When you first start with R, most tutorials will suggest that you use <code>setwd()</code> to call in your directory. And sure, that’s fine. But since this course emphasizes replication, what if someone opens your .Rproj in hopes of replicating your work and get an error when they try to run <code>setwd("/Users/marcyshieh/marcyshieh.github.io/_ps811")</code>? They are not you, they do not work on your computer, so they need to go through the extra step of changing that line.</p>
+<p>The person trying to replicate your project can probably type <code>getwd()</code> and replace whatever you have in <code>setwd()</code> with the resulting URL, but you want to make their lives (and your life!) easier.</p></li>
+<li><p>Consider the <code>here</code> package. The <code>here</code> package allows anyone to replicate your work without being in your exact workspace and directory.</p></li>
+<li><p>Open a new file. Name it <code>lecture5-exercise-data.R</code>.</p></li>
+<li><p>Paste the following code into line 1 of your .R file. Highlight all the lines and click “Run” on RStudio OR command+return on MacOS or ctrl+enter on Windows.</p>
+<pre><code># install the here package
+install.packages(&quot;here&quot;)
+
+# load the here library
+library(&quot;here&quot;)
+# this is an equivalent to setwd()
+
+# check out where &quot;here&quot; is
+here()
+# this is an equivalent to getwd()
+
+# as you have probably guessed by now, the &quot;#&quot;&quot; denotes comments and R leaves them alone when you run chunks of code</code></pre></li>
+<li><p>Download the <code>movie_metadata.csv</code> dataset. This <a href="https://www.kaggle.com/roshansharma/movies-meta-data">dataset is from Kaggle</a> and contains metadata about movies from <a href="https://imdb.com">IMDb</a>.</p></li>
+<li><p>Move the <code>movie_metadata.csv</code> from the download location to your ps811-exercises directory.</p></li>
+<li><p>Go to your .R file. Load the CSV file into your R environment.</p>
+<pre><code>movie_metadata &lt;- read.csv(here(&quot;movie_metadata.csv&quot;))</code></pre>
+<p>You are calling here() inside the read.csv() command because you are using the here() package.</p></li>
+</ol>
+</div>
+<div id="comparing-base-r-vs.-tidyverse" class="section level2">
+<h2><span class="header-section-number">7.4</span> Comparing base R vs. Tidyverse</h2>
+<p>Much of the lesson here is indebted to <a href="https://tavareshugo.github.io/data_carpentry_extras/base-r_Tidyverse_equivalents/base-r_Tidyverse_equivalents.html">Hugo Taraves</a>, who wrote a nifty guide to syntax equivalents of base R vs. Tidyverse.</p>
+<p><strong>Prerequisites</strong> You need to install the <code>dplyr</code> and <code>tidyr</code> packagess, and load them. Use the <code>install.packages()</code> and <code>library()</code> functions to do this. You need these packages to use Tidyverse functions.</p>
+<ul>
+<li>Always load your packages on the top of the .R file.</li>
+</ul>
+<p>Take a look at the variables in the dataset using <code>names(movie_metadata)</code>.</p>
+<p>We are going to first go through everything in base R, then repeat everything in Tidyverse. Hopefully this gives you a sense of how base R and Tidyverse work.</p>
+<div id="base-r" class="section level3">
+<h3><span class="header-section-number">7.4.1</span> Base R</h3>
+<p>This is how these commands work in base R.</p>
+<ol style="list-style-type: decimal">
+<li><p>Extract the first 100 rows.</p>
+<pre><code>movie_metadata_100 &lt;- movie_metadata[1:100, ]</code></pre>
+<ul>
+<li>Rows are equivalent to observations.</li>
+<li>Columns are equivalent to variables.</li>
+</ul></li>
+<li><p>Look at the existing variables in dataset.</p>
+<pre><code># you can identify the variables by name
+movie_metadata_100[, c(&quot;director_name&quot;, &quot;movie_title&quot;)] 
+
+# or you can identify the variables by their column index/number
+movie_metadata_100[, c(2, 12)]</code></pre></li>
+<li><p>Create a new variable in the dataset.</p>
+<pre><code># you want to get the sum of facebook likes for the first 3 actors listed in the movie
+movie_metadata_100$main_actors_fb_popularity &lt;-
+movie_metadata_100$actor_1_facebook_likes +
+movie_metadata_100$actor_2_facebook_likes +
+movie_metadata_100$actor_3_facebook_likes
+
+# view the dataset then scroll to the last column on the right to see the column you have just created!
+View(movie_metadata_100)</code></pre></li>
+<li><p>Filter rows in dataset.</p>
+<pre><code># you want to extract the observations where there is a IMDB score of 5+ and 2 number of faces in the poster
+subset(movie_metadata_100, imdb_score &gt; 5 &amp;
+facenumber_in_poster==2)</code></pre></li>
+<li><p>Arrange rows.</p>
+<pre><code># descending order of movie title followed by ascending order of budget
+movie_metadata_100[order(rev(movie_metadata_100$movie_title),
+movie_metadata_100$budget) , ]</code></pre></li>
+<li><p>Summarize observations.</p>
+<pre><code># Create a dataframe with mean and standard deviation information
+# na.rm = TRUE removes all the NAs from the calculations
+# in this case, if you include the NAs, it will yield a result of NA
+# e.g., mean(movie_metadata_100$budget) # not what you want!
+
+data.frame(budget.mean = mean(movie_metadata_100$budget, na.rm = TRUE),
+budget.sd = sd(movie_metadata_100$budget, na.rm = TRUE),
+gross.mean = mean(movie_metadata_100$gross, na.rm = TRUE),
+gross.sd = sd(movie_metadata_100$gross, na.rm = TRUE))</code></pre></li>
+<li><p>Group observations.</p>
+<ul>
+<li>Summarize rows within groups</li>
+</ul>
+<pre><code># Using aggregate
+aggregate(formula = cbind(budget, gross) ~ country + genres, 
+     data = movie_metadata_100, 
+     FUN = function(x){
+       c(mean = mean(x), sd = sd(x))
+     })</code></pre></li>
+</ol>
+</div>
+<div id="tidy" class="section level3">
+<h3><span class="header-section-number">7.4.2</span> Tidyverse</h3>
+<p>You know how to do it in base R, so now you can see how it works in Tidyverse! Tidyverse is a suite of packages that are extremely useful for data manipulation. We will have a longer discussion of using tidyverse package for data manipulation next week but hopefully this introduction shows how tidyverse tools deviate from base R tools.</p>
+<ol style="list-style-type: decimal">
+<li><p>Extract the first 100 rows.</p>
+<pre><code>movie_metadata_100tidy &lt;- movie_metadata %&gt;% top_n(100)</code></pre>
+<p>As you have probably noticed, Tidyverse uses <code>%&gt;%</code>, which are called “pipes.” In essence, you are calling your dataset, and piping functions into it.</p></li>
+<li><p>Look at existing variables in dataset.</p>
+<pre><code># you can identify the variables by name
+select(movie_metadata_100tidy, director_name, movie_title)
+
+# or you can identify the variables by their column index/number
+select(movie_metadata_100tidy, 2, 12)</code></pre>
+<p>If you want to turn this selection into an object, just put <code>movie_metadata_100tidy_select&lt;-</code> (or whatever would make sense for you) in front of the command.</p></li>
+<li><p>Create a new variable in the dataset.</p>
+<pre><code># you want to get the sum of facebook likes for the first 3 actors listed in the movie
+
+movie_metadata_100tidy &lt;- mutate(movie_metadata_100tidy,
+main_actors_fb_popularity = actor_1_facebook_likes +
+actor_2_facebook_likes + actor_3_facebook_likes)
+
+# you should have created a brand new variable!
+View(movie_metadata_100tidy)</code></pre>
+<p>Notice that you don’t have to refer to the data set every time you call a variable. That’s one of the advantages of Tidyverse!</p></li>
+<li><p>Filter rows in dataset.</p>
+<pre><code># you want to extract the observations where there is a IMDB score of 5+ and 2 number of faces in the poster
+filter(movie_metadata_100tidy, imdb_score &gt; 5 &amp; facenumber_in_poster==2)</code></pre>
+<p>You may also turn this filtered dataset into an object if you want!</p></li>
+<li><p>Arrange rows.</p>
+<pre><code># descending order of movie title followed by ascending order of budget
+arrange(movie_metadata_100tidy, desc(movie_title), budget) </code></pre></li>
+<li><p>Summarize observations.</p>
+<pre><code># Create a dataframe with mean and standard deviation information
+summarise(movie_metadata_100tidy,
+          budget.mean = mean(budget, na.rm = TRUE),
+          budget.sd = sd(budget, na.rm = TRUE),
+          gross.mean = mean(gross, na.rm = TRUE),
+          gross.sd = sd(gross, na.rm = TRUE))</code></pre></li>
+<li><p>Group observations.</p>
+<ul>
+<li>Summarize rows within groups</li>
+</ul>
+<pre><code>movie_metadata_100tidy %&gt;% 
+     group_by(country, genres) %&gt;% 
+     summarise(budget.mean = mean(budget),
+       budget.sd = sd(budget),
+       gross.mean = mean(gross),
+       gross.sd = sd(gross)) %&gt;% 
+       ungroup()
+
+ # ungroup() removes any grouping changes you make from analyses beyond this section</code></pre></li>
+</ol>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-manipulation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ps811-materials.pdf", "ps811-materials.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
